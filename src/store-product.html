@@ -19,7 +19,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>GoodGames</title>
-
     <meta name="description" content="GoodGames - Bootstrap template for communities and games store">
     <meta name="keywords" content="game, gaming, template, HTML template, responsive, Bootstrap, premium">
     <meta name="author" content="_nK">
@@ -27,7 +26,8 @@
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!-- Check fielsd -->
+    <script src="assets/js/check_review.js" type="text/javascript"></script>
     <!-- START: Styles -->
 
     <!-- Google Fonts -->
@@ -654,17 +654,14 @@
                             <!-- START: Reply -->
                             <h3 class="h4">Add a Review</h3>
                             <div class="nk-reply">
-                                <form action="#" class="nk-form">
+                                <form action="../core/add_review.php" class="nk-form" onsubmit="return check();">
                                     <div class="row vertical-gap sm-gap">
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control required" name="name" placeholder="Name *">
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control required" name="title" placeholder="Title *">
+                                            <input type="text" class="form-control required" id="title" name="title" placeholder="Title *">
                                         </div>
                                     </div>
                                     <div class="nk-gap-1"></div>
-                                    <textarea class="form-control required" name="message" rows="5" placeholder="Your Review *" aria-required="true"></textarea>
+                                    <textarea class="form-control required" id="text" name="message" rows="5" placeholder="Your Review *" aria-required="true"></textarea>
                                     <div class="nk-gap-1"></div>
                                     <div class="nk-rating">
                                         <input type="radio" id="review-rate-5" name="review-rate" value="5">
@@ -697,7 +694,7 @@
                                             <span><i class="fa fa-star"></i></span>
                                         </label>
                                     </div>
-                                    <button class="nk-btn nk-btn-rounded nk-btn-color-dark-3 float-right">Submit</button>
+                                    <input type="submit" id="submit" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 float-right" value="Submit">
                                 </form>
                             </div>
                             <!-- END: Reply -->
