@@ -5,7 +5,7 @@ Website is not hosted yet!
 # Original Authors
 * Yosri Bouzid
 * Ahmed Debbech
-* Aziz Amdouni
+* Med Aziz Amdouni
 * Mohamed Amine Ayadi
 * Yassin Darwezi
 * Mohamed Nasri
