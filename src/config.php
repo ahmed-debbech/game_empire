@@ -3,7 +3,7 @@ class config {
 	private static $instance = NULL;
 	public static function getConnexion() {
 	       	if (!isset(self::$instance)) {
-		self::$instance = new PDO('mysql:host=localhost;dbname=games', 'root', '');
+		self::$instance = new PDO('mysql:host=localhost;dbname=game_empire', 'root', '');
 		}
 	return self::$instance;
 	}
