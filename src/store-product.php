@@ -625,22 +625,22 @@
                                     <strong class="text-white">Customer Rating:</strong>
                                     <div class="nk-gap"></div>
                                     
-    <span class="nk-product-rating">
-        <span class="nk-product-rating-front" style="width: 94%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
+                                    <span class="nk-product-rating">
+                                        <span class="nk-product-rating-front" style="width: 94%;">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </span>
+                                        <span class="nk-product-rating-back">
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                    </span>
 
                                     <div class="nk-gap"></div>
                                 </div>
@@ -654,7 +654,8 @@
                             <!-- START: Reply -->
                             <h3 class="h4">Add a Review</h3>
                             <div class="nk-reply">
-                                <form action="../core/add_review.php" class="nk-form" onsubmit="return check();">
+                                <form action="core/add_review.php" method="post" class="nk-form" onsubmit="return check();">
+                                <input type="hidden" name="logged" value="<?php echo "werg"?>">
                                     <div class="row vertical-gap sm-gap">
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control required" id="title" name="title" placeholder="Title *">
@@ -701,93 +702,9 @@
 
                             <div class="clearfix"></div>
                             <div class="nk-gap-2"></div>
-                            <div class="nk-comments">
-                                <!-- START: Review -->
-                                <div class="nk-comment">
-                                    <div class="nk-comment-meta">
-                                        <img src="assets/images/avatar-2.jpg" alt="Witch Murder" class="rounded-circle" width="35"> by <a href="https://nkdev.info/">Witch Murder</a> in 20 September, 2018
-                                        
-    <span class="nk-product-rating nk-review-rating">
-        <span class="nk-product-rating-front" style="width: 80%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
-
-                                    </div>
-                                    <div class="nk-comment-text">
-                                        <p>Upon replenish great rule. Were tree, given day him night Fruit it moveth all. First they're creature seasons and creature fill a it have fifth, their own subdue brought above divided.</p>
-
-                                        <p>Behold it set, seas seas and meat divided Moveth cattle forth evening above moveth so, signs god a fruitful his after called that whose.</p>
-                                    </div>
-                                </div>
-                                <!-- END: Review -->
-                                <!-- START: Review -->
-                                <div class="nk-comment">
-                                    <div class="nk-comment-meta">
-                                        <img src="assets/images/avatar-1.jpg" alt="Hitman" class="rounded-circle" width="35"> by <a href="https://nkdev.info/">Hitman</a> in 14 Jule, 2018
-                                        
-    <span class="nk-product-rating nk-review-rating">
-        <span class="nk-product-rating-front" style="width: 20%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
-
-                                    </div>
-                                    <div class="nk-comment-text">
-                                        <p> I was awakened at daybreak by the charwoman, and having arrived at the inn, was at first placed inside the coach. :(</p>
-                                    </div>
-                                </div>
-                                <!-- END: Review -->
-                                <!-- START: Review -->
-                                <div class="nk-comment">
-                                    <div class="nk-comment-meta">
-                                        <img src="assets/images/avatar-3.jpg" alt="Wolfenstein" class="rounded-circle" width="35"> by <a href="https://nkdev.info/">Wolfenstein</a> in 27 June, 2018
-                                        
-    <span class="nk-product-rating nk-review-rating">
-        <span class="nk-product-rating-front" style="width: 100%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
-
-                                    </div>
-                                    <div class="nk-comment-text">
-                                        <p>Divided thing, land it evening earth winged whose great after. Were grass night. To Air itself saw bring fly fowl. Fly years behold spirit day greater of wherein winged and form. Seed open don't thing midst created dry every greater divided of, be man is. Second Bring stars fourth gathering he hath face morning fill. Living so second darkness. Moveth were male. May creepeth. Be tree fourth.</p>
-                                    </div>
-                                </div>
-                                <!-- END: Review -->
+                            <div class="nk-comments"> 
+                                <!--Loading reviews -->
+                                <?php include("core/getreviews.php"); ?>
                             </div>
                         </div>
                         <!-- END: Tab Reviews -->

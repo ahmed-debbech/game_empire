@@ -5,12 +5,12 @@ $con = $conf->getConnexion();
 if(isset($_GET["email"]) == false && isset($_GET["password"]) == false){
     echo "you should set username and pass correctly";
 }else{
-    //here we search fir the account 
+    //here we search for the account 
     $sql = "select * from user;";
     $usr = $con->query($sql);
     $found = FALSE;
     foreach($usr as $row){
-        if(($row["email"] == $_GET["username"]) && ($row["password"] == $_GET["password"])){
+        if(($row["email"] == $_GET["email"]) && ($row["password"] == $_GET["password"])){
             $found = TRUE;
             break;
         }
