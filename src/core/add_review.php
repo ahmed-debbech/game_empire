@@ -16,7 +16,7 @@ function checkUserLogged($username){
 if((!empty($_POST["title"])) && (!empty($_POST["message"])) && (!empty($_POST["logged"]))){
     if(checkUserLogged($_POST["logged"])){
         $revc = new reviewC();
-        $rev = new Review(0, $_POST["logged"], $_POST["review-rate"], $_POST["message"],"1999-8-13", $_POST["title"], 3000);
+        $rev = new Review(0, $_POST["logged"], $_POST["review-rate"], $_POST["message"],"1999-8-13", $_POST["title"], $_POST["id_game"]);
         $revc->addReview($rev);
     }else{
         echo "You should login first";
