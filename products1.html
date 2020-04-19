@@ -108,11 +108,11 @@
                             <li class="active open is-dropdown"> <a href="#"> <i class="fa fa-shopping-cart"></i>
                                     <span>Platform</span> </a>
                                 <ul>
-                                    
-                                    <li ><a href="products.html">Ajouter Platform</a></li>
-                                    <li><a href="products1.php">Afficher Platform</a></li>
-                                    <li><a href="products2.php">Supprimer Platform</a></li>
-                                   
+                                    <li><a href="ecommerce.html">Dashboard</a></li>
+                                    <li class="active"><a href="products.html">Ajouter Platform</a></li>
+                                    <li><a href="products.html">Afficher Platform</a></li>
+                                    <li><a href="orders.html">Orders</a></li>
+                                    <li><a href="order-view.html">Order View</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -277,69 +277,54 @@
                     <div class="row">
                         <div class="col-xl-10">
                             
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">Area Chart</h5>
-                            <div class="card-body">
-                                <HTML>
-<head></head>
-
-<body>
-<?PHP
-include "../entitie/platform.php";
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    
+                                    <div class="card">
+                                        <h5 class="card-header">Catégories</h5>
+                                        <div class="">
+                                            <div class="card-body">
+                                                <?PHP
 include "../core/platformC.php";
-if (isset($_GET['id_plat'])){
-    $platformC=new platformC();
-    $result=$platformC->recupererplatform($_GET['id_plat']);
-    foreach($result as $row){
-        $name=$row['name'];
-        $id_plat=$row['id_plat'];
-    
+$platform1C=new platformC();
+$listeplatform=$platform1C->afficherplatform();
+
+//var_dump($listeproduits->fetchAll());
 ?>
-<form method="POST"  name="monform" onsubmit="return test()">
-<table>
+<table class="table" >
+                                        <thead>
+                                            <tr>
+                                                
+                                                <th scope="col" >Nom Catégorie</th>
+                                                <th scope="col" >Référence Catégorie</th>
+                                                <th scope="col" ><button>Modifier</button> </th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                
+                                            <?PHP
+foreach($listeplatform as $row){
+    ?>
+    <tr>
+          <td><?PHP echo $row['name']; ?></td>
+    <td><?PHP echo $row['id_plat']; ?> </td>
+  
+     
 
-<tr>
-<td>Name</td>
-<td><input type="text" name="name" value="<?PHP echo $name ?>"></td>
-</tr>
-<tr>
-<td>Id Platform</td>
-<td><input type="text" name="id_plat" value="<?PHP echo $id_plat ?>"></td>
-</tr>
-<tr>
-<td></td>
-<td><input type="submit" name="modifier" value="modifier"></td>
+     <td><a href="modifierplatform.php?id_plat=<?PHP echo $row['id_plat']; ?>">
+    Modifier</a></td>
 
-</tr>
-<tr>
-<td></td>
-<td><input type="hidden" name="id_plat_ini" value="<?PHP echo $_GET['id_plat'];?>"></td>
-</tr>
-</table>
-</form>
-<?PHP
-    }
-}
-if (isset($_POST['modifier'])){
-    $platform=new platform($_POST['name'],$_POST['id_plat']);
-    $platformC->modifierplatform($platform,$_POST['id_plat_ini']);
-    
-    //echo $_POST['id_plat_ini'];
-    
-   
+                                            </tr>
+                                            <?php
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
 
-}
-?>
-</body>
-
-</HTML>
-
-
-                                
-                        </div>
-                    </div>
-                  
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                                 <!-- ============================================================== -->
                                 <!-- end badges  -->
                                 <!-- ============================================================== -->
@@ -527,7 +512,9 @@ if (isset($_POST['modifier'])){
                                     <!-- ============================================================== -->
                                 </div>
                             </div>
-          
+            <footer class="main--footer main--footer-light">
+                <p>Copyright © <a href="#">DAdmin</a>. All Rights Reserved.</p>
+            </footer>
         </main>
     </div>
     <script src="assets/js/jquery.min.js"></script>
@@ -547,7 +534,6 @@ if (isset($_POST['modifier'])){
     <script src="assets/js/ion.rangeSlider.min.js"></script>
     <script src="assets/js/datatables.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script type="text/javascript" src="ajoutc.js"></script>
     <!-- Mirrored from themelooks.net/demo/dadmin/html/products.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 11 Apr 2020 19:11:45 GMT -->
 
 

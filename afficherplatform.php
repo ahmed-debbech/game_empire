@@ -1,5 +1,5 @@
 <?PHP
-include "../core/platformPC.php";
+include "../core/platformC.php";
 $platform1C=new platformC();
 $listeplatform=$platform1C->afficherplatform();
 
