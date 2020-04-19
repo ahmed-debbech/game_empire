@@ -10,7 +10,6 @@
     License: You must have a valid license purchased only from ThemeForest (the above link) in order to legally use the theme for your project.
     Copyright 2019.
 -->
-    
 <html lang="en">
 
 <!-- Mirrored from html.nkdev.info/goodgames/store-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 12 Apr 2020 00:35:26 GMT -->

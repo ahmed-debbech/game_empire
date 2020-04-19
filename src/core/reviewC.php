@@ -20,7 +20,7 @@ class reviewC{
         do{
             $id_rev = rand(100,99999);
         }while(!$this->isUnique($id_rev));
-        $sql="insert into reviews (id_rev,username,nb_stars,content,date,title,id_game) values (:id_rev,:username,:nb_stars,curdate(),:content,:title,:id_game)";
+        $sql="insert into reviews (id_rev,username,nb_stars,content,date,title,id_game) values (:id_rev,:username,:nb_stars,:date,curdate(),:title,:id_game)";
         $db = config::getConnexion();
         //$db->query($sql);
         try{
@@ -43,13 +43,18 @@ class reviewC{
     public function getReviews($id_game){
         $db = config::getConnexion();
         $sql = "select * from reviews";
-        //$list = $db->query($sql);
+        try{
+            $list = $db->query($sql);
+        }catch(Exception $e){
+            echo "het";
+        }
+        var_dump($list);
         $res = array();
-        /*foreach($list as $row){
+        foreach($list as $row){
             if($row["id_game"] == $id_game){
                 array_push($res, $row);
             }
-        }*/
+        }
         return $res;
     }
 }
