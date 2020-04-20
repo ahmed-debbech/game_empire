@@ -2,7 +2,7 @@
 include("../config.php");
 class likeC{
     private function isUnique($id){
-        $sql = "select * from like";
+        $sql = "select * from react";
         $db = config::getConnexion();
         try{
             $list = $db->query($sql);
@@ -18,11 +18,10 @@ class likeC{
     }
     public function addLike($like){
         $id_like = 0;
-        //do{
+        do{
             $id_like = rand(100,99999);
-        //}while(!$this->isUnique($id_like));
-        echo $like->getUsername();
-        $sql="insert into like (id_like,username,id_rev) values (:id_like,:username,:id_rev)";
+        }while(!$this->isUnique($id_like));
+        $sql="insert into react (id_like,username,id_rev) values (:id_like,:username,:id_rev)";
         $db = config::getConnexion();
         try{
             $req=$db->prepare($sql);
