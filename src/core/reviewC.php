@@ -25,7 +25,6 @@ class reviewC{
         //$db->query($sql);
         try{
             $req=$db->prepare($sql);
-            echo $rev->getUsername()." ".$rev->getNbStars()." ".$rev->getContent()." ".$rev->getTitle()." ".$rev->getIdGame();
             $req->bindValue(':username',$rev->getUsername());
             $req->bindValue(':id_rev',$id_rev);
             $req->bindValue(':nb_stars',$rev->getNbStars());

@@ -699,17 +699,14 @@
                                 </form>
                             </div>
                             <!-- END: Reply -->
-
                             <div class="clearfix"></div>
                             <div class="nk-gap-2"></div>
                             <div class="nk-comments"> 
                                 <!--Loading reviews -->
-                                <?php include("core/getreviews.php"); ?>
-                                
+                                <?php include("core/getreviews.php");?>
                             </div>
                         </div>
                         <!-- END: Tab Reviews -->
-
                     </div>
                 </div>
                 <!-- END: Tabs -->

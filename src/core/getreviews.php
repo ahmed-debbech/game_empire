@@ -31,6 +31,13 @@ for($i=0; $i<=sizeof($list)-1; $i++){
     echo "<p>".$list[$i]["title"]."</p>";
     echo "<p>".$list[$i]["content"]."</p>";
     echo "</div>";
+    echo "<form action='core/addlike.php' method='get>";
+    echo "<input type='hidden' name='rrr' value='rth'>";
+    echo "<input type='hidden' name='game' value='".$_GET["id_game"]."'>";
+    echo "<input type='hidden' name='id_rev' value='".$list[$i]["id_rev"]."'>";
+    echo "<input type='hidden' name='username' value='".$list[$i]["username"]."'>";
+    echo "<input type='submit' value='Like'>";
+    echo "</form>";
     echo "</div>";
 }
 ?>
