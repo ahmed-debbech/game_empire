@@ -1,24 +1,30 @@
+
 <?php
+ob_start();
+session_start();
 include("../config.php");
-$conf = new config();
-$con = $conf->getConnexion();
-if(isset($_GET["email"]) == false && isset($_GET["password"]) == false){
-    echo "you should set username and pass correctly";
-}else{
-    //here we search for the account 
-    $sql = "select * from user;";
-    $usr = $con->query($sql);
-    $found = FALSE;
-    foreach($usr as $row){
-        if(($row["email"] == $_GET["email"]) && ($row["password"] == $_GET["password"])){
-            $found = TRUE;
-            break;
-        }
-    }
-    if($found == FALSE){
-        echo "this account doesnt exist";
-    }else{
-        echo "this account exist";
+if (isset($_POST["username"])) {
+    
+    $username=$_POST['username'];
+    $password=$_POST['password'];
+
+    $sql1="select * from user where username='".$_POST["username"]."' and password='".$_POST["password"]."'";
+    $con = mysqli_connect("127.0.0.1", "root", "", "game_empire");
+    $result = mysqli_query($con, $sql1);
+    if ($_POST["username"]=="admin" && $_POST["password"]=="admin") {
+               $_SESSION['admin']=true;
+               header("Location: ../coming-soon.html");exit(); 
+   }
+
+    elseif (mysqli_num_rows($result) > 0) {
+        $_SESSION['username'] = $_POST['username'];  
+        echo 'Yes';  
+         }     
+    else {
+
+        echo 'No';  
+
     }
 }
+
 ?>
