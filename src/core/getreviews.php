@@ -4,26 +4,40 @@ include_once("entities/review.php");
 include("config.php");
 $revC = new reviewC();
 $list = $revC->getReviews($_GET["id_game"]);
+function convertStars($x){
+    switch($x){
+        case 1: return 20;
+        break;
+        case 2: return 40;
+        break;
+        case 3: return 60;
+        break;
+        case 4: return 80;
+        break;
+        case 5: return 100;
+        break;
+    }
+}
 for($i=sizeof($list)-1; $i>=0; $i--){
     echo "<div class='nk-comment'>";
     echo "<div class='nk-comment-meta'>";
     echo "<img src='assets/images/avatar-2.jpg' alt='Witch Murder' class='rounded-circle' width='35'>by <a href=''>".$list[$i]["username"]."</a> in ".$list[$i]["date"];
     echo "<span class='nk-product-rating nk-review-rating'>
-    <span class='nk-product-rating-front' style='width: 80%;'>
+    <span class='nk-product-rating-front' style='width: ".convertStars($list[$i]["nb_stars"])."%;'>
         <i class='fa fa-star'></i>
         <i class='fa fa-star'></i>
         <i class='fa fa-star'></i>
         <i class='fa fa-star'></i>
         <i class='fa fa-star'></i>
-        <i class='fa fa-star'></i>
+        <i class='far fa-star'></i>
     </span>
-    <span class='nk-product-rating-back'>
+    <span class='nk-product-rating-back>
         <i class='far fa-star'></i>
         <i class='far fa-star'></i>
         <i class='far fa-star'></i>
-        <i class='far fa-star></i>
         <i class='far fa-star'></i>
-        <i class='fa fa-star'></i>
+        <i class='far fa-star'></i>
+        <i class='far fa-star'></i>
     </span>
 </span>";
     echo "</div>";

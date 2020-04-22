@@ -706,9 +706,7 @@
                             <div class="nk-gap-2"></div>
                             <div class="nk-comments"> 
                                 <!--Loading reviews -->
-                                <?php include("core/getreviews.php");?>
-                            </div>
-                        </div>
+                            <?php include("core/getreviews.php"); ?>
                         <!-- END: Tab Reviews -->
                     </div>
                 </div>
