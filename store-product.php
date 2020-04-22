@@ -1,4 +1,7 @@
-
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
 <!DOCTYPE html>
 <!--
     Name: GoodGames - Game Portal / Store and eSports HTML Template
@@ -42,6 +45,15 @@
 
     <!-- IonIcons -->
     <link rel="stylesheet" href="assets/vendor/ionicons/css/ionicons.min.css">
+    <style type="text/css">
+        .fa-heart-o {
+        color: red;
+        cursor: pointer;
+        }
+        .fa-heart {
+        color: red;
+        cursor: pointer;
+    </style>
 
     <!-- Flickity -->
     <link rel="stylesheet" href="assets/vendor/flickity/dist/flickity.min.css">
@@ -143,6 +155,16 @@
                         <span class="fa fa-user"></span>
                     </a>
                 </li>
+                            <?php
+                            if(isset($_SESSION['username']))  
+                            {  
+                            ?>  
+                                 <li>Welcome, <?php $user=$_SESSION['username'];echo $user; ?>
+                                 <a href="#" id="logout">Logout</a>  </li>
+
+                            <?php  
+                            }
+                            ?> 
                 
                 
                 <li>
@@ -529,8 +551,58 @@
                         <!-- END: Product Photos -->
                     </div>
                     <div class="col-md-6">
+                        <form method="get" >
+                    <h2 class="nk-product-title h3"><?PHP echo $row['name']; ?> <a href="?id_game=<?PHP echo $row['id_game']; ?>&favourite=<?PHP echo $row['id_game']; ?>&y=1" id = heart>
+                    <?PHP
 
-                        <h2 class="nk-product-title h3"><?PHP echo $row['name']; ?> </h2>
+                    if (isset($_GET['favourite'])&& isset($_GET['y'])==1 )
+                    {
+                            $sql="insert into favourite (username,id_game) values (:username,:id_game)";
+                            $db = config::getConnexion();
+                            $req=$db->prepare($sql);
+                            $id_game=$_GET['favourite'];
+                            $req->bindValue(':username',$user);
+                            $req->bindValue(':id_game',$id_game);
+                            if($req->execute())
+                            {
+                                echo "added";
+
+                            }
+
+                            else{
+                                        $sql="DELETE from favourite where username=:username and id_game=:id_game";
+                                        $db = config::getConnexion();
+                                        $req=$db->prepare($sql);
+                                        $id_game=$_GET['favourite'];
+                                        $req->bindValue(':username',$user);
+                                        $req->bindValue(':id_game',$id_game);
+                                        if($req->execute())
+                                        {
+                                            echo"removed";
+                                        }
+
+                            }
+                    }
+                    
+                    ?>
+                    <script type="text/javascript">
+                        $(document).ready(function(){
+                      $("#heart").click(function(){
+                        if($("#heart").hasClass("liked")){
+                          $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+                          $("#heart").removeClass("liked");
+                        }else{
+                          $("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
+                          $("#heart").addClass("liked");
+                        }
+                      });
+                    });
+                    </script>
+                        <i class="fa fa-heart-o" aria-hidden="true" ></i> </a></h2>
+
+
+                    </form>
+
                         <span class="nk-product-rating">
                         <span class="nk-product-rating-front" style="width:<?PHP echo $row['score']*20; ?>% ;">
                             <i class="fa fa-star"></i>
@@ -557,7 +629,7 @@
                         <!-- START: Add to Cart -->
                         <div class="nk-gap-2"></div>
                         <form action="#" class="nk-product-addtocart">
-                            <div class="nk-product-price">€ 32.00</div>
+                            <div class="nk-product-price">€ <?PHP echo $row['price']; ?>.00</div>
                             <div class="nk-gap-1"></div>
                             <div class="input-group">
                                 <input type="number" class="form-control" value="1" min="1" max="21">
@@ -646,6 +718,7 @@
             <i class="far fa-star"></i>
         </span>
     </span>
+
 
                                     <div class="nk-gap"></div>
                                 </div>
@@ -1454,6 +1527,58 @@
 
     
 <!-- START: Scripts -->
+ <script>  
+ $(document).ready(function(){  
+      $('#login_button').click(function(){  
+           var username = $('#username').val();  
+           var password = $('#password').val();  
+           if(username != '' && password != '')  
+           {  
+                $.ajax({  
+                     url:"action.php",  
+                     method:"POST",  
+                     data: {username:username, password:password},  
+                     success:function(data)  
+                     {  
+                          //alert(data);  
+                          if(data == 'No')  
+                          {  
+                            alert("Wrong Data"); 
+                            location.reload();
+                          }  
+                          else if(data == 'admin')  {
+                                location.href = 'coming-soon.html';
+                          }
+                          else  
+                          {  
+                               $('#modalLogin').hide();  
+                               location.reload();  
+                          }  
+                     }  
+                });  
+           }  
+           else  
+           {  
+                alert("Both Fields are required");  
+           }  
+      });  
+      $('#logout').click(function(){  
+           var action = "logout";  
+           $.ajax({  
+                url:"action.php",  
+                method:"POST",  
+                data:{action:action},  
+                success:function()  
+                {  
+                     location.reload();  
+                }  
+           });  
+      });  
+ });  
+ </script>
+
+
+
 
 <!-- Object Fit Polyfill -->
 <script src="assets/vendor/object-fit-images/dist/ofi.min.js"></script>

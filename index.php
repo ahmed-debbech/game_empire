@@ -1,7 +1,6 @@
-<?
+<?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-session_start();
 ?>
     <!DOCTYPE html>
 
@@ -151,15 +150,15 @@ session_start();
                                 </a>
                             </li>
                             <?php  
-                if(isset($_SESSION['username']))  
-                {  
-                ?>  
-                     <li>Welcome, <?php $user=$_SESSION['username'];echo $user; ?>
-                     <a href="#" id="logout">Logout</a>  </li>
+			                if(isset($_SESSION['username']))  
+			                {  
+			                ?>  
+			                     <li>Welcome, <?php $user=$_SESSION['username'];echo $user; ?>
+			                     <a href="#" id="logout">Logout</a>  </li>
 
-                <?php  
-                }
-                ?>  
+			                <?php  
+			                }
+			                ?>  
 
 
                             <li>
