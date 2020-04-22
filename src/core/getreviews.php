@@ -36,7 +36,14 @@ for($i=sizeof($list)-1; $i>=0; $i--){
     echo "<input type='hidden' name='game' value='".$_GET["id_game"]."'>";
     echo "<input type='hidden' name='id_rev' value='".$list[$i]["id_rev"]."'>";
     echo "<input type='hidden' name='username' value='".$list[$i]["username"]."'>";
-    echo "<input type='submit' value='Like'>";
+    echo "<table>";
+    echo "<tr>";
+    echo "<td><button class='react' type='submit'><img src='assets/images/like-react.png'></button></td>";
+    echo "<td><button class='react' type='submit'><img src='assets/images/heart-react.png'></button></td>";
+    echo "<td><button class='react' type='submit'><img src='assets/images/hot-react.png'></button></td>";
+    echo "<td><button class='react' type='submit'><img src='assets/images/sad-react.png'></button></td>";
+    echo "</tr>";
+    echo "</table>";
     echo "</form>";
     echo "</div>";
 }

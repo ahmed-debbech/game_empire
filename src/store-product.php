@@ -61,6 +61,9 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/custom.css">
     
+    <!-- react button css-->
+    <link rel="stylesheet" href="assets/css/react-button.css">
+
     <!-- END: Styles -->
 
     <!-- jQuery -->
