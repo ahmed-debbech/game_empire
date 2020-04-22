@@ -627,7 +627,7 @@ ini_set('display_errors', 1);
                                     <td>
                                         <div class="col-lg-6">
                                     <div class="nk-product-cat-2">
-                                     <a class="nk-product-image" href="store-product.html">
+                                     <a class="nk-product-image" href="store-product.php?id_game=<?PHP echo $row['id_game']; ?>">
                                          <?PHP image($row['id_game']);?>
                                             </a>
                                         <div class="nk-product-cont">
