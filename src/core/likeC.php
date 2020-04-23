@@ -21,13 +21,15 @@ class likeC{
         do{
             $id_like = rand(100,99999);
         }while(!$this->isUnique($id_like));
-        $sql="insert into react (id_like,username,id_rev) values (:id_like,:username,:id_rev)";
+        $sql="insert into react (id_like,username,date,id_rev,type) values (:id_like,:username,curdate(),:id_rev,:type)";
         $db = config::getConnexion();
         try{
             $req=$db->prepare($sql);
             $req->bindValue(':username', $like->getUsername());
             $req->bindValue(':id_rev',$like->getIdRev());
             $req->bindValue(':id_like',$id_like);
+            $req->bindValue(':type',$like->getType());
+            //echo $like->getType();
             $yo = $req->execute();
             var_dump($yo);
         }catch (Exception $e){
