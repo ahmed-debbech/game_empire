@@ -706,6 +706,11 @@
                             <div class="nk-gap-2"></div>
                             <div class="nk-comments"> 
                                 <!--Loading reviews -->
+                                <script>
+                                function sendReact(x){
+                                    document.getElementsByName('react_type')[0].innerHTML = x;
+                                }
+                                </script>
                             <?php include("core/getreviews.php"); ?>
                         <!-- END: Tab Reviews -->
                     </div>
