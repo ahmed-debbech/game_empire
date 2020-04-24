@@ -46,12 +46,12 @@ for($i=sizeof($list)-1; $i>=0; $i--){
     echo "<p>".$list[$i]["title"]."</p>";
     echo "<p>".$list[$i]["content"]."</p>";
     echo "</div>";
-
+    echo "<form action='core/addlike.php' method='get'>";
     echo "<input type='hidden' name='rrr' value='rth'>";
-    echo "<input type='hidden' name='game' value='".$_GET["id_game"]."'>";
+    echo "<input type='hidden' name='id_game' value='".$_GET["id_game"]."'>";
     echo "<input type='hidden' name='id_rev' value='".$list[$i]["id_rev"]."'>";
     echo "<input type='hidden' name='username' value='".$list[$i]["username"]."'>";
-    echo "<input type='text' id='react_type' name='reaction'>";
+    echo "<input type='hidden' id='react_type' name='reaction'>";
     echo "<table>";
     echo "<tr>";
     echo "<td><button class='react' onclick=\"document.getElementsByName('reaction')[".$j."].value = '1';\" type='submit'><img src='assets/images/like-react.png'></button></td>";
@@ -60,7 +60,7 @@ for($i=sizeof($list)-1; $i>=0; $i--){
     echo "<td><button class='react' onclick=\"document.getElementsByName('reaction')[".$j."].value = '4';\" type='submit'><img src='assets/images/sad-react.png'></button></td>";
     echo "</tr>";
     echo "</table>";
-
+    echo "</form>";
     echo "</div>";
     $j++;
 }
