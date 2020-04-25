@@ -19,7 +19,7 @@ if (isset($_POST["username"])) {
     elseif (mysqli_num_rows($result) > 0) {
         $_SESSION['username'] = $_POST['username'];  
         echo 'Yes';  
-        header("Location: ". $_SERVER['HTTP_REFERER']."&username=".$_POST["username"]);
+        header("Location: ". $_SERVER['HTTP_REFERER']);
          }     
     else {
         echo 'No';  

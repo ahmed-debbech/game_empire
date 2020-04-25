@@ -19,9 +19,9 @@ function convertStars($x){
     }
 }
 function checkIfSet(){
-    if(isset($_GET["username"])){
-        if(!empty($_GET["username"])){
-            return $_GET["username"];
+    if(isset($_SESSION['username'])){
+        if(!empty($_SESSION['username'])){
+            return $_SESSION['username'];
         }
     }
     return "..";
