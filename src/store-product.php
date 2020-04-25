@@ -658,7 +658,7 @@
                             <div class="nk-reply">
                                 <form action="core/add_review.php" method="post" class="nk-form" onsubmit="return check();">
                                 <input type="hidden" name="id_game" value="<?php echo $_GET["id_game"]; ?>">
-                                <input type="hidden" name="logged" value="<?php echo "werg"?>">
+                                <input type="hidden" name="logged" value="<?php echo $_GET["username"];?>">
                                     <div class="row vertical-gap sm-gap">
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control required" id="title" name="title" placeholder="Title *">
@@ -706,11 +706,6 @@
                             <div class="nk-gap-2"></div>
                             <div class="nk-comments"> 
                                 <!--Loading reviews -->
-                                <script>
-                                function sendReact(x){
-                                    document.getElementsByName('react_type')[0].innerHTML = x;
-                                }
-                                </script>
                             <?php include("core/getreviews.php"); ?>
                         <!-- END: Tab Reviews -->
                     </div>
@@ -1318,44 +1313,44 @@
                 <h4 class="mb-0"><span class="text-main-1">Sign</span> In</h4>
 
                 <div class="nk-gap-1"></div>
-                <form action="#" class="nk-form text-white">
-                    <div class="row vertical-gap">
-                        <div class="col-md-6">
-                            Use email and password:
+                <form action="core/login.php" method="post" class="nk-form text-white">
+                <div class="row vertical-gap">
+                                <div class="col-md-6">
+                                    Use email and password:
 
-                            <div class="nk-gap"></div>
-                            <input type="email" value="" name="email" class=" form-control" placeholder="Email">
+                                    <div class="nk-gap"></div>
+                                    <input type="text" value="" name="username" id="username" class=" form-control" placeholder="Email">
 
-                            <div class="nk-gap"></div>
-                            <input type="password" value="" name="password" class="required form-control" placeholder="Password">
-                        </div>
-                        <div class="col-md-6">
-                            Or social account:
+                                    <div class="nk-gap"></div>
+                                    <input type="password" value="" name="password" id="password" class="required form-control" placeholder="Password">
+                                </div>
+                                <div class="col-md-6">
+                                    Or social account:
 
-                            <div class="nk-gap"></div>
+                                    <div class="nk-gap"></div>
 
-                            <ul class="nk-social-links-2">
-                                <li><a class="nk-social-facebook" href="#"><span class="fab fa-facebook"></span></a></li>
-                                <li><a class="nk-social-google-plus" href="#"><span class="fab fa-google-plus"></span></a></li>
-                                <li><a class="nk-social-twitter" href="#"><span class="fab fa-twitter"></span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="nk-gap-1"></div>
-                    <div class="row vertical-gap">
-                        <div class="col-md-6">
-                            <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-white nk-btn-block">Sign In</a>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mnt-5">
-                                <small><a href="#">Forgot your password?</a></small>
+                                    <ul class="nk-social-links-2">
+                                        <li><a class="nk-social-facebook" href="#"><span class="fab fa-facebook"></span></a></li>
+                                        <li><a class="nk-social-google-plus" href="#"><span class="fab fa-google-plus"></span></a></li>
+                                        <li><a class="nk-social-twitter" href="#"><span class="fab fa-twitter"></span></a></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="mnt-5">
-                                <small><a href="#">Not a member? Sign up</a></small>
-                            </div>
-                        </div>
-                    </div>
+
+                                <div class="nk-gap-1"></div>
+                                <div class="row vertical-gap">
+                                    <div class="col-md-6">
+                                        <input type="submit" class="nk-btn nk-btn-rounded nk-btn-color-white nk-btn-block" value="Sign In" name="login_button" id="login_button">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mnt-5">
+                                            <small><a href="#">Forgot your password?</a></small>
+                                        </div>
+                                        <div class="mnt-5">
+                                            <small><a href="createacc.html">Not a member? Sign up</a></small>
+                                        </div>
+                                    </div>
+                                </div>
                 </form>
             </div>
         </div>

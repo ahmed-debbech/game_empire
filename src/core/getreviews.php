@@ -18,6 +18,14 @@ function convertStars($x){
         break;
     }
 }
+function checkIfSet(){
+    if(isset($_GET["username"])){
+        if(!empty($_GET["username"])){
+            return $_GET["username"];
+        }
+    }
+    return "..";
+}
 $j=0;
 for($i=sizeof($list)-1; $i>=0; $i--){
     echo "<div class='nk-comment'>";
@@ -48,6 +56,7 @@ for($i=sizeof($list)-1; $i>=0; $i--){
     echo "</div>";
     echo "<form action='core/addlike.php' method='get'>";
     echo "<input type='hidden' name='rrr' value='rth'>";
+    echo "<input type='hidden' name='userLogged' value='".checkIfSet()."'>";
     echo "<input type='hidden' name='id_game' value='".$_GET["id_game"]."'>";
     echo "<input type='hidden' name='id_rev' value='".$list[$i]["id_rev"]."'>";
     echo "<input type='hidden' name='username' value='".$list[$i]["username"]."'>";

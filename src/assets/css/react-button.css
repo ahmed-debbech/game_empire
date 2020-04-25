@@ -1,8 +1,7 @@
 /* Style buttons */
 .react{
-    background-color: DodgerBlue; /* Blue background */
     border: none; /* Remove borders */
-    color: white; /* White text */
+    opacity: 50%;
     font-size: 16px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
   }
