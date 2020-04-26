@@ -1437,7 +1437,17 @@ session_start();
 <script src="assets/js/goodgames-init.js"></script>
 <!-- END: Scripts -->
 
-
+<script>
+    function checkLogged() {
+        if(isset($_SESSION["username"])){
+            if(!empty($_SESSION["username"])){
+                return true;
+            }
+        }
+        document.getElementById("warning-login").style.visibility = "visible";
+        return false;
+    }
+</script>
     
 </body>
 

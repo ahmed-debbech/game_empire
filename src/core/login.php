@@ -15,7 +15,6 @@ if (isset($_POST["username"])) {
                $_SESSION['admin']=true;
                header("Location: ../coming-soon.html");exit(); 
    }
-
     elseif (mysqli_num_rows($result) > 0) {
         $_SESSION['username'] = $_POST['username'];  
         echo 'Yes';  
