@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 class reviewC{
     private function isUnique($id){
         $sql = "select * from reviews";
@@ -45,7 +47,7 @@ class reviewC{
         try{
             $list = $db->query($sql);
         }catch(Exception $e){
-            echo "het";
+            echo "error";
         }
         $res = array();
         foreach($list as $row){
@@ -54,6 +56,15 @@ class reviewC{
             }
         }
         return $res;
+    }
+    public function countReviews($id_game){
+        $link = mysqli_connect("127.0.0.1", "root", "", "game_empire");
+        $sql = "select * from reviews where id_game='".$id_game."'";
+        $m =0;
+            $res = mysqli_query($link,$sql, $m); 
+            $num= mysqli_num_rows($res);
+
+        return $num;
     }
 }
 ?>

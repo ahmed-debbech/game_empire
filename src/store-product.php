@@ -153,7 +153,7 @@ session_start();
                 {  
                 ?>  
                      <li>Welcome, <?php echo $_SESSION['username']; ?>
-                     <a href="#" id="logout">Logout</a>  </li>
+                     <a href="<?php session_destroy();?>" id="logout">Logout</a>  </li>
                 <?php  
                 }
                 ?>  
@@ -602,7 +602,7 @@ session_start();
                             <a class="nav-link active" href="#tab-description" role="tab" data-toggle="tab">Description</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#tab-reviews" role="tab" data-toggle="tab">Reviews (3)</a>
+                            <a class="nav-link" href="#tab-reviews" role="tab" data-toggle="tab">Reviews (<?php include("core/count-review.php");?>)</a>
                         </li>
                     </ul>
 
