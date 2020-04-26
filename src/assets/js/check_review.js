@@ -1,7 +1,5 @@
 function check(){
-    document.getElementById("submit").addEventListener("click", function(event){
-        event.preventDefault()
-      });
+
     let title = document.getElementById("title");
     let text = document.getElementById("text");
     let stars = document.getElementsByName("review-rate");
