@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="assets/css/datatables.min.css">
     <link rel="stylesheet" href="assets/css/fullcalendar.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    
     <style type="text/css">
         .jqstooltip {
             position: absolute;
@@ -109,11 +108,13 @@
                             <li class="active open is-dropdown"> <a href="#"> <i class="fa fa-shopping-cart"></i>
                                     <span>Platform</span> </a>
                                 <ul>
-                                    
-                                    <li ><a href="products.php">ADD Platform</a></li>
-                                    <li><a href="products1.php">View Platform</a></li>
-                                  
                                    
+                                    <li ><a href="products.php">ADD Platform</a></li>
+                                    <li ><a href="products1.php">View Platform</a></li>
+                                    <li ><a href="chart.php">Statistic</a></li>
+                                    
+                                  
+                                    
                                 </ul>
                             </li>
                         </ul>
@@ -272,279 +273,48 @@
                 </div>
             </section>
             <section class="main--content">
-                <div class="container-fluid dashboard-content">
+            <div class="panel">
+                    <div class="records--header">
+                        <div class="title fa-shopping-bag">
+                            <h3 class="h3">Ecommerce Products <a href="#" class="btn btn-sm btn-outline-info">Edit Products</a></h3> </div>
+                    </div>
+                </div>
                 <div class="panel">
                     <div class="records--body">
                         <div class="title">
-                            <h6 class="h6">Edit Game</h6> 
+                            <h6 class="h6">Add Platform</h6> 
                         </div>
                         
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="tab01">
-                                <form method="get" action="editplatform.php"  name="monform" onsubmit="return test()"   >
-                                    <?PHP
-                                    include "../entitie/platform.php";
-                                    include "../core/platformC.php";
-                                    
-
-                                    if (isset($_GET['edit']))
-                                    {
-                                        $id=$_GET['edit'];
-                                        $sql="select * from platform where id_plat='$id'";
-                                        $db = config::getConnexion();
-                                        $req = $db->prepare($sql);
-                                        $req->execute();
-                                        $liste = $req->fetchAll();
-                                        foreach($liste as $row){
-                                            $id_plat= $row['id_plat'];
-                                            $name= $row['name'];
-                                          
-                                        }
-                                    }
-                                    ?>
+                            
+                                <form method="post" action="ajouterplatform.php" enctype="multipart/form-data" name="monform" onsubmit="return test()">
                                 	<div class="form-group row"> <span class="label-text col-md-3 col-form-label">Platform ID: *</span>
                                         <div class="col-md-9">
-                                            <input type="text" name="id_plat" value="<?php echo $_GET['edit']; ?>"  class="form-control" required> </div>
+                                            <input type="text" name="id_plat" class="form-control" required> </div>
                                     </div>
-                                    
-                                    <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Platform Name: *</span>
+                                    <div class="form-group row"> <span class="label-text col-md-3 col-form-label">platform Name: *</span>
                                         <div class="col-md-9">
-                                            <input type="text" name="name" value="<?php echo $name; ?>" class="form-control" required> </div>
+                                            <input type="text" name="name" class="form-control" required> </div>
                                     </div>
 
-                                   
-                                   
+                                    
 
                                     <div class="row mt-3">
                                         <div class="col-md-9 offset-md-3">
-                                            <input type="submit" value="editplatform" name="editplatform" class="btn btn-rounded btn-success"> </div>
+                                            <input type="submit" value="Add platform" name="ajouterplatform" class="btn btn-rounded btn-success"> </div>
                                     </div>
-                                    
-                                    
-                                    
-                                    <?php /*if (isset($editGame)){
-                                        echo "hi";
-                                     if (isset($id_game) and isset($name) and isset($id_plat) and isset($release_date) and isset($category) and isset($price) and isset($score))
-                                    
-                                    {
-                                            $game1=new Game($id_game,$name,$id_plat,$release_date,$category,$price,$score);
-                                            $game1C=new GameC();
-                                            $game1C->addGame($game1);
-                                            $connect = mysqli_connect("localhost", "root", "", "game_empire");
-                                            $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
-                                            $id=  $_POST['id_game'];
-                                            $query = "INSERT INTO image(id_game,name) VALUES ('$id','$file')";  
-                                            if(mysqli_query($connect, $query))  
-                                            {  
-                                               echo '<script>alert("Image Inserted into Database")</script>'; 
-                                               header("Location: products.php");
-                                                exit();
-                                                
-                                            }
-                                        
-                                            else{
-                                            echo "vérifier les champs";
-                                            }
-                                    
-                                    }}*/
-                                    ?>
                                 </form>
                             </div>
                                    
                         </div>
                     </div>
                 </div>
-
-                   
-                  
-                                <!-- ============================================================== -->
-                                <!-- end badges  -->
-                                <!-- ============================================================== -->
-                            </div>
-                            <div class="row">
-                                <!-- ============================================================== -->
-                                <!-- tooltip and popperover  -->
-                                <!-- ============================================================== -->
-                               <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <div class="section-block" id="tooltip">
-                                        <h3 class="section-title">Tooltips & Popover</h3>
-                                        <p>Use custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</p>
-                                    </div>
-                                    <div class="card">
-                                        <h5 class="card-header">Tooltips & Popovers</h5>
-                                        <div class="card-body">
-                                            <h4>Tooltip</h4>
-                                            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                                                Tooltip on top
-                                            </button>
-                                            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
-                                                Tooltip on right
-                                            </button>
-                                            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
-                                                Tooltip on bottom
-                                            </button>
-                                            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
-                                                Tooltip on left
-                                            </button>
-                                        </div>
-                                        <div class="card-body border-top">
-                                            <h4>Popovers</h4>
-                                            <button type="button" class="btn btn-lg btn-primary" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
-                                        </div>
-                                        <div class="card-body border-top">
-                                            <h4>Four Directions</h4>
-                                            <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                                Popover on top
-                                            </button>
-                                            <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                                Popover on right
-                                            </button>
-                                            <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                                Popover on bottom
-                                            </button>
-                                            <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                                Popover on left
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- ============================================================== -->
-                                <!-- end tooltip and popperover  -->
-                                <!-- ============================================================== -->
-                            </div>
-                            <div class="row">
-                                <!-- ============================================================== -->
-                                <!-- modal  -->
-                                <!-- ============================================================== -->
-                             <!--   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <div class="section-block" id="modal">
-                                        <h3 class="section-title">Modals</h3>
-                                        <p>Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content.</p>
-                                    </div>
-                                    <div class="card">
-                                        <h5 class="card-header">Examples</h5>
-                                        <div class="card-body">
-                                            <div class="">
-                                                <h4>Live Demo</h4>
-                                                <!-- Button trigger modal -->
-                                            <!--    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                                            Launch demo modal
-                                                        </a>
-                                                <!-- Modal -->
-                                             <!--   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </a>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p>Woohoo, You are readng this text in a modal! Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content.</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a>
-                                                                <a href="#" class="btn btn-primary">Save changes</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- ============================================================== -->
-                                <!-- modal  -->
-                                <!-- ============================================================== -->
-                            </div>
-                            <div class="row">
-                                <!-- ============================================================== -->
-                                <!-- paginations  -->
-                                <!-- ============================================================== -->
-                               <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <div class="section-block" id="pagination">
-                                        <h3 class="section-title">Paginations</h3>
-                                        <p>Examples for showing pagination to indicate a series of related content exists across multiple pages.</p>
-                                    </div>
-                                    <div class="card">
-                                        <h5 class="card-header">Pagination</h5>
-                                        <div class="card-body">
-                                            <h4>Default Pagination</h4>
-                                            <nav aria-label="Page navigation example">
-                                                <ul class="pagination">
-                                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                    <li class="page-item active"><a class="page-link " href="#">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <div class="card-body border-top">
-                                            <h4>Sizing</h4>
-                                            <nav aria-label="...">
-                                                <ul class="pagination pagination-lg">
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#" tabindex="-1">1</a>
-                                                    </li>
-                                                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                </ul>
-                                            </nav>
-                                            <nav aria-label="...">
-                                                <ul class="pagination pagination-sm">
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#" tabindex="-1">1</a>
-                                                    </li>
-                                                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <div class="card-body border-top">
-                                            <h4>Working with icon</h4>
-                                            <nav aria-label="Page navigation example">
-                                                <ul class="pagination">
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#" aria-label="Previous">
-                                                            <span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span>      </a>
-                                                    </li>
-                                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span>
-                                                           <span class="sr-only">Next</span></a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- ============================================================== -->
-                                <!-- pagination  -->
-                                <!-- ============================================================== -->
-                            </div>
-                          <!--  <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <!-- ============================================================== -->
-                                    <!-- images  -->
-                                    <!-- ============================================================== -->
-                                 <!--   <div class="card" id="images">
-                                        <h5 class="card-header">Images</h5>
-                                        <div class="card-body">
-                                            <img src="http://via.placeholder.com/200x150" class="img-fluid mr-3" alt="Responsive image">
-                                            <img src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
-                                            <img src="http://via.placeholder.com/150x150" class="rounded-circle mr-3" alt="Responsive image">
-                                        </div>
-                                    </div>
-                                    <!-- ============================================================== -->
-                                    <!-- end images -->
-                                    <!-- ============================================================== -->
-                                </div>
-                            </div>
-          
+                </section>
+ 
+            <footer class="main--footer main--footer-light">
+                <p>Copyright © <a href="#">DAdmin</a>. All Rights Reserved.</p>
+            </footer>
         </main>
     </div>
     <script src="assets/js/jquery.min.js"></script>

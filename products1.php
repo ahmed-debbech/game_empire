@@ -47,6 +47,18 @@
             font: 10px arial, san serif;
             text-align: left;
         }
+        #myInput {
+ 
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 20px;
+  padding: 12px 20px 12px 40px;
+  border: 5px solid #ddd;
+  margin-bottom: 1px;
+}
+
+
     </style>
 <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
 
@@ -109,9 +121,20 @@
                                     <span>Platform</span> </a>
                                 <ul>
                                    
-                                    <li ><a href="products.html">Ajouter Platform</a></li>
-                                    <li><a href="products1.php">Afficher Platform</a></li>
-                                    <li><a href="products2.php">Supprimer Platform </a></li>
+                                    <li ><a href="products.php">ADD Platform</a></li>
+                                    <li><a href="products1.php">View Platform</a></li>
+                                  
+                                    
+                                </ul>
+                            </li>
+                            <li class="active open is-dropdown"> <a href="#"> <i class="fa fa-shopping-cart"></i>
+                                    <span>Statistique</span> </a>
+                                <ul>
+                                   
+                                    <li ><a href="Ajouter_stat.php">Sélectionner statistique</a></li>
+                                    <li><a href="products1.php">Tableau des statistiques</a></li>
+                                    <li><a href="products1.php">Afficher  les statistiques</a></li>
+                                  
                                     
                                 </ul>
                             </li>
@@ -271,60 +294,110 @@
                 </div>
             </section>
             <section class="main--content">
-                <div class="container-fluid dashboard-content">
-               
-
-                    <div class="row">
-                        <div class="col-xl-10">
+              
+                        
+                        
+                        <div class="panel">
+                    <div class="records--list" >
+                    <?PHP
+                                        include "../core/platformC.php";
+                                        $platform1C=new platformC();
+                                        $listeplatforms=$platform1C->afficherplatform();
+                                        //var_dump($listeproduits->fetchAll());
+                                        
+                                        ?>
+                                        
+                                        <input type="text"  class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search by ID..." title="Type in a name">
                             
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    
-                                    <div class="card">
-                                        <h5 class="card-header">Platform</h5>
-                                        <div class="">
-                                            <div class="card-body">
-                                                <?PHP
-include "../core/platformC.php";
-$platform1C=new platformC();
-$listeplatform=$platform1C->afficherplatform();
+                             
+                        <table id="recordsListView">
+                        
+                            <thead>
+                                <tr>
+                                    <th >Platform ID</th>
+                                    <th>Platform Name</th>
+                                    <th class="not-sortable">Actions</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?PHP
 
-//var_dump($listeproduits->fetchAll());
-?>
-<table class="table" >
-                                        <thead>
-                                            <tr>
-                                                
-                                                <th scope="col" >Platform Name</th>
-                                                <th scope="col" >Platform ID</th>
-                                               
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody >
-                
-                                            <?PHP
-foreach($listeplatform as $row){
-    ?>
-    <tr>
-          <td><?PHP echo $row['name']; ?></td>
-    <td><?PHP echo $row['id_plat']; ?> </td>
-  
-     
-        
-     <td><a href="modifierplatform.php?id_plat=<?PHP echo $row['id_plat']; ?>">
-    Modifier</a></td>
+                           
+                            $sql="select * From platform";
+                            $db = config::getConnexion();
+                            $req = $db->prepare($sql);
+                            $req->execute();
+                            $liste = $req->fetchAll();
+                            ?>
+                            <?php
+                            function delete($id){
+                            $id2=0;
+                            $sql2="DELETE FROM `platform` WHERE `platform`.`id_plat` = '$id2'";
+                            $db3 = config::getConnexion();
+                            $req3 = $db->prepare($sql);
+                            $req3->execute();
+                            }
+                            $id=0;
+                             
+                             ?>
+                            
+                            <?php
+                            foreach($liste as $row){
+                            ?>
+                            <form method="GET">
+                                 <tr>
+                                
+                                
+                                
+                                <td><?PHP echo $row['id_plat']; ?></td>
+                                <td><?PHP echo $row['name']; ?></td>
+                                <td>
+                                    <a class="btn btn-outline-success" href="modifierplatform.php?edit=<?php echo $row['id_plat']; ?>  ">✏️</a>
+                                    <a class="btn btn-outline-danger" href="supprimerplatform.php?delete=<?php echo $row['id_plat']; ?>  ">❌</a>   
+                   
+                                </td>
+                            </tr>
+                            </form>
+                                
+                            <?PHP
+                            }
+                            ?>
+                               <script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("recordsListView");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+ 
+                            
+                        </td>
+                            
 
-                                            </tr>
-                                            <?php
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
 
-                                            
-                                        </div>
-                                    </div>
-                                </div>
+                            
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                        </div>
+                        
+                        
                                 <!-- ============================================================== -->
                                 <!-- end badges  -->
                                 <!-- ============================================================== -->
