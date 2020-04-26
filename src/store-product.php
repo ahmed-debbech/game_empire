@@ -1,6 +1,6 @@
 <?
 /*include("config.php");*/
-session_start();
+//session_start();
 ?>
 <!DOCTYPE html>
 <!--
@@ -671,7 +671,7 @@ session_start();
                             <div class="nk-reply">
                                 <form action="core/add_review.php" method="post" class="nk-form" onsubmit="return check();">
                                 <input type="hidden" name="id_game" value="<?php echo $_GET["id_game"]; ?>">
-                                <input type="hidden" name="logged" value="<?php echo $_GET["username"];?>">
+                                <input type="hidden" name="logged" value="<?php echo $_SESSION["username"];?>">
                                     <div class="row vertical-gap sm-gap">
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control required" id="title" name="title" placeholder="Title *">
@@ -712,6 +712,7 @@ session_start();
                                         </label>
                                     </div>
                                     <input type="submit" id="submit" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 float-right" value="Submit">
+                                    <a style="visibility: hidden;  color: white;" id="war-log-review">You should login first!</a>
                                 </form>
                             </div>
                             <!-- END: Reply -->
@@ -1436,15 +1437,15 @@ session_start();
 <script src="assets/js/goodgames.min.js"></script>
 <script src="assets/js/goodgames-init.js"></script>
 <!-- END: Scripts -->
-
 <script>
-    function checkLogged() {
+    function checkLogged(id) {
+        alert(id);
         if(isset($_SESSION["username"])){
             if(!empty($_SESSION["username"])){
-                return true;
+                alert("serg"); //return true;
             }
         }
-        document.getElementById("warning-login").style.visibility = "visible";
+        alert("etg");
         return false;
     }
 </script>

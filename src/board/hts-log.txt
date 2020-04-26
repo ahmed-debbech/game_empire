@@ -1,0 +1,15 @@
+HTTrack3.49-2+htsswf+htsjava launched on Sat, 11 Apr 2020 20:05:23 at http://themelooks.net/demo/dadmin/html/orders.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://themelooks.net/demo/dadmin/html/orders.html -O1 "C:\My Web Sites\board" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+20:12:16	Warning: 	Retry after error -4 (No data (connection closed)) at link themelooks.net/demo/dadmin/html/assets/webfonts/fa-regular-400.woff (from themelooks.net/demo/dadmin/html/assets/css/fontawesome-all.min.css)
+20:12:17	Warning: 	Retry after error -4 (No data (connection closed)) at link themelooks.net/demo/dadmin/html/assets/webfonts/fa-solid-900.woff (from themelooks.net/demo/dadmin/html/assets/css/fontawesome-all.min.css)
+20:12:19	Warning: 	Retry after error -2 (Receive Time Out) at link themelooks.net/demo/dadmin/html/assets/css/images/ui-icons_ffffff_256x240.png (from themelooks.net/demo/dadmin/html/assets/css/jquery-ui.min.css)
+20:12:29	Warning: 	Retry after error -4 (No data (connection closed)) at link themelooks.net/demo/dadmin/html/assets/css/font/summernote.eot?dbafe969167589eda84514394d126413 (from themelooks.net/demo/dadmin/html/assets/css/summernote-bs4.min.css)
+
+HTTrack Website Copier/3.49-2 mirror complete in 7 minutes 6 seconds : 180 links scanned, 175 files written (5863416 bytes overall) [5906912 bytes received at 13865 bytes/sec], 2.9 requests per connection
+(No errors, 4 warnings, 0 messages)

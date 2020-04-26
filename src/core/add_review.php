@@ -3,14 +3,12 @@ include("reviewC.php");
 include("../entities/review.php");
 include("../config.php");
 function checkUserLogged($username){
-    $sql="select username from user";
-    $db = config::getConnexion();
-    $res = $db->query($sql);
-    foreach($res as $row){
-        if($row["username"] == $username){
+        $sql1="select * from user where username='".$username."'";
+         $con = mysqli_connect("127.0.0.1", "root", "", "game_empire");
+         $result = mysqli_query($con, $sql1);
+         if(mysqli_num_rows($result) > 0){
             return true;
-        }
-    }
+         }
     return false;
 }
 if((!empty($_POST["title"])) && (!empty($_POST["message"])) && (!empty($_POST["logged"]))){
