@@ -34,14 +34,18 @@ for($i=sizeof($list)-1; $i>=0; $i--){
     echo "<tr>
         <td> <a class='btn-link'>".$list[$i]["id_rev"]."</a> </td>
         <td> <span class='label label-success'><a class='btn-link'>".$list[$i]["username"]."</a></span>  </td>
-        <td> <a class='btn-link'>".convertStars($list[$i]["id_rev"])."</a> </td>
+        <td> <a class='btn-link'>".convertStars($list[$i]["nb_stars"])."</a> </td>
         <td>".$list[$i]["content"]."</td>
         <td>".$list[$i]["date"]."</td>
         <td>".$list[$i]["title"]."</td>
         <td> <span class='label label-success'>".$list[$i]["id_game"]."</span> </td>
         <td>
             <div class='dropleft'> <a class='btn-link' data-toggle='dropdown'><i class='fa fa-ellipsis-v'></i></a>
-                <div class='dropdown-menu'> <a class='dropdown-item'>Delete</a> <a class='dropdown-item'></a> </div>
+                <div class='dropdown-menu'> 
+                <form action='core/delete-review.php' method='post'>
+                <input type='hidden' name='id_rev' value='".$list[$i]["id_rev"]."'>
+                <input class='dropdown-item' type='submit' value='Delete'></form>
+                </div>
             </div>
         </td>
     </tr>";
