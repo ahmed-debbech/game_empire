@@ -6,7 +6,6 @@ function checkLogged(id){
     return false;
 }
 function check(){
-    alert(document.getElementsByName("logged")[0].value);
     if(document.getElementsByName("logged")[0].value == ".."){
             document.getElementById("war-log-review").style.visibility = "visible";
             return false;

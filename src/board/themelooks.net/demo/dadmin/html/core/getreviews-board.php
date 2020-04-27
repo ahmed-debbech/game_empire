@@ -28,8 +28,25 @@ function convertStars($x){
         break;
     }
 }
+function search($item, $mode){
+    $db = new mysqli("localhost", "root", "", "game_empire");
+
+    $sql = "select * from reviews where ".$mode."='".$item."';";
+
+    $result = mysqli_query($db,$sql);
+    $res = array();
+        foreach($result as $row){
+            array_push($res, $row);
+        }
+    $db->close();
+    return $res;
+}
 $j=0;
-$list = retrive();
+if(!isset($_GET["q"])){
+    $list = retrive();
+}else{
+    $list = search($_GET["text"], $_GET["select"]);
+}
 for($i=sizeof($list)-1; $i>=0; $i--){
     echo "<tr>
         <td> <a class='btn-link'>".$list[$i]["id_rev"]."</a> </td>

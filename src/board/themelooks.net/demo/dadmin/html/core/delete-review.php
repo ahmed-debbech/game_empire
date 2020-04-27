@@ -7,7 +7,6 @@ function delete($id_rev){
     $t = $db->query($sql);
     var_dump($t);
     $db->close();
-    die();
     header("Location: ". $_SERVER['HTTP_REFERER']);
 }
 delete($_POST["id_rev"]);

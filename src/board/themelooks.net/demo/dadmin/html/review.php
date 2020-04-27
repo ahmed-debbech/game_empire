@@ -143,7 +143,7 @@
                     <li> <a href="#">Components</a>
                         <ul>
                             <li>
-                                <a href="#"> <i class="far fa-newspaper"></i> <span>UI Elements</span> </a>
+                                <a href="#"><i class="far fa-newspaper"></i> <span>UI Elements</span> </a>
                                 <ul>
                                     <li><a href="buttons.html">Buttons</a></li>
                                     <li><a href="pagination.html">Pagination</a></li>
@@ -285,13 +285,17 @@
                             <p>Found Total 1,330 Products</p>
                         </div>
                         <div class="actions">
-                            <form action="#" class="search flex-wrap flex-md-nowrap">
-                                <input type="text" class="form-control" placeholder="Product Name..." required>
+                            <form action="<?php "review.php?q=1"?>" method='get' class="search flex-wrap flex-md-nowrap">
+                                <input type="text" name="text" class="form-control" placeholder="Review..." required>
+                                <input type="hidden" name="q" value="1">
                                 <select name="select" class="form-control">
-                                    <option value="" selected>Product Category</option>
+                                    <option value="username" selected>By Username</option>
+                                    <option value="id_rev" >By Review ID</option>
+                                    <option value="date" >By Date</option>
+                                    <option value="id_game" >By Game ID</option>
                                 </select>
                                 <button type="submit" class="btn btn-rounded"><i class="fa fa-search"></i></button>
-                            </form> <a href="#" class="addProduct btn btn-lg btn-rounded btn-warning">Add Product</a> </div>
+                            </form>  </div>
                     </div>
                 </div>
                 <div class="panel">
