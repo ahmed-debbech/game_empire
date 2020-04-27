@@ -1,5 +1,18 @@
+function checkLogged(id){
+    if(document.getElementsByName("userLogged")[0].value != ".."){
+        return true;
+    }
+    document.getElementById(id).style.visibility = "visible";
+    return false;
+}
 function check(){
-
+    if(document.getElementsByName("userLogged")[0].value != ".."){
+        return true;
+    }else{
+    document.getElementById("logged").style.visibility = "visible";
+    return false;
+    }
+    alert("erwg");
     let title = document.getElementById("title");
     let text = document.getElementById("text");
     let stars = document.getElementsByName("review-rate");

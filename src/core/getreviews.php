@@ -55,7 +55,7 @@ for($i=sizeof($list)-1; $i>=0; $i--){
     echo "<p>".$list[$i]["content"]."</p>";
     echo "</div>";
     echo "<a id='warning-login' style='visibility: hidden; color: white;'>Please Sign in first!</a>";
-    //echo "<form action='core/addlike.php' method='get' onsubmit='return checkLogged(\"warning-login\");'>";
+    echo "<form action='core/addlike.php' method='get' onsubmit='return checkLogged(\"warning-login\");'>";
     echo "<input type='hidden' name='rrr' value='rth'>";
     echo "<input type='hidden' name='userLogged' value='".checkIfSet()."'>";
     echo "<input type='hidden' name='id_game' value='".$_GET["id_game"]."'>";
@@ -64,13 +64,13 @@ for($i=sizeof($list)-1; $i>=0; $i--){
     echo "<input type='hidden' id='react_type' name='reaction'>";
     echo "<table>";
     echo "<tr>";
-    echo "<td><button class='react' onclick=\" checkLogged(\"warning-login\"); document.getElementsByName('reaction')[".$j."].value = '1';\" type='submit'><img src='assets/images/like-react.png'></button></td>";
+    echo "<td><button class='react' onclick=\"document.getElementsByName('reaction')[".$j."].value = '1';\" type='submit'><img src='assets/images/like-react.png'></button></td>";
     echo "<td><button class='react' onclick=\" document.getElementsByName('reaction')[".$j."].value = '2';\" type='submit'><img src='assets/images/heart-react.png'></button></td>";
     echo "<td><button class='react' onclick=\"document.getElementsByName('reaction')[".$j."].value = '3';\" type='submit'><img src='assets/images/hot-react.png'></button></td>";
     echo "<td><button class='react' onclick=\" document.getElementsByName('reaction')[".$j."].value = '4';\" type='submit'><img src='assets/images/sad-react.png'></button></td>";
     echo "</tr>";
     echo "</table>";
-    //echo "</form>";
+    echo "</form>";
     echo "</div>";
     $j++;
 }

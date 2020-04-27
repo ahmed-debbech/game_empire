@@ -28,8 +28,7 @@ session_start();
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Check fielsd -->
-    <script src="assets/js/check_review.js" type="text/javascript"></script>
+    
     <!-- START: Styles -->
 
     <!-- Google Fonts -->
@@ -69,6 +68,9 @@ session_start();
 
     <!-- END: Styles -->
 
+    <!-- Check fielsd -->
+    <script src="assets/js/check_review.js" type="text/javascript"></script>
+    
     <!-- jQuery -->
     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
     
@@ -1437,19 +1439,7 @@ session_start();
 <script src="assets/js/goodgames.min.js"></script>
 <script src="assets/js/goodgames-init.js"></script>
 <!-- END: Scripts -->
-<script>
-    function checkLogged(id) {
-        alert(id);
-        if(isset($_SESSION["username"])){
-            if(!empty($_SESSION["username"])){
-                alert("serg"); //return true;
-            }
-        }
-        alert("etg");
-        return false;
-    }
-</script>
-    
+
 </body>
 
 <!-- Mirrored from html.nkdev.info/goodgames/store-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 12 Apr 2020 00:35:29 GMT -->
