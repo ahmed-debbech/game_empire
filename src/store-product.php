@@ -673,7 +673,17 @@ session_start();
                             <div class="nk-reply">
                                 <form action="core/add_review.php" method="post" class="nk-form" onsubmit="return check();">
                                 <input type="hidden" name="id_game" value="<?php echo $_GET["id_game"]; ?>">
-                                <input type="hidden" name="logged" value="<?php echo $_SESSION["username"];?>">
+                                <input type="hidden" name="logged" value="<?php
+                                if(isset($_SESSION['username'])){
+                                    if(!empty($_SESSION['username'])){
+                                        echo $_SESSION['username'];
+                                    }else{
+                                        echo "..";
+                                    }
+                                }else{
+                                echo "..";
+                                }
+                                ?>">
                                     <div class="row vertical-gap sm-gap">
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control required" id="title" name="title" placeholder="Title *">
@@ -713,7 +723,7 @@ session_start();
                                             <span><i class="fa fa-star"></i></span>
                                         </label>
                                     </div>
-                                    <input type="submit" id="submit" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 float-right" value="Submit">
+                                    <input type="submit" onclick="check();" id="submit" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 float-right" value="Submit">
                                     <a style="visibility: hidden;  color: white;" id="war-log-review">You should login first!</a>
                                 </form>
                             </div>

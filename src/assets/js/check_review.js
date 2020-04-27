@@ -6,13 +6,11 @@ function checkLogged(id){
     return false;
 }
 function check(){
-    if(document.getElementsByName("userLogged")[0].value != ".."){
-        return true;
-    }else{
-    document.getElementById("logged").style.visibility = "visible";
-    return false;
+    alert(document.getElementsByName("logged")[0].value);
+    if(document.getElementsByName("logged")[0].value == ".."){
+            document.getElementById("war-log-review").style.visibility = "visible";
+            return false;
     }
-    alert("erwg");
     let title = document.getElementById("title");
     let text = document.getElementById("text");
     let stars = document.getElementsByName("review-rate");
@@ -24,7 +22,7 @@ function check(){
             alert("Review should not be empty!");
             return false;
         }else{
-            let count =0;
+            let count = 0;
             for(let i=0; i<5; i++){
                 if(stars[i].checked == true){
                     count++;
