@@ -22,6 +22,36 @@ ini_set('display_errors', 1);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>GoodGames</title>
+    <style type="text/css">
+        #popup
+        {
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 500px;
+            padding: 50px;
+            visibility: visible;
+            opacity: 1;
+            transition: 0.5s;
+            z-index: 1;
+        }
+        #popup.active
+        {
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.5s;
+            z-index: 1;
+        }
+    </style>
+    <script type="text/javascript">
+        function toggle(){
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('active');
+            var popup = document.getElementById('popup');
+            popup.classList.toggle('active');
+        }
+    </script>
 
     <meta name="description" content="GoodGames - Bootstrap template for communities and games store">
     <meta name="keywords" content="game, gaming, template, HTML template, responsive, Bootstrap, premium">
@@ -38,6 +68,8 @@ ini_set('display_errors', 1);
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="assets/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <script src="dist/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="dist/sweetalert.css">
 
     <!-- FontAwesome -->
     <script defer src="assets/vendor/fontawesome-free/js/all.js"></script>
@@ -149,22 +181,27 @@ ini_set('display_errors', 1);
                     </a>
                 </li>
                 
+                <li>
+                    <a href="favourite.php">
+                        <span><img style="width: 14px;" src="assets/images/heart2.png"></span>
+                    </a>
+                </li>
                 
                 <li>
                     <a href="#" data-toggle="modal" data-target="#modalLogin">
                         <span class="fa fa-user"></span>
                     </a>
                 </li>
-                            <?php
-                            if(isset($_SESSION['username']))  
-                            {  
-                            ?>  
-                                 <li>Welcome, <?php $user=$_SESSION['username'];echo $user; ?>
-                                 <a href="#" id="logout">Logout</a>  </li>
+                    <?php  
+                    if(isset($_SESSION['username']))  
+                    {  
+                    ?>  
+                         <li>Welcome, <?php $user=$_SESSION['username'];echo $user; ?></li>
+                         <a href="#" class="nk-btn nk-btn-sm nk-btn-rounded nk-btn-color-white" id="logout">Logout</a>  
 
-                            <?php  
-                            }
-                            ?> 
+                    <?php  
+                    }
+                    ?>  
                 
                 
                 <li>
@@ -213,234 +250,71 @@ ini_set('display_errors', 1);
 
     
 
-    <!--
-        START: Navbar
+     <!-- START: Navbar
 
         Additional Classes:
             .nk-navbar-sticky
             .nk-navbar-transparent
             .nk-navbar-autohide
     -->
-    <nav class="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
-        <div class="container">
-            <div class="nk-nav-table">
-                
-                <a href="index.html" class="nk-nav-logo">
-                    <img src="assets/images/logo.svg" alt="GoodGames" width="199">
-                </a>
-                
-                <ul class="nk-nav nk-nav-right d-none d-lg-table-cell" data-nav-mobile="#nk-nav-mobile">
-                    
-        <li class=" nk-drop-item">
-            <a href="elements.html">
-                Features
-                
-            </a><ul class="dropdown">
-                        
-        <li>
-            <a href="elements.html">
-                Elements (Shortcodes)
+            <nav class="nk-navbar nk-navbar-top nk-navbar-sticky nk-navbar-autohide">
+                <div class="container">
+                    <div class="nk-nav-table">
+
+                        <a href="index.php" class="nk-nav-logo">
+                            <img src="assets/images/logo.svg" alt="GoodGames" width="199">
+                        </a>
+
+                        <ul class="nk-nav nk-nav-right d-none d-lg-table-cell" data-nav-mobile="#nk-nav-mobile">
+
+                            <li>
+                                <a href="index.php">
+                Home
                 
             </a>
-        </li>
-        <li class=" nk-drop-item">
-            <a href="forum.html">
-                Forum
-                
-            </a><ul class="dropdown">
-                        
-        <li>
-            <a href="forum.html">
-                Forum
-                
-            </a>
-        </li>
-        <li>
-            <a href="forum-topics.html">
-                Topics
-                
-            </a>
-        </li>
-        <li>
-            <a href="forum-single-topic.html">
-                Single Topic
-                
-            </a>
-        </li>
-                    </ul>
-        </li>
-        <li>
-            <a href="widgets.html">
-                Widgets
-                
-            </a>
-        </li>
-        <li>
-            <a href="coming-soon.html">
-                Coming Soon
-                
-            </a>
-        </li>
-        <li>
-            <a href="offline.html">
-                Offline
-                
-            </a>
-        </li>
-        <li>
-            <a href="404.html">
-                404
-                
-            </a>
-        </li>
-                    </ul>
-        </li>
-        <li class=" nk-drop-item">
-            <a href="blog-list.html">
-                Blog
-                
-            </a><ul class="dropdown">
-                        
-        <li>
-            <a href="news.html">
-                News
-                
-            </a>
-        </li>
-        <li class=" nk-drop-item">
-            <a href="blog-grid.html">
-                Blog With Sidebar
-                
-            </a><ul class="dropdown">
-                        
-        <li>
-            <a href="blog-grid.html">
-                Blog Grid
-                
-            </a>
-        </li>
-        <li>
-            <a href="blog-list.html">
-                Blog List
-                
-            </a>
-        </li>
-                    </ul>
-        </li>
-        <li>
-            <a href="blog-fullwidth.html">
-                Blog Fullwidth
-                
-            </a>
-        </li>
-        <li>
-            <a href="blog-article.html">
-                Blog Article
-                
-            </a>
-        </li>
-                    </ul>
-        </li>
-        <li>
-            <a href="gallery.html">
-                Gallery
-                
-            </a>
-        </li>
-        <li class=" nk-drop-item">
-            <a href="tournaments.html">
-                Tournaments
-                
-            </a><ul class="dropdown">
-                        
-        <li>
-            <a href="tournaments.html">
-                Tournament
-                
-            </a>
-        </li>
-        <li>
-            <a href="tournaments-teams.html">
-                Teams
-                
-            </a>
-        </li>
-        <li>
-            <a href="tournaments-teammate.html">
-                Teammate
-                
-            </a>
-        </li>
-                    </ul>
-        </li>
-        <li class="active nk-drop-item">
-            <a href="store.html">
-                Store
-                
-            </a><ul class="dropdown">
-                        
-        <li>
-            <a href="store.html">
+                            </li>
+                            <li class="active">
+                                <a href="store.php">
                 Store
                 
             </a>
-        </li>
-        <li class="active">
-            <a href="store-product.html">
-                Product
+                            <li>
+                                <a href="contact.html">
+                Contact
                 
             </a>
-        </li>
-        <li>
-            <a href="store-catalog.html">
-                Catalog
-                
+
+                            </li>
+                            <li>
+                                <a href="gallery.html">
+                About Us
+            
             </a>
-        </li>
-        <li>
-            <a href="store-catalog-alt.html">
-                Catalog Alt
-                
-            </a>
-        </li>
-        <li>
-            <a href="store-checkout.html">
-                Checkout
-                
-            </a>
-        </li>
-        <li>
-            <a href="store-cart.html">
-                Cart
-                
-            </a>
-        </li>
-                    </ul>
-        </li>
-                </ul>
-                <ul class="nk-nav nk-nav-right nk-nav-icons">
-                    
-                        <li class="single-icon d-lg-none">
-                            <a href="#" class="no-link-effect" data-nav-toggle="#nk-nav-mobile">
-                                <span class="nk-icon-burger">
+                            </li>
+                        </ul>
+                        <ul class="nk-nav nk-nav-right nk-nav-icons">
+
+                            <li class="single-icon d-lg-none">
+                                <a href="#" class="no-link-effect" data-nav-toggle="#nk-nav-mobile">
+                                    <span class="nk-icon-burger">
                                     <span class="nk-t-1"></span>
                                     <span class="nk-t-2"></span>
                                     <span class="nk-t-3"></span>
-                                </span>
-                            </a>
-                        </li>
-                    
-                    
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- END: Navbar -->
+                                    </span>
+                                </a>
+                            </li>
 
-</header>
 
-    
-    
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- END: Navbar -->
+
+        </header>
+
+
+
         <!--
     START: Navbar Mobile
 
@@ -450,21 +324,21 @@ ini_set('display_errors', 1);
         .nk-navbar-lg
         .nk-navbar-overlay-content
 -->
-<div id="nk-nav-mobile" class="nk-navbar nk-navbar-side nk-navbar-right-side nk-navbar-overlay-content d-lg-none">
-    <div class="nano">
-        <div class="nano-content">
-            <a href="index.html" class="nk-nav-logo">
-                <img src="assets/images/logo.svg" alt="" width="120">
-            </a>
-            <div class="nk-navbar-mobile-content">
-                <ul class="nk-nav">
-                    <!-- Here will be inserted menu from [data-mobile-menu="#nk-nav-mobile"] -->
-                </ul>
+        <div id="nk-nav-mobile" class="nk-navbar nk-navbar-side nk-navbar-right-side nk-navbar-overlay-content d-lg-none">
+            <div class="nano">
+                <div class="nano-content">
+                    <a href="index.html" class="nk-nav-logo">
+                        <img src="assets/images/logo.svg" alt="" width="120">
+                    </a>
+                    <div class="nk-navbar-mobile-content">
+                        <ul class="nk-nav">
+                            <!-- Here will be inserted menu from [data-mobile-menu="#nk-nav-mobile"] -->
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- END: Navbar Mobile -->
+        <!-- END: Navbar Mobile -->
 
     
 
@@ -479,8 +353,6 @@ ini_set('display_errors', 1);
                             $row_count=0;
                             
                             $liste = $req->fetchAll();
-                            ?>
-                            <?php
                              function image($id){
                                 $query = "SELECT name FROM image where id_game='$id'";  
                             $db2 = config::getConnexion();
@@ -504,17 +376,17 @@ ini_set('display_errors', 1);
     <ul class="nk-breadcrumbs">
         
         
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         
         
         <li><span class="fa fa-angle-right"></span></li>
         
-        <li><a href="store.html">Store</a></li>
+        <li><a href="store.php">Store</a></li>
         
         
         <li><span class="fa fa-angle-right"></span></li>
         
-        <li><a href="store-catalog.html">Action Games</a></li>
+        <li><?PHP echo $row['name']; ?></li>
         
         
         <li><span class="fa fa-angle-right"></span></li>
@@ -534,15 +406,11 @@ ini_set('display_errors', 1);
         <div class="col-lg-8">
             <div class="nk-store-product">
                 <div class="row vertical-gap">
-                    
-                            
-                                
-                            
                     <div class="col-md-6">
                         <!-- START: Product Photos -->
                         <div class="nk-popup-gallery">
                             <div class="nk-gallery-item-box">
-                                <a href="" class="nk-gallery-item" data-size="1200x554">
+                                <a href="#" class="nk-gallery-item" data-size="1200x554">
                                     <div class="nk-gallery-item-overlay"><span class="ion-eye"></span></div>
                                     <?PHP image($row['id_game']);?>
                                 </a>
@@ -552,25 +420,51 @@ ini_set('display_errors', 1);
                     </div>
                     <div class="col-md-6">
                         <form method="get" >
-                    <h2 class="nk-product-title h3"><?PHP echo $row['name']; ?> <a href="?id_game=<?PHP echo $row['id_game']; ?>&favourite=<?PHP echo $row['id_game']; ?>&y=1" id = heart>
-                    <?PHP
+                    <h2 class="nk-product-title h3"><?PHP echo $row['name']; ?> <a onclick="toggle();" href="?id_game=<?PHP echo $row['id_game']; ?>&favourite=<?PHP echo $row['id_game']; ?>" id = heart>
+                   
+                        <i class="fa fa-heart-o" aria-hidden="true" ></i> </a></h2>
 
-                    if (isset($_GET['favourite'])&& isset($_GET['y'])==1 )
+                         <?PHP
+
+                    if (isset($_GET['favourite']))
                     {
-                            $sql="insert into favourite (username,id_game) values (:username,:id_game)";
+                       if (isset($_SESSION['username']))
+                    
+                        {
+                        $g= $_GET['favourite'];
+                            $sql="SELECT * from favourite where username='$user' and id_game='$g'";
                             $db = config::getConnexion();
                             $req=$db->prepare($sql);
                             $id_game=$_GET['favourite'];
-                            $req->bindValue(':username',$user);
-                            $req->bindValue(':id_game',$id_game);
-                            if($req->execute())
-                            {
-                                echo "added";
-
+                            $p= NULL;
+                            $p2= NULL;
+                            if ($req->execute())
+                            {   
+                                $liste2 = $req->fetchAll();
+                                foreach($liste2 as $row2)
+                                {
+                                    $p= $row2['id_game'];
+                                    $p2= $row2['username'];
+                                }
                             }
+                            
+                                if ($p==$g && $p2==$user)
+                                {
+                                $sql="DELETE from favourite where username=:username and id_game=:id_game";
+                                $db = config::getConnexion();
+                                $req=$db->prepare($sql);
+                                $id_game=$_GET['favourite'];
+                                $req->bindValue(':username',$user);
+                                $req->bindValue(':id_game',$id_game);
+                                if($req->execute())
+                                {   
+                                    echo '<script type="text/javascript">swal("Removed!", "Your Game has been Removed from your Favourite!", "warning");</script>';
+                                }
+
+                                }
 
                             else{
-                                        $sql="DELETE from favourite where username=:username and id_game=:id_game";
+                                        $sql="insert into favourite (username,id_game) values (:username,:id_game)";
                                         $db = config::getConnexion();
                                         $req=$db->prepare($sql);
                                         $id_game=$_GET['favourite'];
@@ -578,12 +472,13 @@ ini_set('display_errors', 1);
                                         $req->bindValue(':id_game',$id_game);
                                         if($req->execute())
                                         {
-                                            echo"removed";
+                                             echo '<script type="text/javascript">swal("Added!", "Your Game has been Added to your Favourite!", "success");</script>';
                                         }
 
+                                }
                             }
-                    }
-                    
+                            else echo'<script>swal("Oops...", "Something went wrong! Please connect and try again", "error");</script>';
+                        }
                     ?>
                     <script type="text/javascript">
                         $(document).ready(function(){
@@ -598,13 +493,10 @@ ini_set('display_errors', 1);
                       });
                     });
                     </script>
-                        <i class="fa fa-heart-o" aria-hidden="true" ></i> </a></h2>
-
-
                     </form>
 
                         <span class="nk-product-rating">
-                        <span class="nk-product-rating-front" style="width:<?PHP echo $row['score']*20; ?>% ;">
+                        <span class="nk-product-rating-front" style="width:<?PHP echo $score2=$row['score']*20; ?>% ;">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -642,6 +534,7 @@ ini_set('display_errors', 1);
                     </div>
                 </div>
 
+
                 <!-- START: Share -->
                 <div class="nk-gap-2"></div>
                 <div class="nk-post-share">
@@ -676,6 +569,8 @@ ini_set('display_errors', 1);
                         <!-- START: Tab Description -->
                         <div role="tabpanel" class="tab-pane fade show active" id="tab-description">
                             <div class="nk-gap"></div>
+                            <iframe width="730" height="400" src="<?PHP echo $row['trailer']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="nk-gap"></div>
                             <strong class="text-white">Release Date: <?PHP echo $row['release_date']; ?></strong>
                             
 
@@ -702,22 +597,22 @@ ini_set('display_errors', 1);
                                     <strong class="text-white">Customer Rating:</strong>
                                     <div class="nk-gap"></div>
                                     
-    <span class="nk-product-rating">
-        <span class="nk-product-rating-front" style="width: <?PHP echo $row['score']*20; ?>%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
+                                    <span class="nk-product-rating">
+                                        <span class="nk-product-rating-front" style="width: <?PHP echo $row['score']*20; ?>%;">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </span>
+                                        <span class="nk-product-rating-back">
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                    </span>
 
 
                                     <div class="nk-gap"></div>
@@ -883,228 +778,66 @@ ini_set('display_errors', 1);
             <h3 class="nk-decorated-h-2"><span><span class="text-main-1">Related</span> Products</span></h3>
             <div class="nk-gap"></div>
             <div class="row vertical-gap">
-                
-                
-                <div class="col-md-6">
-                    <div class="nk-product-cat">
-                        <a class="nk-product-image" href="store-product.html">
-                            <img src="assets/images/product-11-xs.jpg" alt="She gave my mother">
-                        </a>
-                        <div class="nk-product-cont">
-                            <h3 class="nk-product-title h5"><a href="store-product.html">She gave my mother</a></h3>
-                            <div class="nk-gap-1"></div>
-                            
-    <span class="nk-product-rating">
-        <span class="nk-product-rating-front" style="width: 60%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
+                <?PHP   $cat=$row['category']; 
+                        $name=$row['name']; 
 
-                            <div class="nk-gap-1"></div>
-                            <div class="nk-product-price">€ 14.00</div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="col-md-6">
-                    <div class="nk-product-cat">
-                        <a class="nk-product-image" href="store-product.html">
-                            <img src="assets/images/product-12-xs.jpg" alt="A hundred thousand">
-                        </a>
-                        <div class="nk-product-cont">
-                            <h3 class="nk-product-title h5"><a href="store-product.html">A hundred thousand</a></h3>
-                            <div class="nk-gap-1"></div>
-                            
-    <span class="nk-product-rating">
-        <span class="nk-product-rating-front" style="width: 90%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
+                            $sql="SELECT * from game where category='$cat' and name!='$name'";
+                            $req = $db->prepare($sql);
+                            $req->execute();
+                            $liste = $req->fetchAll();
+                            if ($req->execute())
+                            {   
+                                
+                                foreach($liste as $row)
+                                { ?>
+                                    <div class="col-md-6">
+                                        <div class="nk-product-cat">
+                                            <a class="nk-product-image" href="store-product.php?id_game=<?PHP echo $row['id_game']; ?>">
+                                                <?PHP image($row['id_game']);?>
+                                            </a>
+                                            <div class="nk-product-cont">
+                                                <h3 class="nk-product-title h5"><a href="store-product.php?id_game=<?PHP echo $row['id_game']; ?>"><?PHP echo $row['name']; ?></a></h3>
+                                                <div class="nk-gap-1"></div>
+                                                <span class="nk-product-rating">
+                                                <span class="nk-product-rating-front" style="width: <?PHP echo $row['score']*20; ?>%;">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </span>
+                                                <span class="nk-product-rating-back">
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </span>
+                                            </span>
 
-                            <div class="nk-gap-1"></div>
-                            <div class="nk-product-price">€ 20.00</div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="col-md-6">
-                    <div class="nk-product-cat">
-                        <a class="nk-product-image" href="store-product.html">
-                            <img src="assets/images/product-13-xs.jpg" alt="So saying he unbuckled">
-                        </a>
-                        <div class="nk-product-cont">
-                            <h3 class="nk-product-title h5"><a href="store-product.html">So saying he unbuckled</a></h3>
-                            <div class="nk-gap-1"></div>
-                            
-    <span class="nk-product-rating">
-        <span class="nk-product-rating-front" style="width: 100%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
-
-                            <div class="nk-gap-1"></div>
-                            <div class="nk-product-price">€ 23.00</div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="col-md-6">
-                    <div class="nk-product-cat">
-                        <a class="nk-product-image" href="store-product.html">
-                            <img src="assets/images/product-14-xs.jpg" alt="However, I have reason">
-                        </a>
-                        <div class="nk-product-cont">
-                            <h3 class="nk-product-title h5"><a href="store-product.html">However, I have reason</a></h3>
-                            <div class="nk-gap-1"></div>
-                            
-    <span class="nk-product-rating">
-        <span class="nk-product-rating-front" style="width: 20%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
-
-                            <div class="nk-gap-1"></div>
-                            <div class="nk-product-price">€ 32.00</div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="col-md-6">
-                    <div class="nk-product-cat">
-                        <a class="nk-product-image" href="store-product.html">
-                            <img src="assets/images/product-15-xs.jpg" alt="At first, for some time">
-                        </a>
-                        <div class="nk-product-cont">
-                            <h3 class="nk-product-title h5"><a href="store-product.html">At first, for some time</a></h3>
-                            <div class="nk-gap-1"></div>
-                            
-    <span class="nk-product-rating">
-        <span class="nk-product-rating-front" style="width: 80%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
-
-                            <div class="nk-gap-1"></div>
-                            <div class="nk-product-price">€ 14.00</div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="col-md-6">
-                    <div class="nk-product-cat">
-                        <a class="nk-product-image" href="store-product.html">
-                            <img src="assets/images/product-16-xs.jpg" alt="When the last &#39;natural&#39;">
-                        </a>
-                        <div class="nk-product-cont">
-                            <h3 class="nk-product-title h5"><a href="store-product.html">When the last &#39;natural&#39;</a></h3>
-                            <div class="nk-gap-1"></div>
-                            
-    <span class="nk-product-rating">
-        <span class="nk-product-rating-front" style="width: 90%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
-
-                            <div class="nk-gap-1"></div>
-                            <div class="nk-product-price">€ 20.00</div>
-                        </div>
-                    </div>
-                </div>
-                
+                                            <div class="nk-gap-1"></div>
+                                            <div class="nk-product-price">$ <?PHP echo $row['price']; ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <?php  
+                                }
+                            }
+                            ?>             
             </div>
             <!-- END: Related Products -->
         </div>
-        <div class="col-lg-4">
-            <!--
-                START: Sidebar
+
+<!-- START: Sidebar
+
 
                 Additional Classes:
                     .nk-sidebar-left
                     .nk-sidebar-right
                     .nk-sidebar-sticky
             -->
-            <aside class="nk-sidebar nk-sidebar-right nk-sidebar-sticky">
-                <div class="nk-widget">
-    <div class="nk-widget-content">
-        <form action="#" class="nk-form nk-form-style-1" novalidate="novalidate">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Type something...">
-                <button class="nk-btn nk-btn-color-main-1"><span class="ion-search"></span></button>
-            </div>
-        </form>
-    </div>
-</div>
+<div class="col-lg-4">
+<aside class="nk-sidebar nk-sidebar-right nk-sidebar-sticky">
 <div class="nk-widget nk-widget-highlighted">
     <h4 class="nk-widget-title"><span><span class="text-main-1">Category</span> Menu</span></h4>
     <div class="nk-widget-content">
@@ -1122,184 +855,67 @@ ini_set('display_errors', 1);
         </ul>
     </div>
 </div>
-<div class="nk-widget nk-widget-highlighted">
-    <h4 class="nk-widget-title"><span><span class="text-main-1">Price</span> Filter</span></h4>
-    <div class="nk-widget-content">
-        <div class="nk-input-slider">
-            <input
-                type="text"
-                name="price-filter"
-                data-slider-min="0"
-                data-slider-max="1800"
-                data-slider-step="1"
-                data-slider-value="[200, 1200]"
-                data-slider-tooltip="hide"
-            >
-            <div class="nk-gap"></div>
-            <div>
-                <div class="text-white mt-4 float-left">
-                    PRICE:
-                    <strong class="text-main-1">€ <span class="nk-input-slider-value-0"></span></strong>
-                    -
-                    <strong class="text-main-1">€ <span class="nk-input-slider-value-1"></span></strong>
-                </div>
-                <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-white float-right">Apply</a>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-<div class="nk-widget nk-widget-highlighted">
-    <h4 class="nk-widget-title"><span><span class="text-main-1">We</span> Are Social</span></h4>
-    <div class="nk-widget-content">
-        <!--
-            Social Links 3
 
-            Additional Classes:
-                .nk-social-links-cols-5
-                .nk-social-links-cols-4
-                .nk-social-links-cols-3
-                .nk-social-links-cols-2
-        -->
-        <ul class="nk-social-links-3 nk-social-links-cols-4">
-            <li><a class="nk-social-twitch" href="#"><span class="fab fa-twitch"></span></a></li>
-            <li><a class="nk-social-instagram" href="#"><span class="fab fa-instagram"></span></a></li>
-            <li><a class="nk-social-facebook" href="#"><span class="fab fa-facebook"></span></a></li>
-            <li><a class="nk-social-google-plus" href="#"><span class="fab fa-google-plus"></span></a></li>
-            <li><a class="nk-social-youtube" href="#"><span class="fab fa-youtube"></span></a></li>
-            <li><a class="nk-social-twitter" href="https://twitter.com/nkdevv" target="_blank"><span class="fab fa-twitter"></span></a></li>
-            <li><a class="nk-social-pinterest" href="#"><span class="fab fa-pinterest-p"></span></a></li>
-            <li><a class="nk-social-rss" href="#"><span class="fa fa-rss"></span></a></li>
 
-            <!-- Additional Social Buttons
-                <li><a class="nk-social-behance" href="#"><span class="fab fa-behance"></span></a></li>
-                <li><a class="nk-social-bitbucket" href="#"><span class="fab fa-bitbucket"></span></a></li>
-                <li><a class="nk-social-dropbox" href="#"><span class="fab fa-dropbox"></span></a></li>
-                <li><a class="nk-social-dribbble" href="#"><span class="fab fa-dribbble"></span></a></li>
-                <li><a class="nk-social-deviantart" href="#"><span class="fab fa-deviantart"></span></a></li>
-                <li><a class="nk-social-flickr" href="#"><span class="fab fa-flickr"></span></a></li>
-                <li><a class="nk-social-foursquare" href="#"><span class="fab fa-foursquare"></span></a></li>
-                <li><a class="nk-social-github" href="#"><span class="fab fa-github"></span></a></li>
-                <li><a class="nk-social-linkedin" href="#"><span class="fab fa-linkedin"></span></a></li>
-                <li><a class="nk-social-medium" href="#"><span class="fab fa-medium"></span></a></li>
-                <li><a class="nk-social-odnoklassniki" href="#"><span class="fab fa-odnoklassniki"></span></a></li>
-                <li><a class="nk-social-paypal" href="#"><span class="fab fa-paypal"></span></a></li>
-                <li><a class="nk-social-reddit" href="#"><span class="fab fa-reddit"></span></a></li>
-                <li><a class="nk-social-skype" href="#"><span class="fab fa-skype"></span></a></li>
-                <li><a class="nk-social-soundcloud" href="#"><span class="fab fa-soundcloud"></span></a></li>
-                <li><a class="nk-social-steam" href="#"><span class="fab fa-steam"></span></a></li>
-                <li><a class="nk-social-slack" href="#"><span class="fab fa-slack"></span></a></li>
-                <li><a class="nk-social-tumblr" href="#"><span class="fab fa-tumblr"></span></a></li>
-                <li><a class="nk-social-vimeo" href="#"><span class="fab fa-vimeo"></span></a></li>
-                <li><a class="nk-social-vk" href="#"><span class="fab fa-vk"></span></a></li>
-                <li><a class="nk-social-wordpress" href="#"><span class="fab fa-wordpress"></span></a></li>
-            -->
-        </ul>
-    </div>
-</div>
 <div class="nk-widget nk-widget-highlighted">
     <h4 class="nk-widget-title"><span><span class="text-main-1">Most</span> Popular</span></h4>
-    <div class="nk-widget-content">
-        
-        <div class="nk-widget-post">
-            <a href="store-product.html" class="nk-post-image">
-                <img src="assets/images/product-1-xs.jpg" alt="So saying he unbuckled">
-            </a>
-            <h3 class="nk-post-title"><a href="store-product.html">So saying he unbuckled</a></h3>
-            
-    <span class="nk-product-rating">
-        <span class="nk-product-rating-front" style="width: 80%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
 
-            <div class="nk-product-price">€ 23.00</div>
-        </div>
-        
-        <div class="nk-widget-post">
-            <a href="store-product.html" class="nk-post-image">
-                <img src="assets/images/product-2-xs.jpg" alt="However, I have reason">
-            </a>
-            <h3 class="nk-post-title"><a href="store-product.html">However, I have reason</a></h3>
-            
-    <span class="nk-product-rating">
-        <span class="nk-product-rating-front" style="width: 50%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
 
-            <div class="nk-product-price">€ 32.00</div>
-        </div>
-        
-        <div class="nk-widget-post">
-            <a href="store-product.html" class="nk-post-image">
-                <img src="assets/images/product-3-xs.jpg" alt="It was some time before">
-            </a>
-            <h3 class="nk-post-title"><a href="store-product.html">It was some time before</a></h3>
-            
-    <span class="nk-product-rating">
-        <span class="nk-product-rating-front" style="width: 100%;">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-        </span>
-        <span class="nk-product-rating-back">
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-        </span>
-    </span>
+<?PHP
 
-            <div class="nk-product-price">€ 14.00</div>
-        </div>
+    $sql3="select * From game order by score  desc limit 3";
+    $req3 = $db->prepare($sql3);
+    $req3->execute();
+    $liste3 = $req3->fetchAll();
+    if ($req3->execute())
+    {   
         
+        foreach($liste3 as $row3)
+        { ?>
+            <div class="nk-widget-content">
+                <div class="nk-widget-post">
+                    <a href="store-product.html" class="nk-post-image">
+                        <?PHP image($row3['id_game']);?>
+                    </a>
+                    <h3 class="nk-post-title"><a href="store-product.html"><?PHP echo $row3['name']; ?></a></h3>
+                    
+            <span class="nk-product-rating">
+                <span class="nk-product-rating-front" style="width:<?PHP echo $row3['score']*20; ?>%;">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </span>
+                <span class="nk-product-rating-back">
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </span>
+            </span>
+
+                    <div class="nk-product-price">$ <?PHP echo $row3['price']; ?></div>
+                </div>
     </div>
+          <?php  
+        }
+    }
+    ?>       
+    
+
+
 </div>
-<div class="nk-widget nk-widget-highlighted">
-    <h4 class="nk-widget-title"><span>Instagram</span></h4>
-    <div class="nk-widget-content">
-        <div class="nk-instagram row sm-gap vertical-gap multi-column"></div>
-    </div>
-</div>
-<div class="nk-widget nk-widget-highlighted">
-    <h4 class="nk-widget-title"><span>Our Twitter</span></h4>
-    <div class="nk-widget-content">
-        <div class="nk-twitter-list" data-twitter-count="2"></div>
-    </div>
-</div>
+
 
             </aside>
-            <!-- END: Sidebar -->
+            
         </div>
-    </div>
+    
 </div>
 <div class="nk-gap-2"></div>
+<!-- END: Sidebar -->
 
 
         
@@ -1466,28 +1082,28 @@ ini_set('display_errors', 1);
     
 
     
-        <!-- START: Login Modal -->
-<div class="nk-modal modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- START: Login Modal -->
+<div class="nk-modal modal fade" id="modalLogin" name="modalLogin" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span class="ion-android-close"></span>
-                </button>
+                <button type="button" class="close" name="login" id="login" data-dismiss="modal" data-toggle="modal" data-target="#modalLogin" aria-label="Close">
+            <span class="ion-android-close"></span>
+        </button>
 
                 <h4 class="mb-0"><span class="text-main-1">Sign</span> In</h4>
 
                 <div class="nk-gap-1"></div>
-                <form action="#" class="nk-form text-white">
+                <form  class="nk-form text-white">
                     <div class="row vertical-gap">
                         <div class="col-md-6">
                             Use email and password:
 
                             <div class="nk-gap"></div>
-                            <input type="email" value="" name="email" class=" form-control" placeholder="Email">
+                            <input type="text" value="" name="username" id="username" class=" form-control" placeholder="Email">
 
                             <div class="nk-gap"></div>
-                            <input type="password" value="" name="password" class="required form-control" placeholder="Password">
+                            <input type="password" value="" name="password" id="password" class="required form-control" placeholder="Password">
                         </div>
                         <div class="col-md-6">
                             Or social account:
@@ -1502,20 +1118,20 @@ ini_set('display_errors', 1);
                         </div>
                     </div>
 
-                    <div class="nk-gap-1"></div>
-                    <div class="row vertical-gap">
-                        <div class="col-md-6">
-                            <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-white nk-btn-block">Sign In</a>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mnt-5">
-                                <small><a href="#">Forgot your password?</a></small>
+                        <div class="nk-gap-1"></div>
+                        <div class="row vertical-gap">
+                            <div class="col-md-6">
+                                <input type="submit" class="nk-btn nk-btn-rounded nk-btn-color-white nk-btn-block" value="Sign In" name="login_button" id="login_button">
                             </div>
-                            <div class="mnt-5">
-                                <small><a href="#">Not a member? Sign up</a></small>
+                            <div class="col-md-6">
+                                <div class="mnt-5">
+                                    <small><a href="#">Forgot your password?</a></small>
+                                </div>
+                                <div class="mnt-5">
+                                    <small><a href="createacc.html">Not a member? Sign up</a></small>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </form>
             </div>
         </div>

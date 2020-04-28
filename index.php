@@ -143,6 +143,11 @@ ini_set('display_errors', 1);
                                 </a>
                             </li>
 
+                            <li>
+                                <a href="favourite.php">
+                                    <span><img style="width: 14px;" src="assets/images/heart2.png"></span>
+                                </a>
+                            </li>
 
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#modalLogin">
@@ -150,15 +155,15 @@ ini_set('display_errors', 1);
                                 </a>
                             </li>
                             <?php  
-			                if(isset($_SESSION['username']))  
-			                {  
-			                ?>  
-			                     <li>Welcome, <?php $user=$_SESSION['username'];echo $user; ?>
-			                     <a href="#" id="logout">Logout</a>  </li>
+                            if(isset($_SESSION['username']))  
+                            {  
+                            ?>  
+                                 <li>Welcome, <?php $user=$_SESSION['username'];echo $user; ?></li>
+                                 <a href="#" class="nk-btn nk-btn-sm nk-btn-rounded nk-btn-color-white" id="logout">Logout</a>  
 
-			                <?php  
-			                }
-			                ?>  
+                            <?php  
+                            }
+                            ?>   
 
 
                             <li>
@@ -207,8 +212,7 @@ ini_set('display_errors', 1);
 
 
 
-            <!--
-        START: Navbar
+            <!-- START: Navbar
 
         Additional Classes:
             .nk-navbar-sticky
@@ -219,67 +223,25 @@ ini_set('display_errors', 1);
                 <div class="container">
                     <div class="nk-nav-table">
 
-                        <a href="index.html" class="nk-nav-logo">
+                        <a href="index.php" class="nk-nav-logo">
                             <img src="assets/images/logo.svg" alt="GoodGames" width="199">
                         </a>
 
                         <ul class="nk-nav nk-nav-right d-none d-lg-table-cell" data-nav-mobile="#nk-nav-mobile">
 
-                            <li>
-                                <a href="elements.html">
+                            <li class="active">
+                                <a href="index.php">
                 Home
                 
             </a>
                             </li>
-                            <li class=" nk-drop-item">
-                                <a href="store.html">
+                            <li >
+                                <a href="store.php">
                 Store
                 
             </a>
-                                <ul class="dropdown">
-
-                                    <li>
-                                        <a href="store.html">
-                Store
-                
-            </a>
-                                    </li>
-                                    <li>
-                                        <a href="store-product.html">
-                Product
-                
-            </a>
-                                    </li>
-                                    <li>
-                                        <a href="store-catalog.html">
-                Catalog
-                
-            </a>
-                                    </li>
-                                    <li>
-                                        <a href="store-catalog-alt.html">
-                Catalog Alt
-                
-            </a>
-                                    </li>
-                                    <li>
-                                        <a href="store-checkout.html">
-                Checkout
-                
-            </a>
-                                    </li>
-                                    <li>
-                                        <a href="store-cart.php">
-                Cart
-                
-            </a>
-                                    </li>
-
-                                </ul>
-
-                            </li>
                             <li>
-                                <a href="gallery.html">
+                                <a href="contact.html">
                 Contact
                 
             </a>
