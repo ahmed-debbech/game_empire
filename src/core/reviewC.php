@@ -57,6 +57,22 @@ class reviewC{
         }
         return $res;
     }
+    public function getReviewsSorted($id_game, $mode){
+        $db = config::getConnexion();
+        $sql = "select * from reviews where id_game='".$id_game."' order by ".$mode." ASC;";
+        try{
+            $list = $db->query($sql);
+        }catch(Exception $e){
+            echo "error";
+        }
+        $res = array();
+        foreach($list as $row){
+            if($row["id_game"] == $id_game){
+                array_push($res, $row);
+            }
+        }
+        return $res;
+    }
     public function countReviews($id_game){
         $link = mysqli_connect("127.0.0.1", "root", "", "game_empire");
         $sql = "select * from reviews where id_game='".$id_game."'";

@@ -730,6 +730,15 @@ session_start();
                             <!-- END: Reply -->
                             <div class="clearfix"></div>
                             <div class="nk-gap-2"></div>
+                            <form action="store-product.php" method="get">
+                                <input type="hidden" name="id_game" value="<?php echo $_GET["id_game"];?>">
+                                <input type="hidden" name="sort" value="1">
+                                <select name="list">
+                                    <option selected value="--">---</option>
+                                    <option value="date">New</option>
+                                </select>
+                                <input type="submit" value="Sort">
+                            </form>
                             <div class="nk-comments"> 
                                 <!--Loading reviews -->
                             <?php include("core/getreviews.php"); ?>
