@@ -1,8 +1,8 @@
-function checkLogged(id){
+function checkLogged(id,c){
     if(document.getElementsByName("userLogged")[0].value != ".."){
         return true;
     }
-    document.getElementById(id).style.visibility = "visible";
+    document.getElementsByName(id)[c].style.visibility = "visible";
     return false;
 }
 function check(){
