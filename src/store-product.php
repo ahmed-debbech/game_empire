@@ -157,8 +157,6 @@ session_start();
                      <li>Welcome, <?php echo $_SESSION["username"]; ?>
                      <a href="" id="logout">Logout</a> </li>
                 <?php  
-                }else{
-                    echo "yoyoy ";
                 }
                 ?>  
 

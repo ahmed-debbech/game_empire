@@ -64,6 +64,12 @@ $j=0;
         </span>
         </span>";
         echo "</div>";
+        if(isset($_SESSION["username"]) && ($_SESSION["username"] == $list[$i]["username"])){
+            echo "<form action='core/delete-review.php' method='post' >";
+            echo "<input type='hidden' name='id_rev' value='".$list[$i]["id_rev"]."'>";
+            echo "<input type='submit' value='Delete'>";
+            echo "</form>";
+        }
         echo "<div class='nk-comment-text'>";
         echo "<p>".$list[$i]["title"]."</p>";
         echo "<p>".$list[$i]["content"]."</p>";
