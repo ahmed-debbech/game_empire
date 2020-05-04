@@ -18,9 +18,9 @@ function convertStars($x){
     }
 }
 function checkIfSet(){
-    if(isset($_SESSION['username'])){
-        if(!empty($_SESSION['username'])){
-            return $_SESSION['username'];
+    if(isset($_SESSION["username"])){
+        if(!empty($_SESSION["username"])){
+            return $_SESSION["username"];
         }
     }
     return "..";
@@ -78,10 +78,10 @@ $j=0;
         echo "<input type='hidden' id='react_type' name='reaction'>";
         echo "<table>";
         echo "<tr>";
-        echo "<td><button class='react' onclick=\"document.getElementsByName('reaction')[".$j."].value = '1';\" type='submit'><img src='assets/images/like-react.png'>(".getReact($list[$i]["id_rev"], 1).")</button></td>";
-        echo "<td><button class='react' onclick=\" document.getElementsByName('reaction')[".$j."].value = '2';\" type='submit'><img src='assets/images/heart-react.png'>(".getReact($list[$i]["id_rev"], 2).")</button></td>";
-        echo "<td><button class='react' onclick=\"document.getElementsByName('reaction')[".$j."].value = '3';\" type='submit'><img src='assets/images/hot-react.png'>(".getReact($list[$i]["id_rev"], 3).")</button></td>";
-        echo "<td><button class='react' onclick=\" document.getElementsByName('reaction')[".$j."].value = '4';\" type='submit'><img src='assets/images/sad-react.png'>(".getReact($list[$i]["id_rev"], 4).")</button></td>";
+        echo "<td><button class='react' onclick=\"document.getElementsByName('reaction')[".$j."].value = '1';\" type='submit'><img src='assets/images/like-react.png'> (".getReact($list[$i]["id_rev"], 1).")</button></td>";
+        echo "<td><button class='react' onclick=\" document.getElementsByName('reaction')[".$j."].value = '2';\" type='submit'><img src='assets/images/heart-react.png'> (".getReact($list[$i]["id_rev"], 2).")</button></td>";
+        echo "<td><button class='react' onclick=\"document.getElementsByName('reaction')[".$j."].value = '3';\" type='submit'><img src='assets/images/hot-react.png'> (".getReact($list[$i]["id_rev"], 3).")</button></td>";
+        echo "<td><button class='react' onclick=\" document.getElementsByName('reaction')[".$j."].value = '4';\" type='submit'><img src='assets/images/sad-react.png'> (".getReact($list[$i]["id_rev"], 4).")</button></td>";
         echo "</tr>";
         echo "</table>";
         echo "</form>";

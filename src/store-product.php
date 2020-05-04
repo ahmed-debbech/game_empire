@@ -151,12 +151,14 @@ session_start();
                                 </a>
                             </li>
                             <?php  
-                if(isset($_SESSION['username']))  
+                if(isset($_SESSION["username"]))  
                 {  
                 ?>  
-                     <li>Welcome, <?php echo $_SESSION['username']; ?>
-                     <a href="<?php session_destroy();?>" id="logout">Logout</a>  </li>
+                     <li>Welcome, <?php echo $_SESSION["username"]; ?>
+                     <a href="" id="logout">Logout</a> </li>
                 <?php  
+                }else{
+                    echo "yoyoy ";
                 }
                 ?>  
 
