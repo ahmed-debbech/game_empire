@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("likeC.php");
 include_once("../entities/like.php");
 function checkIfLogged(){
@@ -14,9 +15,10 @@ function checkIfLogged(){
 }
 if(checkIfLogged() == true){
     $likeC = new likeC();
-    $like = new Like(0,$_GET['id_rev'],$_GET["username"],$_GET["reaction"]);
+    echo $_SESSION["username"];
+    $like = new Like(0,$_GET['id_rev'],$_SESSION["username"],$_GET["reaction"]);
     $likeC->addLike($like);
-    header("Location: ". $_SERVER['HTTP_REFERER']);
+    //header("Location: ". $_SERVER['HTTP_REFERER']);
 }else{
     echo "not logged";
 }

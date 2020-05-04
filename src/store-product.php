@@ -155,11 +155,11 @@ session_start();
                 {  
                 ?>  
                      <li>Welcome, <?php echo $_SESSION["username"]; ?>
+                     <a href="core/logout.php" id="logout">Logout</a> </li>
+
                 <?php  
                 }
                 ?>  
-
-                        <a href="core/logout.php" id="logout">Logout</a> </li>
 
                             <li>
                                 <span class="nk-cart-toggle">
