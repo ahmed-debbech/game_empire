@@ -36,5 +36,22 @@ class likeC{
             echo 'Error: '.$e->getMessage();
         }   
     }
+    public function checkExistingReacts($username, $id_rev){
+        $con = mysqli_connect("127.0.0.1", "root", "", "game_empire");
+        $sql1="select * from react where id_rev='".$id_rev."' and username='".$username."'";
+        if($result = mysqli_query($con, $sql1)){
+            if(mysqli_num_rows($result) > 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    public function changeReact($like, $id_rev, $username){
+        $con = mysqli_connect("127.0.0.1", "root", "", "game_empire");
+        $sql1="delete from react where id_rev='".$id_rev."' and username='".$username."'";
+        if($result = mysqli_query($con, $sql1)){
+           $this->addLike($like);
+        }
+    }
 }
 ?>

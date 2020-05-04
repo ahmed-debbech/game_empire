@@ -17,8 +17,12 @@ if(checkIfLogged() == true){
     $likeC = new likeC();
     echo $_SESSION["username"];
     $like = new Like(0,$_GET['id_rev'],$_SESSION["username"],$_GET["reaction"]);
-    $likeC->addLike($like);
-    //header("Location: ". $_SERVER['HTTP_REFERER']);
+    if($likeC->checkExistingReacts($_SESSION["username"], $_GET["id_rev"]) == true){
+        $likeC->addLike($like);
+    }else{
+        $likeC->changeReact($like, $_GET["id_rev"], $_SESSION["username"]);
+    }
+    header("Location: ". $_SERVER['HTTP_REFERER']);
 }else{
     echo "not logged";
 }
