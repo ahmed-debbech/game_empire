@@ -41,15 +41,6 @@ class reviewC{
             echo 'Error: '.$e->getMessage();
         }
     }
-    public function getReviewForLoggedUser($list){
-        if(isset($_SESSION["username"])){
-            for($i=0; i<=sizeof($list)-1; $i++){
-                if($list["username"]){
-
-                }
-            }
-        }
-    }
     public function getReviews($id_game){
         $db = config::getConnexion();
         $sql = "select * from reviews";

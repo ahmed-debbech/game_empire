@@ -25,6 +25,15 @@ function checkIfSet(){
     }
     return "..";
 }
+function setClicked($id_rev, $username, $type){
+    $con = mysqli_connect("127.0.0.1", "root", "", "game_empire");
+    $sql1="select * from react where id_rev='".$id_rev."' and type='".$type."' and username='".$username."'";
+    if($result = mysqli_query($con, $sql1)){
+        if(mysqli_num_rows($result) > 0){
+            echo  "disabled ";
+        }
+    }
+}
 function getReact($id_rev, $type){
     $con = mysqli_connect("127.0.0.1", "root", "", "game_empire");
     $sql1="select * from react where id_rev='".$id_rev."' and type='".$type."'";
@@ -64,12 +73,6 @@ $j=0;
         </span>
         </span>";
         echo "</div>";
-        if(isset($_SESSION["username"]) && ($_SESSION["username"] == $list[$i]["username"])){
-            echo "<form action='core/delete-review.php' method='post' >";
-            echo "<input type='hidden' name='id_rev' value='".$list[$i]["id_rev"]."'>";
-            echo "<input type='submit' value='Delete'>";
-            echo "</form>";
-        }
         echo "<div class='nk-comment-text'>";
         echo "<p>".$list[$i]["title"]."</p>";
         echo "<p>".$list[$i]["content"]."</p>";
@@ -84,13 +87,35 @@ $j=0;
         echo "<input type='hidden' id='react_type' name='reaction'>";
         echo "<table>";
         echo "<tr>";
-        echo "<td><button class='react' onclick=\"document.getElementsByName('reaction')[".$j."].value = '1';\" type='submit'><img src='assets/images/like-react.png'> (".getReact($list[$i]["id_rev"], 1).")</button></td>";
-        echo "<td><button class='react' onclick=\" document.getElementsByName('reaction')[".$j."].value = '2';\" type='submit'><img src='assets/images/heart-react.png'> (".getReact($list[$i]["id_rev"], 2).")</button></td>";
-        echo "<td><button class='react' onclick=\"document.getElementsByName('reaction')[".$j."].value = '3';\" type='submit'><img src='assets/images/hot-react.png'> (".getReact($list[$i]["id_rev"], 3).")</button></td>";
-        echo "<td><button class='react' onclick=\" document.getElementsByName('reaction')[".$j."].value = '4';\" type='submit'><img src='assets/images/sad-react.png'> (".getReact($list[$i]["id_rev"], 4).")</button></td>";
+        echo "<td><button ";
+        if(isset($_SESSION["username"])){
+            setClicked($list[$i]["id_rev"], $_SESSION["username"], 1);
+        }
+        echo "class='react' onclick=\"document.getElementsByName('reaction')[".$j."].value = '1';\" type='submit'><img src='assets/images/like-react.png'> (".getReact($list[$i]["id_rev"], 1).")</button></td>";
+        echo "<td><button ";
+        if(isset($_SESSION["username"])){
+            setClicked($list[$i]["id_rev"], $_SESSION["username"], 2);
+        }
+        echo "class='react' onclick=\" document.getElementsByName('reaction')[".$j."].value = '2';\" type='submit'><img src='assets/images/heart-react.png'> (".getReact($list[$i]["id_rev"], 2).")</button></td>";
+        echo "<td><button ";
+        if(isset($_SESSION["username"])){
+            setClicked($list[$i]["id_rev"], $_SESSION["username"], 3);
+        }
+        echo "class='react' onclick=\"document.getElementsByName('reaction')[".$j."].value = '3';\" type='submit'><img src='assets/images/hot-react.png'> (".getReact($list[$i]["id_rev"], 3).")</button></td>";
+        echo "<td><button ";
+        if(isset($_SESSION["username"])){
+            setClicked($list[$i]["id_rev"], $_SESSION["username"], 4);
+        }
+        echo "class='react' onclick=\" document.getElementsByName('reaction')[".$j."].value = '4';\" type='submit'><img src='assets/images/sad-react.png'> (".getReact($list[$i]["id_rev"], 4).")</button></td>";
         echo "</tr>";
         echo "</table>";
         echo "</form>";
+        if(isset($_SESSION["username"]) && ($_SESSION["username"] == $list[$i]["username"])){
+            echo "<form action='core/delete-review.php' method='post' >";
+            echo "<input type='hidden' name='id_rev' value='".$list[$i]["id_rev"]."'>";
+            echo "<input type='submit' value='Delete'>";
+            echo "</form>";
+        }
         echo "</div>";
         $j++;
     }
