@@ -66,6 +66,8 @@ ini_set('display_errors', 1);
 
         <!-- Custom Styles -->
         <link rel="stylesheet" href="assets/css/custom.css">
+        <script src="dist/sweetalert-dev.js"></script>
+        <link rel="stylesheet" href="dist/sweetalert.css">
 
         <!-- END: Styles -->
 
@@ -80,9 +82,16 @@ ini_set('display_errors', 1);
     Additional Classes:
         .nk-page-boxed
 -->
-
+    
     <body>
-
+        <?php 
+        if (isset($_GET['add']))
+        {$add=$_GET['add'];
+         if($add==1)
+        echo '<script type="text/javascript">swal("Welcome!", "Your Accont Has Been Registered!", "success");</script>';  
+         else echo'<script>swal("Oops...", "Something went wrong! Please check your inputs and try again", "error");</script>';
+        }
+        ?>
 
 
 
@@ -388,8 +397,8 @@ ini_set('display_errors', 1);
                                 <img src="assets/images/icon-mouse.svg" alt="">
                             </div>
                             <div class="nk-feature-cont">
-                                <h3 class="nk-feature-title"><a href="#">PC</a></h3>
-                                <h4 class="nk-feature-title text-main-1"><a href="#">View Games</a></h4>
+                                <h3 class="nk-feature-title"><a href="store.php?plat=1">PC</a></h3>
+                                <h4 class="nk-feature-title text-main-1"><a href="store.php?plat=1">View Games</a></h4>
                             </div>
                         </div>
                     </div>
@@ -399,8 +408,8 @@ ini_set('display_errors', 1);
                                 <img src="assets/images/icon-gamepad.svg" alt="">
                             </div>
                             <div class="nk-feature-cont">
-                                <h3 class="nk-feature-title"><a href="#">PS4</a></h3>
-                                <h4 class="nk-feature-title text-main-1"><a href="#">View Games</a></h4>
+                                <h3 class="nk-feature-title"><a href="store.php?plat=2">PS4</a></h3>
+                                <h4 class="nk-feature-title text-main-1"><a href="store.php?plat=2">View Games</a></h4>
                             </div>
                         </div>
                     </div>
@@ -410,8 +419,8 @@ ini_set('display_errors', 1);
                                 <img src="assets/images/icon-gamepad-2.svg" alt="">
                             </div>
                             <div class="nk-feature-cont">
-                                <h3 class="nk-feature-title"><a href="#">Xbox</a></h3>
-                                <h4 class="nk-feature-title text-main-1"><a href="#">View Games</a></h4>
+                                <h3 class="nk-feature-title"><a href="store.php?plat=3">Xbox</a></h3>
+                                <h4 class="nk-feature-title text-main-1"><a href="store.php?plat=3">View Games</a></h4>
                             </div>
                         </div>
                     </div>

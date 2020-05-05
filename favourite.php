@@ -441,46 +441,54 @@ ini_set('display_errors', 1);
                                 
                                 ?>
                                     <div class="col-lg-6">
-                                         <div class="nk-product-cat-2">
-                                        <a class="nk-product-image" href="store-product.html">
-                                         <?PHP image($row['id_game']);?>
-                                            </a>
-                                        <div class="nk-product-cont">
-                                        <h3 class="nk-product-title h5"><a href="store-product.php?id_game=<?PHP echo $row['id_game']; ?>"><?PHP echo $row['name']; ?></a></h3>
-                                        <div class="nk-gap-1"></div>
+                                     <div class="nk-product-cat-2">
+                                    <a class="nk-product-image" href="store-product.php?id_game=<?PHP echo $row['id_game']; ?>">
+                                     <?PHP image($row['id_game']);?>
+                                        </a>
+                                    <div class="nk-product-cont">
+                                    <h3 class="nk-product-title h5"><a href="store-product.php?id_game=<?PHP echo $row['id_game']; ?>"><?PHP echo $row['name']; ?></a></h3>
+                                    <div class="nk-gap-1"></div>
 
-                                        <span class="nk-product-rating">
-                                        <span class="nk-product-rating-front" style="width:<?PHP echo $row['score']*20; ?>% ;">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                        <span class="nk-product-rating-back">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
+                                    <span class="nk-product-rating">
+                                    <span class="nk-product-rating-front" style="width:<?PHP echo $row['score']*20; ?>% ;">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </span>
+                                    <span class="nk-product-rating-back">
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
                                         </span>
                                     </span>
                                     <div class="nk-gap-1"><?PHP $y=$row['id_plat']; if($y==1)echo "PC"; elseif ($y==2) echo "PS4"; else echo "Xbox";?></div>
                                     <div class="nk-gap-1"><?PHP echo $row['release_date']; ?></div>
                                     <div class="nk-gap-1"><?PHP echo $row['category']; ?></div>
                                     <div class="nk-gap-1"></div>
-                                    <div class="nk-product-price"> <?PHP echo $row['price']; ?>$</div>
-                                    <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Add to Cart</a>
-                                </div>
-                            </div>
-                        </div>
+                                    <div class="nk-product-price"><?php 
+                                    if( $row['solde'] >0)
+                                    {?>
+                                        &nbsp;<strike style=" background:black;  color: red;"> <?php echo $row['price']; ?> $ </strike>&nbsp; <?php echo $row['solde']; ?> $ !!
+                                    <?php
+                                    }
+                                    else {echo'&nbsp;'; echo $row['price']; echo'$';}
+                                            ?> </div>
+                                                <div class="nk-gap-1"></div>
+                                                <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
                             
                                 
                             <?PHP
-                        }
+                                }
                             }
                         }
-                        else echo'Connect to add to your favourite <script>swal("Oops...", "Something went wrong! Please connect and try again", "error");</script>';
+                            else echo'<div class="nk-product-price">Connect to see your favourite Games <script>swal("Oops...", "Something went wrong! Please connect and try again", "error");</script></div>';
 
                             ?>
                          

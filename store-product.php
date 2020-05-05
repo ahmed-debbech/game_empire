@@ -521,7 +521,14 @@ ini_set('display_errors', 1);
                         <!-- START: Add to Cart -->
                         <div class="nk-gap-2"></div>
                         <form action="#" class="nk-product-addtocart">
-                            <div class="nk-product-price">€ <?PHP echo $row['price']; ?>.00</div>
+                            <div class="nk-product-price"><?php 
+                            if( $row['solde'] >0)
+                            {?>
+                                &nbsp;<strike style="color: red;"> $<?php echo $row['price']; ?>.00  </strike>&nbsp; $<?php echo $row['solde']; ?>.00  !!
+                            <?php
+                            }
+                            else {echo'&nbsp;'; echo $row['price']; echo'.00 $';}
+                            ?></div>
                             <div class="nk-gap-1"></div>
                             <div class="input-group">
                                 <input type="number" class="form-control" value="1" min="1" max="21">
@@ -842,17 +849,21 @@ ini_set('display_errors', 1);
     <h4 class="nk-widget-title"><span><span class="text-main-1">Category</span> Menu</span></h4>
     <div class="nk-widget-content">
         <ul class="nk-widget-categories">
-            <li><a href="#">RTS</a></li>
-            <li><a href="#">Action</a></li>
-            <li><a href="#">RPG</a></li>
-            <li><a href="#">MMO</a></li>
-            <li><a href="#">MOBA</a></li>
-            <li><a href="#">Adventure</a></li>
-            <li><a href="#">Indie</a></li>
-            <li><a href="#">Strategy</a></li>
-            <li><a href="#">Racing</a></li>
-            <li><a href="#">Simulator</a></li>
-        </ul>
+        <?php $sql3="SELECT DISTINCT category FROM game";
+        $req3 = $db->prepare($sql3);
+        $req3->execute();
+        $liste3 = $req3->fetchAll();
+        if ($req3->execute())
+        {   
+            
+            foreach($liste3 as $row3)
+            {   ?>
+                <li><a href="store.php?cat=<?php echo $row3['category'] ;?>"><?php echo $row3['category']; ?></a></li>
+                <?php
+            }
+        } 
+        ?>
+            </ul>
     </div>
 </div>
 
@@ -874,10 +885,10 @@ ini_set('display_errors', 1);
         { ?>
             <div class="nk-widget-content">
                 <div class="nk-widget-post">
-                    <a href="store-product.html" class="nk-post-image">
+                    <a href="store-product.php?id_game=<?PHP echo $row['id_game']; ?>" class="nk-post-image">
                         <?PHP image($row3['id_game']);?>
                     </a>
-                    <h3 class="nk-post-title"><a href="store-product.html"><?PHP echo $row3['name']; ?></a></h3>
+                    <h3 class="nk-post-title"><a href="store-product.php?id_game=<?PHP echo $row['id_game']; ?>"><?PHP echo $row3['name']; ?></a></h3>
                     
             <span class="nk-product-rating">
                 <span class="nk-product-rating-front" style="width:<?PHP echo $row3['score']*20; ?>%;">

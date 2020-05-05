@@ -229,27 +229,26 @@ ini_set('display_errors', 1);
 
                             <li >
                                 <a href="index.php">
-                Home
-                
-            </a>
-                            </li>
-                            <li  class="active" >
-                                <a href="store.php">
-                Store
-                
-            </a>
-                            <li>
-                                <a href="contact.html">
-                Contact
-                
-            </a>
+                                    Home
+                                </a>
+                                </li>
+                                <li  class="active" >
+                                    <a href="store.php">
+                                    Store
+                                    
+                                </a>
+                                    <li>
+                                        <a href="contact.html">
+                                    Contact
+                            
+                                </a>
 
-                            </li>
-                            <li>
-                                <a href="gallery.html">
-                About Us
-            
-            </a>
+                                    </li>
+                                    <li>
+                                        <a href="gallery.html">
+                                    About Us
+                                
+                                </a>
                             </li>
                         </ul>
                         <ul class="nk-nav nk-nav-right nk-nav-icons">
@@ -287,7 +286,7 @@ ini_set('display_errors', 1);
         <div id="nk-nav-mobile" class="nk-navbar nk-navbar-side nk-navbar-right-side nk-navbar-overlay-content d-lg-none">
             <div class="nano">
                 <div class="nano-content">
-                    <a href="index.html" class="nk-nav-logo">
+                    <a href="index.php" class="nk-nav-logo">
                         <img src="assets/images/logo.svg" alt="" width="120">
                     </a>
                     <div class="nk-navbar-mobile-content">
@@ -376,51 +375,52 @@ ini_set('display_errors', 1);
     <!-- START: Products Filter -->
     <div class="nk-gap-2"></div>
     <div class="row vertical-gap">
-        <div class="col-lg-8">
-            <div class="row vertical-gap">
-                <div class="col-md-4">
-                    <select class="form-control">
-                        <option value="" disabled selected>Select Platform</option>
-                        <option value="ps4">PS4</option>
-                        <option value="xbox">Xbox 1</option>
-                        <option value="pc">PC</option>
-                    </select>
-                </div>
-                <div class="col-md-8">
-                    <div class="nk-input-slider-inline">
-                        <div class="nk-input-slider">
-                            <div class="nk-input-slider-content text-white">
-                                PRICE:
-                                <strong class="text-main-1">€ <span class="nk-input-slider-value-0"></span></strong>
-                                -
-                                <strong class="text-main-1">€ <span class="nk-input-slider-value-1"></span></strong>
-                            </div>
-                            <div class="nk-input-slider-input">
-                                <input
-                                        type="text"
-                                        name="price-filter"
-                                        data-slider-min="0"
-                                        data-slider-max="1800"
-                                        data-slider-step="1"
-                                        data-slider-value="[200, 1200]"
-                                        data-slider-tooltip="hide"
-                                >
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-white">Apply</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <form  class="col-lg-4" >
-                <div class="input-group" > 
+        
+                
 
-                    <input type="text" class="form-control" name="search" placeholder="Search something..." action="favourite.php">
-                    <button class="nk-btn nk-btn-color-main-1"><span class="ion-search"></span></button>
+                <form class="col-lg-4" method="get">
+                <div class="input-group"> 
+                    <select class="form-control" name="cat">
+                          <option value="" disabled selected>Select Category</option>
+                          <option  value="Action">Action</option>
+                          <option  value="Sports">Sports</option>
+                          <option  value="Racing">Racing</option>
+                          <option  value="Horror">Horror</option>
+                          <option  value="Strategy">Strategy</option>
+                          <option  value="Adventure">Adventure</option>
+                          <option  value="Sci Fi">Sci Fi</option>
+                          <option  value="RPG">RPG</option>
+                    </select>
+                    <button href="?apply=<?php echo $cat; ?>" class="nk-btn nk-btn-rounded nk-btn-color-white" type="submit">Apply</button>
                 </div> 
-        </form>
+                
+                </form>
+
+                <form class="col-lg-4">
+                <div class="input-group"> 
+                    <select class="form-control" name="sort">
+                        <option value="" disabled selected>Sort By</option>
+                        <option value="1">Score ↑</option>
+                        <option value="2">Score ↓</option>
+                        <option value="3">Price ↑</option>
+                        <option value="4">Price ↓</option> 
+                        <option value="5">Name ↑</option>
+                        <option value="6">Name ↓</option>
+                        <option value="7">Newest</option>
+                        <option value="8">Oldest</option>
+                    </select>
+                
+                    <button href="?apply=<?php echo $sort; ?>" class="nk-btn nk-btn-rounded nk-btn-color-white" type="submit">Apply</button>
+                </div> 
+                
+                </form>
+            
+                <form  class="col-lg-4" >
+                        <div class="input-group" > 
+                            <input type="text" class="form-control" name="search" placeholder="Search something..." action="favourite.php">
+                            <button class="nk-btn nk-btn-color-main-1"><span class="ion-search"></span></button>
+                        </div> 
+                </form>
     </div>
 
     <!-- PLAT -->
@@ -443,10 +443,29 @@ ini_set('display_errors', 1);
                         echo'<img src="data:image/jpeg;base64,'.base64_encode($row['name'] ).'" />';
                         }
                     }
-            if (isset($_GET['plat']))
+            if (isset($_GET['cat'])) {
+            $c=$_GET['cat'];
+            $sql="select * From game WHERE category LIKE '$c';";}
+            elseif (isset($_GET['search'])) {
+            $s=$_GET['search'];
+            $sql="select * From game WHERE name LIKE '$s';";}
+            elseif (isset($_GET['plat']))
             {
-                $pl=$_GET['plat'];
-            $sql="select * From game where id_plat='$pl'";
+            $pl=$_GET['plat'];
+            $sql="select * From game where id_plat='$pl'";}
+            elseif (isset($_GET['sort']))
+            {
+                $by=$_GET['sort'];
+                if($by==1)$sql="select * From game order by score asc";
+                elseif ($by==2)$sql="select * From game order by score desc";
+                elseif ($by==3)$sql="select * From game order by price asc";
+                elseif ($by==4)$sql="select * From game order by price desc";
+                elseif ($by==5)$sql="select * From game order by name asc";
+                elseif ($by==6)$sql="select * From game order by name desc";
+                elseif ($by==7)$sql="select * From game order by release_date desc";
+                elseif ($by==8)$sql="select * From game order by release_date asc";
+            }
+            else $sql="select * From game";
             $db = config::getConnexion();
             $req = $db->prepare($sql);
             $req->execute();
@@ -459,7 +478,7 @@ ini_set('display_errors', 1);
                 ?>
                     <div class="col-lg-6">
                          <div class="nk-product-cat-2">
-                        <a class="nk-product-image" href="store-product.html">
+                        <a class="nk-product-image" href="store-product.php?id_game=<?PHP echo $row['id_game']; ?>">
                          <?PHP image($row['id_game']);?>
                             </a>
                         <div class="nk-product-cont">
@@ -486,134 +505,26 @@ ini_set('display_errors', 1);
                     <div class="nk-gap-1"><?PHP echo $row['release_date']; ?></div>
                     <div class="nk-gap-1"><?PHP echo $row['category']; ?></div>
                     <div class="nk-gap-1"></div>
-                    <div class="nk-product-price"> <?PHP echo $row['price']; ?>$</div>
+                <div class="nk-product-price"><?php 
+                if( $row['solde'] >0)
+                {?>
+                    &nbsp;<strike style=" background:black;  color: red;"> <?php echo $row['price']; ?> $ </strike>&nbsp; <?php echo $row['solde']; ?> $ !!
+                <?php
+                }
+                else {echo'&nbsp;'; echo $row['price']; echo'$';}
+                ?> </div>
+                    <div class="nk-gap-1"></div>
                     <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Add to Cart</a>
                 </div>
             </div>
         </div>
             
-    <!-- SEARCH -->   
-            <?PHP
-            }
-        }
 
-        else {
         
-                if (isset($_GET['search'])) {
-                    $s=$_GET['search'];
-                    $sql22="select * From game WHERE name LIKE '$s';";
-                        $db22 = config::getConnexion();
-                        $req22 = $db22->prepare($sql22);
-                        if ($req22->execute())
-                        {
-                        $liste22 = $req22->fetchAll();
-                        $row_count=0;
-                 
-
-                        foreach($liste22 as $row){
-                            
-                            ?><div class="col-lg-6">
-                                     <div class="nk-product-cat-2">
-                                    <a class="nk-product-image" href="store-product.html">
-                                     <?PHP image($row['id_game']);?>
-                                        </a>
-
-                                    <div class="nk-product-cont">
-                                    <h3 class="nk-product-title h5"><a href="store-product.php?id_game=<?PHP echo $row['id_game']; ?>"><?PHP echo $row['name']; ?></a></h3>
-                                    <div class="nk-gap-1"></div>
-
-                                    <span class="nk-product-rating">
-                                    <span class="nk-product-rating-front" style="width:<?PHP echo $row['score']*20; ?>% ;">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="nk-product-rating-back">
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </span>
-                                </span>
-                                <div class="nk-gap-1"><?PHP $y=$row['id_plat']; if($y==1)echo "PC"; elseif ($y==2) echo "PS4"; else echo "Xbox";?></div>
-                                <div class="nk-gap-1"><?PHP echo $row['release_date']; ?></div>
-                                <div class="nk-gap-1"><?PHP echo $row['category']; ?></div>
-                                <div class="nk-gap-1"></div>
-                                <div class="nk-product-price"> <?PHP echo $row['price']; ?>$</div>
-                                <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                                <?php
-                                
-                        }
-                    }
-                }
-                    else
-                    {
-                        ?>
-                    
-                    
-<!-- END: Products Filter -->
-
-
-                        <?PHP
-                        $sql="select * From game";
-                        $db = config::getConnexion();
-                        $req = $db->prepare($sql);
-                        $req->execute();
-                        $row_count=0;
-                        
-                        $liste = $req->fetchAll();
-
-                        foreach($liste as $row){
-                            
-                            ?>
-                                <div class="col-lg-6">
-                                     <div class="nk-product-cat-2">
-                                    <a class="nk-product-image" href="store-product.html">
-                                     <?PHP image($row['id_game']);?>
-                                        </a>
-                                    <div class="nk-product-cont">
-                                    <h3 class="nk-product-title h5"><a href="store-product.php?id_game=<?PHP echo $row['id_game']; ?>"><?PHP echo $row['name']; ?></a></h3>
-                                    <div class="nk-gap-1"></div>
-
-                                    <span class="nk-product-rating">
-                                    <span class="nk-product-rating-front" style="width:<?PHP echo $row['score']*20; ?>% ;">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                    <span class="nk-product-rating-back">
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </span>
-                                </span>
-                                <div class="nk-gap-1"><?PHP $y=$row['id_plat']; if($y==1)echo "PC"; elseif ($y==2) echo "PS4"; else echo "Xbox";?></div>
-                                <div class="nk-gap-1"><?PHP echo $row['release_date']; ?></div>
-                                <div class="nk-gap-1"><?PHP echo $row['category']; ?></div>
-                                <div class="nk-gap-1"></div>
-                                <div class="nk-product-price"> <?PHP echo $row['price']; ?>$</div>
-                                <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                        
-                            
-                        <?PHP
-                        }
-                    }
+        <?PHP
             }
             
-                ?>
+        ?>
                          
         
         
