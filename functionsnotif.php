@@ -1,6 +1,6 @@
 <?php
 
-    define('DBINFO', 'mysql:host=localhost;dbname=game_empire_final');
+    define('DBINFO', 'mysql:host=localhost;dbname=game_empire1');
     define('DBUSER','root');
     define('DBPASS','');
 
