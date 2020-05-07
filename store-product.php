@@ -151,7 +151,7 @@ include("functionsnotif.php");
             <a class="nav-link" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><h6> Notifications</h6>
            <h6>  <?php
               echo $_SESSION['username'];
-                $query = "SELECT * from `react`  order by `date` DESC";
+                $query = "SELECT re.username as user ,re.date,R.username,re.type FROM `reviews` R inner join react re where R.id_rev=re.id_rev  order by `date` DESC";
                  $nombre=0;
                  if(count(fetchAll($query))>0){
                      foreach(fetchAll($query) as $i){
@@ -159,20 +159,21 @@ include("functionsnotif.php");
               <a>
               
                 <?php 
+              
                 if($_SESSION['username']==$i["username"]){
                    
                
                 if($i['type']=='1'){
-                    echo ucfirst($i['username'])." Liked your post.";
+                    echo ucfirst($i['user'])." Liked your post.";
                     $nombre++;
                 }else if($i['type']=='2'){
-                    echo ucfirst($i['username'])." reacted  on your post.";
+                    echo ucfirst($i['user'])." reacted  on your post.";
                     $nombre++;
                 }else if($i['type']=='3'){
-                    echo ucfirst($i['username'])." reacted on your post.";
+                    echo ucfirst($i['user'])." reacted on your post.";
                     $nombre++;
                 }else if($i['type']=='4'){
-                    echo ucfirst($i['username'])." reacted on your post.";
+                    echo ucfirst($i['user'])." reacted on your post.";
                     $nombre++;
                 }
 
