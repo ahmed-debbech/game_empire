@@ -536,19 +536,16 @@ session_start();
                 <div class="nk-widget">
                     <h4 class="nk-widget-title"><span class="text-main-1">Report</span> Problem</h4>
                     <div class="nk-widget-content">
-                        <form action="https://html.nkdev.info/goodgames/php/ajax-contact-form.php" class="nk-form nk-form-ajax">
+                        <form action="core/ajoutReport.php" method='post' class="nk-form nk-form-ajax">
                             <div class="row vertical-gap sm-gap">
                                 <div class="col-md-6">
                                     <input type="text" class="form-control required" name="topic" placeholder="Topic *">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="datetime" class="form-control required" name="name" placeholder="Date *">
                                 </div>
                             </div>
                             <div class="nk-gap"></div>
                             <textarea class="form-control required" name="message" rows="5" placeholder="Message *"></textarea>
                             <div class="nk-gap-1"></div>
-                            <button class="nk-btn nk-btn-rounded nk-btn-color-white">
+                            <button type="submit" class="nk-btn nk-btn-rounded nk-btn-color-white">
                                 <span>Send</span>
                                 <span class="icon"><i class="ion-paper-airplane"></i></span>
                             </button>
