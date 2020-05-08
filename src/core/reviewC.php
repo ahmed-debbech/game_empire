@@ -17,11 +17,37 @@ class reviewC{
         }
         return true;
     }
+    private function checkfForBadWords($rev){
+        $words = array();
+        $cont = $rev->getContent();
+        $word = "";
+        $new = "";
+        $wordStart = true;
+        $i=0;
+        do{
+            while($cont[$i] != ' ' && strlen($cont) >= $i){
+                $word .= $cont[$i];
+                $i++;
+            }
+            if($word != ""){
+                $new .= $word;
+                $word = "";
+                $new .= $cont[$i];
+            }else{
+                $new .= $cont[$i];
+            }
+            $i++;
+        }while(strlen($cont) >= $i);
+        return $new;
+    }
     public function addReview($rev){
         $id_rev = 0;
         do{
             $id_rev = rand(100,99999);
         }while(!$this->isUnique($id_rev));
+        //check for bad words in review
+        $rev->setContent($this->checkfForBadWords($rev));
+
         $sql="insert into reviews (id_rev,username,nb_stars,content,date,title,id_game) values (:id_rev,:username,:nb_stars,:content,curdate(),:title,:id_game)";
         $db = config::getConnexion();
         //$db->query($sql);
