@@ -549,7 +549,7 @@ session_start();
                                 <span>Send</span>
                                 <span class="icon"><i class="ion-paper-airplane"></i></span>
                             </button>
-                            <button type="submit" class="nk-btn nk-btn-rounded nk-btn-color-white">
+                            <input type="button" onclick="window.location='reportview.php';" class="nk-btn nk-btn-rounded nk-btn-color-white">
                                 <span>See all reports </span>
                                 <span class="icon"><i class="ion-paper-airplane"></i></span>
                             </button>

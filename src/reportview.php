@@ -146,8 +146,16 @@ session_start();
                         <span class="fa fa-user"></span>
                     </a>
                 </li>
-                
-                
+                <?
+                if(isset($_SESSION["username"]))  
+                {  
+                ?>  
+                     <li>Welcome, <?php echo $_SESSION["username"]; ?>
+                     <a href="core/logout.php" id="logout">Logout</a> </li>
+
+                <?php  
+                }
+                ?>  
                 <li>
                     <span class="nk-cart-toggle">
                         <span class="fa fa-shopping-cart"></span>
@@ -466,9 +474,353 @@ session_start();
         
     </ul>
 </div>
+<table border="1px">
+    <th>ID</th>
+    <th>Username</td>
+    <th>Topic</th>
+    <th>Date</th>
+    <th>Message</th>
+    <?php
+     function getReports(){
+        $con = mysqli_connect("127.0.0.1", "root", "", "game_empire");
+        $sql1="select * from report where username='".$_SESSION["username"]."'";
+        if($result = mysqli_query($con, $sql1)){
+            return $result;
+        }
+        return "No reports";
+    }
+    $list = getReports();
+     foreach($list as $row){
+        ?>
+        <tr>
+        <?
+        echo "<td>";
+        echo $row["id_rep"];
+        echo "</td>";
+        echo "<td>";
+        echo $row["username"];
+        echo "</td>";
+        echo "<td>";
+        echo $row["topic"];
+        echo "</td>";
+        echo "<td>";
+        echo $row["date"];
+        echo "</td>";
+        echo "<td>";
+        echo $row["text"];
+        echo "</td>";
+        ?>
+        </tr>
+        <?
+    }
+    ?>
+</table>
+<div class="nk-gap-1"></div>
+<!-- END: Breadcrumbs -->
+
+        
+
+        
+    <div class="container">
+        <div class="row vertical-gap">
+            
+        </div>
+
+        <!-- START: Decorated Headings -->
+        <!-- END: Decorated Headings -->
+
+        
+        <div class="row vertical-gap"></div>
+            
+            
+        </div>
+
+        <div class="nk-gap-2"></div>
+        <div class="row vertical-gap">
+            
+    
+        </div>
+        <div class="nk-gap-1"></div>
+        <!-- START: Buttons -->
+        
+        
+        <!-- END: Features -->
+
+        <!--
+            START: Countdown
+
+            Additional Classes:
+                .nk-countdown-center
+                .nk-countdown-right
+        -->
+        
+
+
+        
+            <!-- START: Footer -->
+<footer class="nk-footer">
+
+    <div class="container">
+        <div class="nk-gap-3"></div>
+        <div class="row vertical-gap">
+            
+            <div class="col-md-6">
+                <div class="nk-widget">
+                    <h4 class="nk-widget-title"><span class="text-main-1">Latest</span> Posts</h4>
+                    <div class="nk-widget-content">
+                        <div class="row vertical-gap sm-gap">
+                            
+                            <div class="col-lg-6">
+                                <div class="nk-widget-post-2">
+                                    <a href="blog-article.html" class="nk-post-image">
+                                        <img src="assets/images/post-1-sm.jpg" alt="">
+                                    </a>
+                                    <div class="nk-post-title"><a href="blog-article.html">Smell magic in the air. Or maybe barbecue</a></div>
+                                    <div class="nk-post-date">
+                                        <span class="fa fa-calendar"></span> Sep 18, 2018
+                                        <span class="fa fa-comments"></span> <a href="#">4</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="nk-widget-post-2">
+                                    <a href="blog-article.html" class="nk-post-image">
+                                        <img src="assets/images/post-2-sm.jpg" alt="">
+                                    </a>
+                                    <div class="nk-post-title"><a href="blog-article.html">Grab your sword and fight the Horde</a></div>
+                                    <div class="nk-post-date">
+                                        <span class="fa fa-calendar"></span> Sep 5, 2018
+                                        <span class="fa fa-comments"></span> <a href="#">7</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+        <div class="nk-gap-3"></div>
+    </div>
+
+    <div class="nk-copyright">
+        <div class="container">
+            <div class="nk-copyright-left">
+                Copyright &copy; 2018 <a href="https://1.envato.market/nk-profile" target="_blank">nK</a>
+            </div>
+            <div class="nk-copyright-right">
+                <ul class="nk-social-links-2">
+                    <li><a class="nk-social-rss" href="#"><span class="fa fa-rss"></span></a></li>
+                    <li><a class="nk-social-twitch" href="#"><span class="fab fa-twitch"></span></a></li>
+                    <li><a class="nk-social-steam" href="#"><span class="fab fa-steam"></span></a></li>
+                    <li><a class="nk-social-facebook" href="#"><span class="fab fa-facebook"></span></a></li>
+                    <li><a class="nk-social-google-plus" href="#"><span class="fab fa-google-plus"></span></a></li>
+                    <li><a class="nk-social-twitter" href="https://twitter.com/nkdevv" target="_blank"><span class="fab fa-twitter"></span></a></li>
+                    <li><a class="nk-social-pinterest" href="#"><span class="fab fa-pinterest-p"></span></a></li>
+
+                    <!-- Additional Social Buttons
+                        <li><a class="nk-social-behance" href="#"><span class="fab fa-behance"></span></a></li>
+                        <li><a class="nk-social-bitbucket" href="#"><span class="fab fa-bitbucket"></span></a></li>
+                        <li><a class="nk-social-dropbox" href="#"><span class="fab fa-dropbox"></span></a></li>
+                        <li><a class="nk-social-dribbble" href="#"><span class="fab fa-dribbble"></span></a></li>
+                        <li><a class="nk-social-deviantart" href="#"><span class="fab fa-deviantart"></span></a></li>
+                        <li><a class="nk-social-flickr" href="#"><span class="fab fa-flickr"></span></a></li>
+                        <li><a class="nk-social-foursquare" href="#"><span class="fab fa-foursquare"></span></a></li>
+                        <li><a class="nk-social-github" href="#"><span class="fab fa-github"></span></a></li>
+                        <li><a class="nk-social-instagram" href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a class="nk-social-linkedin" href="#"><span class="fab fa-linkedin"></span></a></li>
+                        <li><a class="nk-social-medium" href="#"><span class="fab fa-medium"></span></a></li>
+                        <li><a class="nk-social-odnoklassniki" href="#"><span class="fab fa-odnoklassniki"></span></a></li>
+                        <li><a class="nk-social-paypal" href="#"><span class="fab fa-paypal"></span></a></li>
+                        <li><a class="nk-social-reddit" href="#"><span class="fab fa-reddit"></span></a></li>
+                        <li><a class="nk-social-skype" href="#"><span class="fab fa-skype"></span></a></li>
+                        <li><a class="nk-social-soundcloud" href="#"><span class="fab fa-soundcloud"></span></a></li>
+                        <li><a class="nk-social-slack" href="#"><span class="fab fa-slack"></span></a></li>
+                        <li><a class="nk-social-tumblr" href="#"><span class="fab fa-tumblr"></span></a></li>
+                        <li><a class="nk-social-vimeo" href="#"><span class="fab fa-vimeo"></span></a></li>
+                        <li><a class="nk-social-vk" href="#"><span class="fab fa-vk"></span></a></li>
+                        <li><a class="nk-social-wordpress" href="#"><span class="fab fa-wordpress"></span></a></li>
+                        <li><a class="nk-social-youtube" href="#"><span class="fab fa-youtube"></span></a></li>
+                    -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- END: Footer -->
+
+        
+    </div>
+
+    
+
+    
+        <!-- START: Page Background -->
+
+    <img class="nk-page-background-top" src="assets/images/bg-top.png" alt="">
+    <img class="nk-page-background-bottom" src="assets/images/bg-bottom.png" alt="">
+
+<!-- END: Page Background -->
+
+    
+
+    
+        <!-- START: Search Modal -->
+<div class="nk-modal modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="ion-android-close"></span>
+                </button>
+
+                <h4 class="mb-0">Search</h4>
+
+                <div class="nk-gap-1"></div>
+                <form action="#" class="nk-form nk-form-style-1">
+                    <input type="text" value="" name="search" class="form-control" placeholder="Type something and press Enter" autofocus>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Search Modal -->
+    
+
+    
+              <!-- START: Login Modal -->
+<div class="nk-modal modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="ion-android-close"></span>
+                </button>
+
+                <h4 class="mb-0"><span class="text-main-1">Sign</span> In</h4>
+
+                <div class="nk-gap-1"></div>
+                <form action="core/login.php" method="post" class="nk-form text-white">
+                <div class="row vertical-gap">
+                                <div class="col-md-6">
+                                    Use email and password:
+
+                                    <div class="nk-gap"></div>
+                                    <input type="text" value="" name="username" id="username" class=" form-control" placeholder="Username">
+
+                                    <div class="nk-gap"></div>
+                                    <input type="password" value="" name="password" id="password" class="required form-control" placeholder="Password">
+                                </div>
+                                <div class="col-md-6">
+                                    Or social account:
+
+                                    <div class="nk-gap"></div>
+
+                                    <ul class="nk-social-links-2">
+                                        <li><a class="nk-social-facebook" href="#"><span class="fab fa-facebook"></span></a></li>
+                                        <li><a class="nk-social-google-plus" href="#"><span class="fab fa-google-plus"></span></a></li>
+                                        <li><a class="nk-social-twitter" href="#"><span class="fab fa-twitter"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                                <div class="nk-gap-1"></div>
+                                <div class="row vertical-gap">
+                                    <div class="col-md-6">
+                                        <input type="submit" class="nk-btn nk-btn-rounded nk-btn-color-white nk-btn-block" value="Sign In" name="login_button" id="login_button">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mnt-5">
+                                            <small><a href="#">Forgot your password?</a></small>
+                                        </div>
+                                        <div class="mnt-5">
+                                            <small><a href="createacc.html">Not a member? Sign up</a></small>
+                                        </div>
+                                    </div>
+                                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Login Modal -->
 
 
     
+
+    
+<!-- START: Scripts -->
+
+<!-- Object Fit Polyfill -->
+<script src="assets/vendor/object-fit-images/dist/ofi.min.js"></script>
+
+<!-- GSAP -->
+<script src="assets/vendor/gsap/src/minified/TweenMax.min.js"></script>
+<script src="assets/vendor/gsap/src/minified/plugins/ScrollToPlugin.min.js"></script>
+
+<!-- Popper -->
+<script src="assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Sticky Kit -->
+<script src="assets/vendor/sticky-kit/dist/sticky-kit.min.js"></script>
+
+<!-- Jarallax -->
+<script src="assets/vendor/jarallax/dist/jarallax.min.js"></script>
+<script src="assets/vendor/jarallax/dist/jarallax-video.min.js"></script>
+
+<!-- imagesLoaded -->
+<script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+
+<!-- Flickity -->
+<script src="assets/vendor/flickity/dist/flickity.pkgd.min.js"></script>
+
+<!-- Photoswipe -->
+<script src="assets/vendor/photoswipe/dist/photoswipe.min.js"></script>
+<script src="assets/vendor/photoswipe/dist/photoswipe-ui-default.min.js"></script>
+
+<!-- Jquery Validation -->
+<script src="assets/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+
+<!-- Jquery Countdown + Moment -->
+<script src="assets/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
+<script src="assets/vendor/moment/min/moment.min.js"></script>
+<script src="assets/vendor/moment-timezone/builds/moment-timezone-with-data.min.js"></script>
+
+<!-- Hammer.js -->
+<script src="assets/vendor/hammerjs/hammer.min.js"></script>
+
+<!-- NanoSroller -->
+<script src="assets/vendor/nanoscroller/bin/javascripts/jquery.nanoscroller.js"></script>
+
+<!-- SoundManager2 -->
+<script src="assets/vendor/soundmanager2/script/soundmanager2-nodebug-jsmin.js"></script>
+
+<!-- Seiyria Bootstrap Slider -->
+<script src="assets/vendor/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+
+<!-- Summernote -->
+<script src="assets/vendor/summernote/dist/summernote-bs4.min.js"></script>
+
+<!-- nK Share -->
+<script src="assets/plugins/nk-share/nk-share.js"></script>
+
+<!-- GoodGames -->
+<script src="assets/js/goodgames.min.js"></script>
+<script src="assets/js/goodgames-init.js"></script>
+<!-- END: Scripts -->
+
+
+    
+</body>
+
+<!-- Mirrored from html.nkdev.info/goodgames/elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 12 Apr 2020 00:35:29 GMT -->
+</html>
+
 </body>
 
 <!-- Mirrored from html.nkdev.info/goodgames/elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 12 Apr 2020 00:35:29 GMT -->
