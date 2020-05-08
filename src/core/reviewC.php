@@ -18,6 +18,7 @@ class reviewC{
         return true;
     }
     private function checkfForBadWords($rev){
+        $con = mysqli_connect("127.0.0.1", "root", "", "game_empire");
         $words = array();
         $cont = $rev->getContent();
         $word = "";
@@ -30,6 +31,16 @@ class reviewC{
                 $i++;
             }
             if($word != ""){
+                $sql1="select * from bad_words where word='".$word."'";
+                if($result = mysqli_query($con, $sql1)){
+                    if(mysqli_num_rows($result) > 0){
+                        $sz = strlen($word);
+                        $word = "";
+                        for($j=0; $j<=$sz-1; $j++){
+                            $word .= "*";
+                        }
+                    }
+                }
                 $new .= $word;
                 $word = "";
                 $new .= $cont[$i];
