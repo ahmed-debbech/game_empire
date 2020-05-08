@@ -282,8 +282,10 @@
                     <div class="records--header">
                         <div class="title fa-shopping-bag">
                             <h3 class="h3">Manage Blacklisted words in reviews
-                            <input type="text" name="text" class="form-control" placeholder="word..." required>
-                             <a href="core/addword.php" class="btn btn-sm btn-outline-info">Add new word</a></h3>
+                            <form action='core/addword.php' method='get'>
+                                <input type="text" name="newword" class="form-control" placeholder="word..." required>
+                                <input type="submit" class="btn btn-sm btn-outline-info" value='Add new word'></h3>
+                            </form>
                         </div>
                         <div class="actions">
                             <form action="<?php "review.php?q=1"?>" method='get' class="search flex-wrap flex-md-nowrap">
