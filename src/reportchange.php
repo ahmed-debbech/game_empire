@@ -101,10 +101,11 @@
                     <div class="nk-gap-2"></div>
 
                     <!-- START: MailChimp Signup Form -->
-                    <form action="http://nkdev.us11.list-manage.com/subscribe/post?u=d433160c0c43dcf8ecd52402f&amp;id=68d0448ee3" method="post" class="nk-mchimp validate" target="_blank">
+                    <form action="core/modifierReport.php" method="get" class="nk-mchimp validate" target="_blank">
                         <div class="input-group">
-                            <input type="email" value="" name="EMAIL" class="required email form-control" placeholder="Type new report">
-                            <button class="nk-btn nk-btn-rounded nk-btn-color-white ml-20">Modify</button>
+                            <input type="text" value="" name="text" class="required email form-control" placeholder="Type new report">
+                                <input name="id" type="hidden" value="<?php echo $_GET["id"];?>">
+                            <button type="submit" class="nk-btn nk-btn-rounded nk-btn-color-white ml-20">Modify</button>
                         </div>
                         <div class="nk-form-response-success"></div>
                         <div class="nk-form-response-error"></div>
