@@ -509,6 +509,24 @@ session_start();
         echo "<td>";
         echo $row["text"];
         echo "</td>";
+        echo "<td>";
+        echo "<form action='core/supprimerReport.php' method='get'>";
+        echo "<input name='id' type='hidden' value='".$row["id_rep"]."'>";
+        echo "<button type='submit' class='nk-btn nk-btn-rounded nk-btn-color-dark-3'>
+        <span>Delete</span>
+        <span class='icon'><i class='ion-paper-airplane'></i></span>
+        </button>";
+        echo "</form>";
+        echo "</td>";
+        echo "<td>";
+        echo "<form action='core/modifierReport.php' method='get'>";
+        echo "<input name='id' type='hidden' value='".$row["id_rep"]."'>";
+        echo "<button type='submit' class='nk-btn nk-btn-rounded nk-btn-color-dark-3'>
+        <span>Modify</span>
+        <span class='icon'><i class='ion-paper-airplane'></i></span>
+        </button>";
+        echo "</form>";
+        echo "</td>";
         ?>
         </tr>
         <?
