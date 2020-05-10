@@ -7,7 +7,30 @@ use PHPMailer\PHPMailer\Exception;
 
 // Load Composer's autoloader
 require 'vendor/autoload.php';
-
+function getRevdate($id){
+    $sql1="select * from reviews where id_rev='".$id."'";
+         $con = mysqli_connect("127.0.0.1", "root", "", "game_empire");
+         $result = mysqli_query($con, $sql1);
+         if(mysqli_num_rows($result) > 0){
+            return mysqli_fetch_object($result)->date;
+         }
+}
+function getReact($x){
+    switch ($x) {
+        case 1:
+            return "Like";
+            break;
+        case 2: return "Love";
+        break;
+        case 3: return "Hot";
+        break;
+        case 4: return "Sad";
+        break;
+        default:
+            # code...
+            break;
+    }
+}
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
@@ -26,19 +49,11 @@ try {
     $mail->setFrom('gameempire72@gmail.com', 'Game Empire');
     $mail->addAddress('debbech.ahmed@gmail.com', "Ahmed Debbech");     // Add a recipient
 
-//    $mail->addReplyTo('info@example.com', 'Information');
-  //  $mail->addCC('cc@example.com');
-   // $mail->addBCC('bcc@example.com');
-
-    // Attachments
-    //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $mail->Subject = 'React notification from Game Empire';
+    $mail->Body    = "The user ".$like->getUsername(). " rected with ".getReact($like->getType())." on your review ".getRevDate($like->getIdRev());
+    $mail->AltBody = "The user ".$like->getUsername(). " rected with ".getReact($like->getType())." on your review ".getRevDate($like->getIdRev());
 
     $mail->send();
     echo 'Message has been sent';

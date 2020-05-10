@@ -24,7 +24,7 @@ if(checkIfLogged() == true){
         $likeC->changeReact($like, $_GET["id_rev"], $_SESSION["username"]);
         $likeC->sendMail($like);
     }
-   // header("Location: ". $_SERVER['HTTP_REFERER']);
+    header("Location: ". $_SERVER['HTTP_REFERER']);
 }else{
     echo "not logged";
 }

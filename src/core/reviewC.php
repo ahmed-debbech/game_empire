@@ -115,6 +115,7 @@ class reviewC{
         $sql = "select * from reviews where id_game='".$id_game."'";
         $m =0;
             $res = mysqli_query($link,$sql, $m); 
+            
             $num= mysqli_num_rows($res);
 
         return $num;
