@@ -1,0 +1,11 @@
+/* Style buttons */
+.react{
+  border: none; /* Remove borders */
+  opacity: 50%;
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+/* Darker background on mouse-over */
+.react:hover {
+  background-color: RoyalBlue;
+}

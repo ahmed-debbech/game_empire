@@ -17,11 +17,48 @@ class reviewC{
         }
         return true;
     }
+    private function checkfForBadWords($rev){
+        $con = mysqli_connect("127.0.0.1", "root", "", "game_empire1");
+        $words = array();
+        $cont = $rev->getContent();
+        $word = "";
+        $new = "";
+        $wordStart = true;
+        $i=0;
+        do{
+            while($cont[$i] != ' ' && strlen($cont) >= $i){
+                $word .= $cont[$i];
+                $i++;
+            }
+            if($word != ""){
+                $sql1="select * from bad_words where word='".$word."'";
+                if($result = mysqli_query($con, $sql1)){
+                    if(mysqli_num_rows($result) > 0){
+                        $sz = strlen($word);
+                        $word = "";
+                        for($j=0; $j<=$sz-1; $j++){
+                            $word .= "*";
+                        }
+                    }
+                }
+                $new .= $word;
+                $word = "";
+                $new .= $cont[$i];
+            }else{
+                $new .= $cont[$i];
+            }
+            $i++;
+        }while(strlen($cont) >= $i);
+        return $new;
+    }
     public function addReview($rev){
         $id_rev = 0;
         do{
             $id_rev = rand(100,99999);
         }while(!$this->isUnique($id_rev));
+        //check for bad words in review
+        $rev->setContent($this->checkfForBadWords($rev));
+
         $sql="insert into reviews (id_rev,username,nb_stars,content,date,title,id_game) values (:id_rev,:username,:nb_stars,:content,curdate(),:title,:id_game)";
         $db = config::getConnexion();
         //$db->query($sql);
@@ -78,6 +115,7 @@ class reviewC{
         $sql = "select * from reviews where id_game='".$id_game."'";
         $m =0;
             $res = mysqli_query($link,$sql, $m); 
+            
             $num= mysqli_num_rows($res);
 
         return $num;

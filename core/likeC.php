@@ -16,6 +16,9 @@ class likeC{
         }
         return true;
     }
+    public function sendMail($like){
+        include_once("send_mail.php");
+    }
     public function addLike($like){
         $id_like = 0;
         do{
