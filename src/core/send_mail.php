@@ -15,6 +15,14 @@ function getRevdate($id){
             return mysqli_fetch_object($result)->date;
          }
 }
+function getEmail($st){
+    $sql1="select * from reviews INNER JOIN user ON user.username=reviews.username where id_rev='".$st."'";
+    $con = mysqli_connect("127.0.0.1", "root", "", "game_empire");
+    $result = mysqli_query($con, $sql1);
+    if(mysqli_num_rows($result) > 0){
+       return mysqli_fetch_object($result)->email;
+    }
+}
 function getReact($x){
     switch ($x) {
         case 1:
@@ -47,7 +55,7 @@ try {
 
     //Recipients
     $mail->setFrom('gameempire72@gmail.com', 'Game Empire');
-    $mail->addAddress('debbech.ahmed@gmail.com', "Ahmed Debbech");     // Add a recipient
+    $mail->addAddress(getEmail($like->getIdRev()), "Ahmed Debbech");     // Add a recipient
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
