@@ -142,9 +142,11 @@ include("functionsnotif.php");
                         <ul class="nk-contacts-icons">
                         <li >
                             <span class="nk-cart-toggle">
+                        <? if(isset($_SESSION["username"]) ==true){ ?>
                         <span class="fas fa-fw fa-bell"></span>
-                        <span class="nk-badge">1 </span>
+                        <span class="nk-badge"></span>
                         </span>
+                       <? } ?>
                         <div class="nk-cart-dropdown">
                     <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
@@ -162,7 +164,7 @@ include("functionsnotif.php");
               
                 if($_SESSION['username']==$i["username"]){
                    
-               
+                    if($_SESSION["username"] != $i["user"]){
                 if($i['type']=='1'){
                     echo ucfirst($i['user'])." Liked your post.";
                     $nombre++;
@@ -178,13 +180,13 @@ include("functionsnotif.php");
                 }
 
                 ?>               
-                <h6><small><i><?php echo date('F j, Y, g:i a',strtotime($i['date'])) ?></i></small></h6><br/>
+                <h6><small><i><?php echo date('F j, Y',strtotime($i['date'])) ?></i></small></h6><br/>
                 <?php
-                  
+                    }
 
             }else { 
-                if ($nombre==0  ){
-                    echo "No Records yet.";
+                if ($nombre==0 ){
+                    //echo "No Records yet.";
                     $nombre++;
                   
                 }
