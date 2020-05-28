@@ -140,10 +140,42 @@ $t='0';
                                     <span>Ecommerce</span> </a>
                                 <ul>
                                     <li><a href="ecommerce.html">Dashboard</a></li>
-                                    <li><a href="products.html">Products</a></li>
-                                    <li><a href="products-edit.html">Edit Products</a></li>
+                                    <li><a href="products.php">Products</a></li>
+                                    <li class=""><a href="products-add.php">Add Products</a></li>
+                                    <li><a href="products-edit.php">Edit Products</a></li>
                                     <li><a href="orders.php">Orders</a></li>
                                     <li class="active"><a href="#">Order View</a></li>
+                                </ul>
+                            </li>
+                            <li class="">
+                            <a href="#"> <i class="collab"></i> <span>Associates</span> </a>
+                                <ul>
+
+                                <li class=""><a href="collab.php">Organizors</a></li>
+                                        <li><a href="collab-add.php">Add Organizor</a></li>
+                                        <li><a href="collab-edit.php">Edit Organizor</a></li>
+                                       
+                                </ul>
+                            </li>
+                            <li class="">
+                            <a href="#"> <i class="collab"></i> <span>Events</span> </a>
+                                <ul>
+
+                                <li class=""><a href="collab2.php">Events</a></li>
+                                        <li><a href="collab2-add.php">Add Event</a></li>
+                                        <li><a href="collab2-edit.php">Edit Event</a></li>
+                                        <li><a href="statt.php">Statistics</a></li>
+                                    
+                                </ul>
+                            </li>
+                            <li class="">
+                            <a href="#"> <i class="collab"></i> <span>Platforms</span> </a>
+                                <ul>
+
+                                <li class="" ><a href="products0.php">ADD Platform</a></li>
+                                    <li ><a href="products1.php">View Platform</a></li>
+                                    <li ><a href="chart.php">Statistic</a></li>
+                                    
                                 </ul>
                             </li>
                         </ul>

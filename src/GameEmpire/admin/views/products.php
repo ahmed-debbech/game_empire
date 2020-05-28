@@ -159,8 +159,39 @@
                                     <li class="active"><a href="products.php">Products</a></li>
                                     <li><a href="products-add.php">Add Products</a></li>
                                     <li><a href="products-edit.php">Edit Products</a></li>
-                                    <li><a href="orders.html">Orders</a></li>
-                                    <li><a href="order-view.html">Order View</a></li>
+                                    <li><a href="orders.php">Orders</a></li>
+                                    <li><a href="order-view.php">Order View</a></li>
+                                </ul>
+                            </li>
+                            <li class="">
+                            <a href="#"> <i class="collab"></i> <span>Associates</span> </a>
+                                <ul>
+
+                                <li class=""><a href="collab.php">Organizors</a></li>
+                                        <li><a href="collab-add.php">Add Organizor</a></li>
+                                        <li><a href="collab-edit.php">Edit Organizor</a></li>
+                                    
+                                </ul>
+                            </li>
+                            <li class="">
+                            <a href="#"> <i class="collab"></i> <span>Events</span> </a>
+                                <ul>
+
+                                <li class=""><a href="collab2.php">Events</a></li>
+                                        <li><a href="collab2-add.php">Add Event</a></li>
+                                        <li><a href="collab2-edit.php">Edit Event</a></li>
+                                        <li class=""><a href="statt.php">Statistics</a></li>
+                                    
+                                </ul>
+                            </li>
+                            <li class="">
+                            <a href="#"> <i class="collab"></i> <span>Platforms</span> </a>
+                                <ul>
+
+                                <li class="" ><a href="products0.php">ADD Platform</a></li>
+                                    <li ><a href="products1.php">View Platform</a></li>
+                                    <li ><a href="chart.php">Statistic</a></li>
+                                    
                                 </ul>
                             </li>
                         </ul>

@@ -156,7 +156,8 @@ function googleTranslateElementInit() {
 
                                         <li><a href="collab2.php">Events</a></li>
                                         <li><a href="collab2-add.php">Add Event</a></li>
-                                        <li class=""><a href="collab2-edit.php">Edit Event</a></liclass="active">
+                                        <li class=""><a href="collab2-edit.php">Edit Event</a></li>
+                                        <li class=""><a href="statt.php">Statistics</a></li>
 
                                     </ul>
                                     </li>
