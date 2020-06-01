@@ -27,12 +27,12 @@ $connect = mysqli_connect("localhost", "root", "","game_empire");
 
 		$sql2="INSERT INTO admin (id,mdp,photo) VALUES ( '$id','$mdp','$photo');";
 		mysqli_query($connect,$sql2);
-		header("Location: login.php");exit();}
+		header("Location: login.php?addmin=1");exit();}
 
 		
 
 else {
-	header("Location: login.php");exit();
+	header("Location: login.php?addmin=0");exit();
 
 
 

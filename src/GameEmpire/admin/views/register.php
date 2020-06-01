@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Dashboard - DAdmin</title>
+    <title>GAME EMPIRE Dashboard - Register</title>
     <meta name="author" content="">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -37,7 +37,7 @@
                         <div class="m-account--content-w" data-bg-img="assets/img/account/content-bg.jpg">
                             <div class="m-account--content">
                                 <h2 class="h2">Have an account?</h2>
-                                <a href="login.html" class="btn btn-rounded">Login Now</a> </div>
+                                <a href="login.php" class="btn btn-rounded">Login Now</a> </div>
                         </div>
                     </div>
                     <div class="col-md-6">

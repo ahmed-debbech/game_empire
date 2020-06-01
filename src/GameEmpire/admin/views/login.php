@@ -24,7 +24,21 @@
               <link rel="stylesheet" href="assets/css/datatables.min.css"> 
               <link rel="stylesheet" href="assets/css/fullcalendar.min.css"> 
               <link rel="stylesheet" href="assets/css/style.css">
+              <script src="../dist/sweetalert-dev.js"></script>
+             <link rel="stylesheet" href="../dist/sweetalert.css">
   </head><body> <div class="wrapper">
+
+  <?php
+        if(isset($_GET['addmin'])){
+            $a=$_GET['addmin'];
+            if ($a==1){
+                echo '<script type="text/javascript">swal("Admin Registration", "New admin has been successfully registered.", "success"); 
+                
+                </script>'; 
+               
+            }
+            else echo'<script>swal("Admin Registration", "Something went wrong!", "error");</script>';
+        } ?>
    <div class="m-account-w" data-bg-img="assets/img/account/wrapper-bg.jpg"> 
    <div class="m-account"> <div class="row no-gutters">
    
