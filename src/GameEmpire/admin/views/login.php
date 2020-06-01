@@ -3,7 +3,7 @@
  <head> 
  <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <title>Dashboard - DAdmin</title> <meta name="author" content="">
+   <title>GAME EMPIRE Dashboard - Login</title> <meta name="author" content="">
     <meta name="description" content=""> 
     <meta name="keywords" content="">
      <link rel="icon" href="favicon.png" type="image/png">
@@ -29,8 +29,8 @@
    <div class="m-account"> <div class="row no-gutters">
    
     <div class="col-md-6"> <div class="m-account--content-w" data-bg-img="assets/img/account/content-bg.jpg"> 
-    <div class="m-account--content"> <h2 class="h2">Don't have an account?</h2> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    <a href="../../index.php" class="btn btn-rounded">Register Now</a> 
+    <div class="m-account--content"> <h2 class="h2">Don't have an account?</h2> <p>your Admin account registration is one click away.</p>
+    <a href="register.php" class="btn btn-rounded">Register Now</a> 
     </div></div></div>
     <div class="col-md-6"> <div class="m-account--form-w"> 
     <div class="m-account--form"> 
@@ -43,11 +43,11 @@
     </div>
     <div class="form-group"> <div class="input-group"> 
        <div class="input-group-prepend"> <i class="fas fa-key"></i> </div>
-       <input type="password" name="password" id="password" type="password" class="form-control" autocomplete="off" required>
+       <input type="password" name="password" id="password" type="password" placeholder="Password" class="form-control" autocomplete="off" required>
         </div></div><div class="m-account--actions"> <a href="#" class="btn-link">Forgot Password?</a>
          <button type="submit" class="btn btn-rounded btn-info">Login</button> </div><div class="m-account--alt"> <p><span>OR LOGIN WITH</span></p><div class="btn-list"> <a href="#" class="btn btn-rounded btn-warning">Facebook</a>
           <a href="#" class="btn btn-rounded btn-warning">Google</a> </div></div><div class="m-account--footer">
-           <p>&copy; 2018 ThemeLooks</p></div></form> </div></div></div></div></div></div></div><script src="assets/js/jquery.min.js"></script> <script src="assets/js/jquery-ui.min.js"></script>
+           <p>&copy; 2020 GAME EMPIRE. All rights reserved.</p></div></form> </div></div></div></div></div></div></div><script src="assets/js/jquery.min.js"></script> <script src="assets/js/jquery-ui.min.js"></script>
             <script src="assets/js/bootstrap.bundle.min.js"></script> 
             <script src="assets/js/perfect-scrollbar.min.js"></script>
              <script src="assets/js/jquery.sparkline.min.js"></script>
