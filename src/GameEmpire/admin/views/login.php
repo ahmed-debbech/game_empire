@@ -49,7 +49,7 @@
     <div class="col-md-6"> <div class="m-account--form-w"> 
     <div class="m-account--form"> 
     <div class="logo"> 
-    <img src="assets/img/logo.png" alt=""> </div><form  method="post" action="../core/veriflogin.php"> <label class="m-account--title">Login to your account</label>
+    <img src="assets/img/logo.png" alt=""> </div><form name="forml" id="forml" method="post" action="../core/veriflogin.php"> <label class="m-account--title">Login to your account</label>
      <div class="form-group"> <div class="input-group"> <div class="input-group-prepend"> <i class="fas fa-user"></i>
       </div>
       <input  name="login" id="username" type="text" placeholder="Username" class="form-control" autocomplete="off" required>
@@ -58,11 +58,13 @@
     <div class="form-group"> <div class="input-group"> 
        <div class="input-group-prepend"> <i class="fas fa-key"></i> </div>
        <input type="password" name="password" id="password" type="password" placeholder="Password" class="form-control" autocomplete="off" required>
-        </div></div><div class="m-account--actions"> <a href="#" class="btn-link">Forgot Password?</a>
+       
+        </div><input type="checkbox" onclick="showpass3()"> Show Password</div><div class="m-account--actions"> <a href="#" class="btn-link">Forgot Password?</a>
          <button type="submit" class="btn btn-rounded btn-info">Login</button> </div><div class="m-account--alt"> <p><span>OR LOGIN WITH</span></p><div class="btn-list"> <a href="#" class="btn btn-rounded btn-warning">Facebook</a>
           <a href="#" class="btn btn-rounded btn-warning">Google</a> </div></div><div class="m-account--footer">
            <p>&copy; 2020 GAME EMPIRE. All rights reserved.</p></div></form> </div></div></div></div></div></div></div><script src="assets/js/jquery.min.js"></script> <script src="assets/js/jquery-ui.min.js"></script>
-            <script src="assets/js/bootstrap.bundle.min.js"></script> 
+           <script type="text/javascript" src="assets/js/showpass.js"></script> 
+           <script src="assets/js/bootstrap.bundle.min.js"></script> 
             <script src="assets/js/perfect-scrollbar.min.js"></script>
              <script src="assets/js/jquery.sparkline.min.js"></script>
               <script src="assets/js/raphael.min.js"></script>
