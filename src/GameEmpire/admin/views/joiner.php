@@ -1,5 +1,13 @@
-<?
-session_start(); ?>
+<?php  session_start(); 
+ if (empty($_SESSION['id']))
+ {
+     echo "<script type='text/javascript'>";
+echo "alert('Please Login First');
+window.location.href='../views/login.php';";
+echo "</script>";
+     
+ }
+?>
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en" class="no-outlines">
@@ -65,15 +73,33 @@ session_start(); ?>
                             </li>
                         </ul>
                     </li>
+                    <?PHP
+                            include "../core/config.php";
+                            $ida=$_SESSION['id'];
+                            $sql="select * From admin where id='$ida'";
+                            $db = config::getConnexion();
+                            $req = $db->prepare($sql);
+                            $req->execute();
+                            $row_count=0;
+                            
+                            $liste = $req->fetchAll();
+                            ?>
+                            <?php
+                           
+                            foreach($liste as $row){
+                                ?>
+                                <?PHP
+                            }
+                            ?>
                     <li class="nav-item dropdown nav--user online">
-                        <a href="#" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/aziz.png" alt="" class="rounded-circle"> <span>Aziz Amdouni</span> <i class="fa fa-angle-down"></i> </a>
+                        <a href="prophile.php" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/<?php echo $row['photo']; ?>" alt="" class="rounded-circle"> <span><?php echo $row['id']; ?></span> <i class="fa fa-angle-down"></i> </a>
                         <ul class="dropdown-menu">
-                            <li><a href="profile.html"><i class="far fa-user"></i>Profile</a></li>
+                            <li><a href="profile.php"><i class="far fa-user"></i>Profile</a></li>
                             <li><a href="mailbox_inbox.html"><i class="far fa-envelope"></i>Inbox</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
                             <li class="dropdown-divider"></li>
                             <li><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i>Logout</a></li>
+                            <li><a  href="../core/logout.php"><i class="fa fa-power-off"></i>Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -82,13 +108,13 @@ session_start(); ?>
         <aside class="sidebar" data-trigger="scrollbar">
             <div class="sidebar--profile">
                 <div class="profile--img">
-                    <a href="profile.html"> <img src="assets/img/avatars/aziz.png" alt="" class="rounded-circle"> </a>
+                    <a href="profile.php"> <img src="assets/img/avatars/<?php echo $row['photo']; ?>" alt="" class="rounded-circle"> </a>
                 </div>
-                <div class="profile--name"> <a href="profile.html" class="btn-link">Aziz Amdouni</a> </div>
+                <div class="profile--name"> <a href="profile.php" class="btn-link"><?php echo $row['id']; ?></a> </div>
                 <div class="profile--nav">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a href="profile.html" class="nav-link" title="User Profile"> <i class="fa fa-user"></i> </a>
+                            <a href="profile.php" class="nav-link" title="User Profile"> <i class="fa fa-user"></i> </a>
                         </li>
                         <li class="nav-item">
                             <a href="lock-screen.html" class="nav-link" title="Lock Screen"> <i class="fa fa-lock"></i> </a>
@@ -97,7 +123,7 @@ session_start(); ?>
                             <a href="mailbox_inbox.html" class="nav-link" title="Messages"> <i class="fa fa-envelope"></i> </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" title="Logout"> <i class="fa fa-sign-out-alt"></i> </a>
+                            <a  href="../core/logout.php" class="nav-link" title="Logout"> <i class="fa fa-sign-out-alt"></i> </a>
                         </li>
                     </ul>
                 </div>
@@ -258,16 +284,16 @@ $listeorganiz=$organizc->joinOrganizs();
                                         <thead>
                                             <tr>
                                                 
-                                                <th scope="col" >ID</th>
-                                                <th scope="col" >Image</th>
-                                                <th scope="col" >Event</th>
-                                                <th scope="col" >Category</th>
-                                                <th scope="col" >Start Date</th>
-                                                <th scope="col" >End Date</th>
-                                                <th scope="col" >Location</th>
-                                                <th scope="col" >Org ID</th>
-                                                <th scope="col" >Logo</th>
-                                                <th scope="col" >Organizor</th>
+                                                <th scope="col" style="color:Teal;">ID</th>
+                                                <th scope="col" style="color:Teal;">Image</th>
+                                                <th scope="col" style="color:Teal;">Event</th>
+                                                <th scope="col" style="color:Teal;">Category</th>
+                                                <th scope="col" style="color:Teal;">Start Date</th>
+                                                <th scope="col" style="color:Teal;">End Date</th>
+                                                <th scope="col" style="color:Teal;">Location</th>
+                                                <th scope="col" style="color:Teal;">Org ID</th>
+                                                <th scope="col" style="color:Teal;">Logo</th>
+                                                <th scope="col" style="color:Teal;">Organizor</th>
                                                 
                                     
                                                 
@@ -284,16 +310,16 @@ foreach($listeorganiz as $row){
     ?>
     <tr>
          
-    <td><?PHP echo $row['id_event']; ?> </td>
+    <td style="color:DarkSlateGrey;"><?PHP echo $row['id_event']; ?> </td>
     <td><img src="../pics/<?PHP echo $row['pic'] ?>" width="100" height="40"> </td>
-     <td><?PHP echo $row['namee']; ?></td>
-     <td><?PHP echo $row['typee']; ?></td>
-     <td><?PHP echo $row['date_start']; ?></td>
-    <td><?PHP echo $row['date_end']; ?></td>
-    <td><?PHP echo $row['location']; ?> </td>
-    <td><?PHP echo $row['id_org']; ?> </td>
+     <td style="color:DarkSlateGrey;"><?PHP echo $row['namee']; ?></td>
+     <td style="color:DarkSlateGrey;"><?PHP echo $row['typee']; ?></td>
+     <td style="color:DarkSlateGrey;"><?PHP echo $row['date_start']; ?></td>
+    <td style="color:DarkSlateGrey;"><?PHP echo $row['date_end']; ?></td>
+    <td style="color:DarkSlateGrey;"><?PHP echo $row['location']; ?> </td>
+    <td style="color:DarkSlateGrey;"><?PHP echo $row['id_org']; ?> </td>
     <td><img src="../pics/<?PHP echo $row['img'] ?>" width="100" height="40"> </td>
-    <td><?PHP echo $row['name']; ?> </td>
+    <td style="color:DarkSlateGrey;"><?PHP echo $row['name']; ?> </td>
   
 
 	

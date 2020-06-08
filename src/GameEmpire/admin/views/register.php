@@ -44,18 +44,18 @@
                         <div class="m-account--form-w">
                             <div class="m-account--form">
                                 <div class="logo"> <img src="assets/img/logo.png" alt=""> </div>
-                                <form method="post" action="newAdmin.php">
+                                <form method="post" action="newAdmin.php" id="formr" name="formr" onsubmit="checkCap3();">
                                     <label class="m-account--title">Create your account</label>
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <i class="fas fa-user"></i> </div>
-                                            <input type="text" name="id" placeholder="Username" class="form-control" autocomplete="off" required> </div>
+                                            <input type="text" name="id" id="id" placeholder="Username" class="form-control" autocomplete="off" required> </div>
                                     </div>
                                    
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <i class="fas fa-key"></i> </div>
-                                            <input type="password" name="mdp" placeholder="Password" class="form-control" autocomplete="off" required> </div>
+                                            <input type="password" name="mdp" id="mdp" placeholder="Password" class="form-control" autocomplete="off" required> </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
@@ -63,7 +63,7 @@
                                             <input type="file" name="photo"class="form-control" autocomplete="off" required> </div>
                                     </div>
                                    
-                                    
+                                    <input type="checkbox" onclick="showpass2()"> Show Password
                                     <div class="m-account--actions">
                                         <button type="submit" name="addmin" class="btn btn-block btn-rounded btn-info">Register</button>
                                     </div>
@@ -78,7 +78,8 @@
             </div>
         </div>
     </div>
-    
+    <script type="text/javascript" src="assets/js/showpass.js"></script>
+    <script type="text/javascript" src="assets/js/controller.js"></script>
     <script src="dist/sweetalert-dev.js"></script>
     <link rel="stylesheet" href="dist/sweetalert.css">
     <script src="assets/js/jquery.min.js"></script>

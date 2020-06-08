@@ -71,15 +71,33 @@ echo "</script>";
                                 </li>
                             </ul>
                         </li>
+                        <?PHP
+                            include "../core/config.php";
+                            $ida=$_SESSION['id'];
+                            $sql="select * From admin where id='$ida'";
+                            $db = config::getConnexion();
+                            $req = $db->prepare($sql);
+                            $req->execute();
+                            $row_count=0;
+                            
+                            $liste = $req->fetchAll();
+                            ?>
+                            <?php
+                           
+                            foreach($liste as $row){
+                                ?>
+                                <?PHP
+                            }
+                            ?>
                         <li class="nav-item dropdown nav--user online">
-                            <a href="#" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/aziz.png" alt="" class="rounded-circle"> <span>Aziz Amdouni</span> <i class="fa fa-angle-down"></i> </a>
+                            <a href="profile.php" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/<?php echo $row['photo']; ?>" alt="" class="rounded-circle"> <span><?php echo $row['id']; ?></span> <i class="fa fa-angle-down"></i> </a>
                             <ul class="dropdown-menu">
-                                <li><a href="profile.html"><i class="far fa-user"></i>Profile</a></li>
+                                <li><a href="profile.php"><i class="far fa-user"></i>Profile</a></li>
                                 <li><a href="mailbox_inbox.html"><i class="far fa-envelope"></i>Inbox</a></li>
                                 <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
                                 <li class="dropdown-divider"></li>
                                 <li><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
-                                <li><a href="#"><i class="fa fa-power-off"></i>Logout</a></li>
+                                <li><a  href="../core/logout.php"><i class="fa fa-power-off"></i>Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -88,13 +106,13 @@ echo "</script>";
             <aside class="sidebar" data-trigger="scrollbar">
                 <div class="sidebar--profile">
                     <div class="profile--img">
-                        <a href="profile.html"> <img src="assets/img/avatars/aziz.png" alt="" class="rounded-circle"> </a>
+                        <a href="profile.php"> <img src="assets/img/avatars/<?php echo $row['photo']; ?>" alt="" class="rounded-circle"> </a>
                     </div>
-                    <div class="profile--name"> <a href="profile.html" class="btn-link">Aziz Amdouni</a> </div>
+                    <div class="profile--name"> <a href="profile.php" class="btn-link"><?php echo $row['id']; ?></a> </div>
                     <div class="profile--nav">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a href="profile.html" class="nav-link" title="User Profile"> <i class="fa fa-user"></i> </a>
+                                <a href="profile.php" class="nav-link" title="User Profile"> <i class="fa fa-user"></i> </a>
                             </li>
                             <li class="nav-item">
                                 <a href="lock-screen.html" class="nav-link" title="Lock Screen"> <i class="fa fa-lock"></i> </a>
@@ -103,7 +121,7 @@ echo "</script>";
                                 <a href="mailbox_inbox.html" class="nav-link" title="Messages"> <i class="fa fa-envelope"></i> </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link" title="Logout"> <i class="fa fa-sign-out-alt"></i> </a>
+                                <a  href="../core/logout.php" class="nav-link" title="Logout"> <i class="fa fa-sign-out-alt"></i> </a>
                             </li>
                         </ul>
                     </div>
@@ -246,7 +264,7 @@ echo "</script>";
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="tab01">
-                                    <form method="get" action="../core/editOrganiz.php" >
+                                    <form method="get" action="../core/editOrganiz.php"  name="formular" id="formular" onsubmit="return checkCap();" >
                                 <?PHP
 include "../entities/organizator.php";
 include "../core/organizatorc.php";
@@ -307,6 +325,7 @@ if (isset($_GET['edit']))
                 </footer>
             </main>
         </div>
+        <script type="text/javascript" src="assets/js/controller.js"></script>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery-ui.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>

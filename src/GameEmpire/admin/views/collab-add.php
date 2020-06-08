@@ -72,15 +72,33 @@ echo "</script>";
                             </li>
                         </ul>
                     </li>
+                    <?PHP
+                            include "../core/config.php";
+                            $ida=$_SESSION['id'];
+                            $sql="select * From admin where id='$ida'";
+                            $db = config::getConnexion();
+                            $req = $db->prepare($sql);
+                            $req->execute();
+                            $row_count=0;
+                            
+                            $liste = $req->fetchAll();
+                            ?>
+                            <?php
+                           
+                            foreach($liste as $row){
+                                ?>
+                                <?PHP
+                            }
+                            ?>
                     <li class="nav-item dropdown nav--user online">
-                        <a href="#" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/aziz.png" alt="" class="rounded-circle"> <span>Aziz Amdouni</span> <i class="fa fa-angle-down"></i> </a>
+                        <a href="profile.php" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/<?php echo $row['photo']; ?>" alt="" class="rounded-circle"> <span><?php echo $row['id']; ?></span> <i class="fa fa-angle-down"></i> </a>
                         <ul class="dropdown-menu">
-                            <li><a href="profile.html"><i class="far fa-user"></i>Profile</a></li>
+                            <li><a href="profile.php"><i class="far fa-user"></i>Profile</a></li>
                             <li><a href="mailbox_inbox.html"><i class="far fa-envelope"></i>Inbox</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
                             <li class="dropdown-divider"></li>
                             <li><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i>Logout</a></li>
+                            <li><a  href="../core/logout.php"><i class="fa fa-power-off"></i>Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -89,13 +107,13 @@ echo "</script>";
         <aside class="sidebar" data-trigger="scrollbar">
             <div class="sidebar--profile">
                 <div class="profile--img">
-                    <a href="profile.html"> <img src="assets/img/avatars/aziz.png" alt="" class="rounded-circle"> </a>
+                    <a href="profile.php"> <img src="assets/img/avatars/<?php echo $row['photo']; ?>" alt="" class="rounded-circle"> </a>
                 </div>
-                <div class="profile--name"> <a href="profile.html" class="btn-link">Aziz Amdouni</a> </div>
+                <div class="profile--name"> <a href="profile.php" class="btn-link"><?php echo $row['id']; ?></a> </div>
                 <div class="profile--nav">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a href="profile.html" class="nav-link" title="User Profile"> <i class="fa fa-user"></i> </a>
+                            <a href="profile.php" class="nav-link" title="User Profile"> <i class="fa fa-user"></i> </a>
                         </li>
                         <li class="nav-item">
                             <a href="lock-screen.html" class="nav-link" title="Lock Screen"> <i class="fa fa-lock"></i> </a>
@@ -104,7 +122,7 @@ echo "</script>";
                             <a href="mailbox_inbox.html" class="nav-link" title="Messages"> <i class="fa fa-envelope"></i> </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" title="Logout"> <i class="fa fa-sign-out-alt"></i> </a>
+                            <a  href="../core/logout.php" class="nav-link" title="Logout"> <i class="fa fa-sign-out-alt"></i> </a>
                         </li>
                     </ul>
                 </div>
@@ -252,22 +270,26 @@ echo "</script>";
                                 <form name="formular" id="formular" method="post" action="../core/addOrganiz.php" onsubmit="return checkCap();">
                                     <div class="form-group row"> <span class="label-text col-md-3 col-form-label">ID: *</span>
                                         <div class="col-md-9"> <input type="number" placeholder="set ID here..." name="id_org" class="form-control" required> </div>
-                                    </div>
+                                    </div> 
                                     <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Logo: *</span>
                                         <div class="col-md-9"> <label class="custom-file"> <input type="file" name="img" class="custom-file-input" required> <span class="custom-file-label">Choose an Image</span> </label> </div>
-                                    </div>
+                                    </div> 
                                     <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Full name: *</span>
                                         <div class="col-md-9"> <input type="text" name="name" placeholder="set full name here..." class="form-control" required> </div>
-                                    </div>
+                                     </div>
                                     <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Email: *</span>
-                                        <div class="col-md-9"> <input type="text" name="email" placeholder="set email adress here..." class="form-control" required> </div>
-                                    </div>
+                                        <div class="col-md-9"> <input type="email" name="email" placeholder="set email adress here..." class="form-control" required> </div>
+                                     </div>
                                     <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Phone: *</span>
                                         <div class="col-md-9"> <input type="number" placeholder="phone is required..." name="phone" class="form-control" required> </div>
-                                    </div>
+                                     </div>
                                     <div class="row mt-3">
-                                        <div class="col-md-9 offset-md-3"> <input type="submit" name="add" value="➕" class="btn btn-rounded btn-success"> </div>
+                                        <div class="col-md-9 offset-md-3"> <input type="submit" name="add" value="➕" class="btn btn-rounded btn-success"> </div> 
+                                       
                                     </div>
+                                   
+					
+			
                                 </form>
                             </div>
 

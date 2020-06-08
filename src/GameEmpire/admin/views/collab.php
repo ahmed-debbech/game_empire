@@ -3,7 +3,7 @@
  {
      echo "<script type='text/javascript'>";
 echo "alert('Please Login First');
-window.location.href='../views/login.php';";
+window.location.href='login.php';";
 echo "</script>";
      
  }
@@ -123,15 +123,33 @@ echo "</script>";
                             </li>
                         </ul>
                     </li>
+                    <?PHP
+                            include "../core/config.php";
+                            $ida=$_SESSION['id'];
+                            $sql="select * From admin where id='$ida'";
+                            $db = config::getConnexion();
+                            $req = $db->prepare($sql);
+                            $req->execute();
+                            $row_count=0;
+                            
+                            $liste = $req->fetchAll();
+                            ?>
+                            <?php
+                           
+                            foreach($liste as $row){
+                                ?>
+                                <?PHP
+                            }
+                            ?>
                     <li class="nav-item dropdown nav--user online">
-                        <a href="#" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/aziz.png" alt="" class="rounded-circle"> <span>Aziz Amdouni</span> <i class="fa fa-angle-down"></i> </a>
+                        <a href="profile.php" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/<?php echo $row['photo']; ?>" alt="" class="rounded-circle"> <span> <?php echo $_SESSION['id']; ?></span> <i class="fa fa-angle-down"></i> </a>
                         <ul class="dropdown-menu">
-                            <li><a href="profile.html"><i class="far fa-user"></i>Profile</a></li>
+                            <li><a href="profile.php"><i class="far fa-user"></i>Profile</a></li>
                             <li><a href="mailbox_inbox.html"><i class="far fa-envelope"></i>Inbox</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
                             <li class="dropdown-divider"></li>
                             <li><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i>Logout</a></li>
+                            <li><a  href="../core/logout.php"><i class="fa fa-power-off"></i>Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -140,13 +158,13 @@ echo "</script>";
         <aside class="sidebar" data-trigger="scrollbar">
             <div class="sidebar--profile">
                 <div class="profile--img">
-                    <a href="profile.html"> <img src="assets/img/avatars/aziz.png" alt="" class="rounded-circle"> </a>
+                    <a href="profile.php"> <img src="assets/img/avatars/<?php echo $row['photo']; ?>" alt="" class="rounded-circle"> </a>
                 </div>
-                <div class="profile--name"> <a href="profile.html" class="btn-link">Aziz Amdouni</a> </div>
+                <div class="profile--name"> <a href="profile.php" class="btn-link"> <?php echo $_SESSION['id']; ?></a> </div>
                 <div class="profile--nav">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a href="profile.html" class="nav-link" title="User Profile"> <i class="fa fa-user"></i> </a>
+                            <a href="profile.php" class="nav-link" title="User Profile"> <i class="fa fa-user"></i> </a>
                         </li>
                         <li class="nav-item">
                             <a href="lock-screen.html" class="nav-link" title="Lock Screen"> <i class="fa fa-lock"></i> </a>
@@ -155,11 +173,12 @@ echo "</script>";
                             <a href="mailbox_inbox.html" class="nav-link" title="Messages"> <i class="fa fa-envelope"></i> </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" title="Logout"> <i class="fa fa-sign-out-alt"></i> </a>
+                            <a  href="../core/logout.php" class="nav-link" title="Logout"> <i class="fa fa-sign-out-alt"></i> </a>
                         </li>
                     </ul>
                 </div>
             </div>
+            
             <div class="sidebar--nav">
                 <ul>
                     <li>
@@ -298,7 +317,7 @@ echo "</script>";
                             <p>Our associates that organize gaming events</p>
                         </div>
                         <div class="actions">
-                            <form   class="search flex-wrap flex-md-nowrap"> <input type="text" class="form-control"  id="myInput" onkeyup="quickFind()" placeholder="search for names.." title="search for organizors by name" name="search"   required> <button  class="btn btn-rounded"><i class="fa fa-search"></i></button> </form> <a name="add Organizor" href="collab-add.html" title="Add Organizor" class="addProduct btn btn-lg btn-rounded btn-success">➕</a></div>
+                            <form   class="search flex-wrap flex-md-nowrap"> <input type="text" class="form-control"  id="myInput" onkeyup="quickFind()" placeholder="search for names.." title="search for organizors by name" name="search"   required> <button  class="btn btn-rounded"><i class="fa fa-search"></i></button> </form> <a name="add Organizor" href="collab-add.php" title="Add Organizor" class="addProduct btn btn-lg btn-rounded btn-success">➕</a></div>
                     </div>
                 </div>
                 <?PHP
@@ -316,12 +335,12 @@ $listeorganiz=$organizc->showOrganizs();
                                         <thead>
                                             <tr>
                                                 
-                                                <th scope="col" >ID</th>
-                                                <th scope="col" >Logo</th>
-                                                <th scope="col" >Name</th>
-                                                <th scope="col" >Email</th>
-                                                <th scope="col" >Phone</th>
-                                                <th scope="col" >ACTIONS</th>
+                                                <th scope="col" style="color:Teal;">ID</th>
+                                                <th scope="col" style="color:Teal;">Logo</th>
+                                                <th scope="col" style="color:Teal;">Name</th>
+                                                <th scope="col" style="color:Teal;">Email</th>
+                                                <th scope="col" style="color:Teal;">Phone</th>
+                                                <th scope="col" style="color:Teal;">ACTIONS</th>
                                                 
                                                 <th>  
                                                 <a name="order"  href="collab-ord.php" title="ascendant name order"class="btn btn-rounded btn-outline-warning">asc view</a>
@@ -341,11 +360,11 @@ foreach($listeorganiz as $row){
     ?>
     <tr>
          
-    <td><?PHP echo $row['id_org']; ?> </td>
+    <td style="color:DarkSlateGray;"><?PHP echo $row['id_org']; ?> </td>
     <td><img src="../pics/<?PHP echo $row['img'] ?>" width="100" height="40"> </td>
-     <td><?PHP echo $row['name']; ?></td>
-    <td><?PHP echo $row['email']; ?></td>
-    <td><?PHP echo $row['phone']; ?> </td>
+     <td style="color:DarkSlateGray;;"><?PHP echo $row['name']; ?></td>
+    <td style="color:DarkSlateGray;;"><?PHP echo $row['email']; ?></td>
+    <td style="color:DarkSlateGray;;"><?PHP echo $row['phone']; ?> </td>
   
     <td><form method="POST" action="collab-edit.php?edit=<?PHP echo $row['id_org']; ?>"> 
     <div class="col mb-3"> <button title="edit organizor" class="btn btn-rounded btn-outline-info"name="Edit"  >✏️</button> </div>

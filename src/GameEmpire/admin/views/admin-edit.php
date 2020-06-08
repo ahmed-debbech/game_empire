@@ -16,7 +16,7 @@ echo "</script>";
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>GAME EMPIRE - Edit Event</title>
+        <title>GAME EMPIRE - Edit Admin</title>
         <meta name="author" content="">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -42,7 +42,7 @@ echo "</script>";
         <div class="wrapper">
             <header class="navbar navbar-fixed">
                 <div class="navbar--header">
-                    <a href="index.html" class="logo"> </a>
+                    <a href="index.html" class="logo">  </a>
                     <a href="#" class="navbar--btn" data-toggle="sidebar" title="Toggle Sidebar"> <i class="fa fa-bars"></i> </a>
                 </div>
                 <a href="#" class="navbar--btn" data-toggle="sidebar" title="Toggle Sidebar"> <i class="fa fa-bars"></i> </a>
@@ -72,25 +72,34 @@ echo "</script>";
                             </ul>
                         </li>
                         <?PHP
-                            include "../core/config.php";
-                            $ida=$_SESSION['id'];
-                            $sql="select * From admin where id='$ida'";
-                            $db = config::getConnexion();
-                            $req = $db->prepare($sql);
-                            $req->execute();
-                            $row_count=0;
-                            
-                            $liste = $req->fetchAll();
-                            ?>
-                            <?php
-                           
-                            foreach($liste as $row){
-                                ?>
-                                <?PHP
-                            }
-                            ?>
+include "../entities/admin.php";
+include "../core/AdminC.php";
+
+if (isset($_GET['adedit']))
+{
+    $id=$_GET['adedit'];
+    $sql="select * from admin where id ='$id'";
+    $db = config::getConnexion();
+    $req = $db->prepare($sql);
+    $req->execute();
+    $liste = $req->fetchAll();
+    foreach($liste as $row){
+        $id= $row['id'];
+        $mdp= $row['mdp'];
+        $photo= $row['photo'];
+        $contact= $row['contact'];
+        $ocp= $row['ocp'];
+        $dial= $row['dial'];
+        $origin= $row['origin'];
+        $bday= $row['bday'];
+        $bio= $row['bio'];
+
+        
+    }
+}
+?>
                         <li class="nav-item dropdown nav--user online">
-                            <a href="profile.php" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/<?PHP echo $row['photo'] ?>" alt="" class="rounded-circle"> <span><?PHP echo $row['id'] ?></span> <i class="fa fa-angle-down"></i> </a>
+                            <a href="#" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/<?PHP echo $row['photo'] ?>" alt="" class="rounded-circle"> <span><?PHP echo $row['id'] ?></span> <i class="fa fa-angle-down"></i> </a>
                             <ul class="dropdown-menu">
                                 <li><a href="profile.php"><i class="far fa-user"></i>Profile</a></li>
                                 <li><a href="mailbox_inbox.html"><i class="far fa-envelope"></i>Inbox</a></li>
@@ -112,7 +121,7 @@ echo "</script>";
                     <div class="profile--nav">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a href="profile.php" class="nav-link" title="User Profile"> <i class="fa fa-user"></i> </a>
+                                <a href="profile.html" class="nav-link" title="User Profile"> <i class="fa fa-user"></i> </a>
                             </li>
                             <li class="nav-item">
                                 <a href="lock-screen.html" class="nav-link" title="Lock Screen"> <i class="fa fa-lock"></i> </a>
@@ -155,21 +164,21 @@ echo "</script>";
                                         <li class=""><a href="collab-edit.php">Edit Organizor</a></li>
 
                                     </ul>
+
                                 </li>
-                                <li class="active open">
+                                <li class="">
                                     <a href="#"> <i class="collab2"></i> <span>Events</span> </a>
                                     <ul>
 
                                         <li><a href="collab2.php">Events</a></li>
-                                        <li><a href="collab2-add.php">Add Event</a></li>
-                                        <li class="active"><a href="collab2-edit.php">Edit Event</a></li>
+                                        <li class=""><a href="collab2-add.php">Add Event</a></li>
+                                        <li><a href="collab2-edit.php">Edit Event</a></li>
                                         <li><a href="statt.php">Statistics</a></li>
 
                                     </ul>
-                                    </li>
-                                    
-                                    <li class="">
-                            <a href="#"> <i class="collab"></i> <span>platforms</span> </a>
+                                </li>
+                                <li class="">
+                            <a href="#"> <i class="collab"></i> <span>Platforms</span> </a>
                                 <ul>
 
                                 <li class="" ><a href="products0.php">ADD Platform</a></li>
@@ -179,7 +188,7 @@ echo "</script>";
                                 </ul>
                             </li>
                             </ul>
-                            </li>
+                        </li>
 
 
                 </div>
@@ -221,10 +230,10 @@ echo "</script>";
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-6">
-                                <h2 class="page--title h5">Edit Event</h2>
+                                <h2 class="page--title h5" href="admin-edit.php" >Edit Admin</h2>
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="collab2.php">Events</a></li>
-                                    <li class="breadcrumb-item active"><span>Edit Event</span></li>
+                                    <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active"><span>Edit Admin</span></li>
                                 </ul>
                             </div>
                             <div class="col-lg-6">
@@ -248,16 +257,15 @@ echo "</script>";
                     <div class="panel">
                         <div class="records--header">
                             <div class="title fa-shopping-bag">
-                                <h3 class="h3">Events <a href="#" class="btn btn-sm btn-outline-info">Edit Event Infos</a></h3>
-                                <p>Our associated gaming events</p>
+                                <h3 class="h3">Admin <a href="#" class="btn btn-sm btn-outline-info">Edit Admin Infos</a></h3>
+                                <p>Admin profile infos editing section</p>
                             </div>
                         </div>
                     </div>
                     <div class="panel">
                         <div class="records--body">
                             <div class="title">
-                                <h6 class="h6">Edit Infos</h6>
-                            </div>
+                                <h6 class="h6">Edit Infos</h6> </div>
                             <ul class="nav nav-tabs">
                                 <li class="nav-item"> <a href="#tab01" data-toggle="tab" class="nav-link active">Details</a> </li>
 
@@ -265,90 +273,45 @@ echo "</script>";
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="tab01">
-                            <form method="get" action="../core/editEvent.php" name="formular2" id="formular2" onsubmit="return checkCap2();" >
-                                <?PHP
-include "../entities/event.php";
-include "../core/eventc.php";
-
-
-if (isset($_GET['edit2']))
-{
-    $id2=$_GET['edit2'];
-    $sql="select * from event where id_event='$id2'";
-    $db = config::getConnexion();
-    $req = $db->prepare($sql);
-    $req->execute();
-    $liste = $req->fetchAll();
-    foreach($liste as $row){
-        $id_event= $row['id_event'];
-        $id_org= $row['id_org'];
-        $namee= $row['namee'];
-        $typee= $row['typee'];
-        $pic= $row['pic'];
-        $date_start= $row['date_start'];
-        $date_end= $row['date_end'];
-        $location= $row['location'];
-        $detail= $row['detail'];
-        $video= $row['video'];
-        $site= $row['site'];
-       
-        
-    }
-}
-    
-?>
-                                    
-                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">ID: *</span>
-                                            <div class="col-md-9"> <input type="number" name="id_event" value="<?PHP echo $id_event ?>" class="form-control" required> </div>
+                                    <form id="forma" name="forma" method="get" action="../core/editAdmin.php">
+   
+                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Username: *</span>
+                                            <div class="col-md-9"> <input type="text" name="id" value="<?PHP echo $_GET['adedit']; ?>" class="form-control" required> </div>
                                         </div>
-                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Organizor ID: *</span>
-                                            <div class="col-md-9"> <input type="number" name="id_org" value="<?PHP echo $id_org ?>" class="form-control" required> </div>
+                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Password: *</span>
+                                            <div class="col-md-9"> <input type="password" name="mdp" value="<?PHP echo $mdp; ?>" class="form-control" required><input type="checkbox" onclick="showpass()"> Show Password</div>
                                         </div>
-                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Image: *</span>
-                                            <div class="col-md-9"> <label class="custom-file"> <input type="file" name="pic" class="custom-file-input" required> <span class="custom-file-label"></span><?PHP echo $pic ?> </label> </div>
+                                        
+                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Photo: *</span>
+                                            <div class="col-md-9"> <label class="custom-file"> <input  name="photo" type="file"  class="custom-file-input" required> <span class="custom-file-label"></span><?PHP echo $photo ?></label> </div>
                                         </div>
-                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Name: *</span>
-                                            <div class="col-md-9"> <input type="text" name="namee" value="<?PHP echo $namee ?>" class="form-control" required> </div>
+                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Bio: *</span>
+                                            <div class="col-md-9"> <input type="text" name="bio" value="<?PHP echo $bio ?>"class="form-control" required> </div>
                                         </div>
-                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Category: *</span>
-                                            <div class="col-md-9">
-                                                <select class="form-control" name="typee">
-                                                  <option  value="expo">expo</option>
-                                                  <option  value="convention">convention</option>
-                                                  <option  value="festival">festival</option>
-                                                  <option  value="tournament">tournament</option>
-                                                  
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Start date: *</span>
-                                            <div class="col-md-9"> <input type="date" name="date_start" value="<?PHP echo $date_start?>" class="form-control" required> </div>
-                                        </div>
-                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">End date: *</span>
-                                            <div class="col-md-9"> <input type="date" name="date_end" value="<?PHP echo $date_end ?>" class="form-control" required> </div>
+                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Skills: *</span>
+                                            <div class="col-md-9"> <input type="text" name="ocp" value="<?PHP echo $ocp ?>" class="form-control" required> </div>
                                         </div>
                                         <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Location: *</span>
-                                            <div class="col-md-9"> <input type="text" name="location" value="<?PHP echo $location ?>"class="form-control" required> </div>
+                                            <div class="col-md-9"> <input type="text" name="origin" value="<?PHP echo $origin ?>"class="form-control" required> </div>
                                         </div>
-                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Description: *</span>
-                                            <div class="col-md-9"> <input type="text" name="detail" value="<?PHP echo $detail ?>"class="form-control" required> </div>
+                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Birthday: *</span>
+                                            <div class="col-md-9"> <input type="date" name="bday" value="<?PHP echo $bday ?>"class="form-control" required> </div>
                                         </div>
-                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Video: *</span>
-                                            <div class="col-md-9"> <input type="text" name="video" value="<?PHP echo $video ?>"class="form-control" required> </div>
+                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Email: *</span>
+                                            <div class="col-md-9"> <input type="email" name="contact" value="<?PHP echo $contact ?>"class="form-control" required> </div>
                                         </div>
-                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Website: *</span>
-                                            <div class="col-md-9"> <input type="text" name="site" value="<?PHP echo $site ?>"class="form-control" required> </div>
+                                        <div class="form-group row"> <span class="label-text col-md-3 col-form-label">Phone: *</span>
+                                            <div class="col-md-9"> <input type="number" name="dial" value="<?PHP echo $dial ?>"class="form-control" required> </div>
                                         </div>
+                                       
                                         <div class="row mt-3">
-                                            <div class="col-md-9 offset-md-3"> <input type="submit" name="Modif" value="✏️" class="btn btn-rounded btn-success"> </div>
+                                            <div class="col-md-9 offset-md-3"> <input type="submit" value="✏️" name="Update" class="btn btn-rounded btn-info"> </div>
                                         </div>
-
-
-
-
+                                       <?php 
+                                       ?>
                                     </form>
+                                     
 
-                               
                                 </div>
 
 
@@ -357,10 +320,11 @@ if (isset($_GET['edit2']))
                     </div>
                 </section>
                 <footer class="main--footer main--footer-light">
-                    <p>Copyright<a href="#">GAME EMPIRE</a>. All Rights Reserved.</p>
+                    <p>Copyright &copy;<a href="#">GAME EMPIRE</a>. All Rights Reserved.</p>
                 </footer>
             </main>
         </div>
+        <script type="text/javascript" src="assets/js/showpass.js"></script>
         <script type="text/javascript" src="assets/js/controller.js"></script>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery-ui.min.js"></script>

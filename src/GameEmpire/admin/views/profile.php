@@ -3,21 +3,32 @@
  {
      echo "<script type='text/javascript'>";
 echo "alert('Please Login First');
-window.location.href='../views/login.php';";
+window.location.href='login.php';";
 echo "</script>";
      
  }
 ?>
+
+<?php
+        if(isset($_GET['edit'])){
+            $ad=$_GET['edit'];
+            if ($ad==1){
+                echo '<script type="text/javascript">swal("Admin Edits", "Edits have been saved.", "success"); 
+                
+                </script>'; 
+               
+            }
+            else echo'<script>swal("Admin Edits", "Something went wrong!", "error");</script>';
+        } ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en" class="no-outlines">
-<!-- Mirrored from themelooks.net/demo/dadmin/html/products.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 11 Apr 2020 19:11:44 GMT -->
+<!-- Mirrored from themelooks.net/demo/dadmin/html/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 11 Apr 2020 19:11:37 GMT -->
 
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>GAME EMPIRE - Events Listing</title>
+    <title>GAME EMPIRE - Admin Profile</title>
     <meta name="author" content="">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -37,13 +48,16 @@ echo "</script>";
     <link rel="stylesheet" href="assets/css/ion.rangeSlider.skinFlat.min.css">
     <link rel="stylesheet" href="assets/css/datatables.min.css">
     <link rel="stylesheet" href="assets/css/fullcalendar.min.css">
-    <link rel="stylesheet" href="assets/css/style.css"> </head>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="../dist/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="../dist/sweetalert.css"> </head>
+    
 
 <body>
     <div class="wrapper">
         <header class="navbar navbar-fixed">
             <div class="navbar--header">
-                <a href="index.html" class="logo">  </a>
+                <a href="index.php" class="logo"> <img src="assets/img/logo.png" alt=""> </a>
                 <a href="#" class="navbar--btn" data-toggle="sidebar" title="Toggle Sidebar"> <i class="fa fa-bars"></i> </a>
             </div>
             <a href="#" class="navbar--btn" data-toggle="sidebar" title="Toggle Sidebar"> <i class="fa fa-bars"></i> </a>
@@ -91,14 +105,14 @@ echo "</script>";
                             }
                             ?>
                     <li class="nav-item dropdown nav--user online">
-                        <a href="profile.php" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/<?PHP echo $row['photo'] ?>" alt="" class="rounded-circle"> <span><?PHP echo $row['id'] ?></span> <i class="fa fa-angle-down"></i> </a>
+                        <a href="#" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/<?PHP echo $row['photo'] ?>" alt="" class="rounded-circle"> <span><?php echo $row['id']; ?></span> <i class="fa fa-angle-down"></i> </a>
                         <ul class="dropdown-menu">
                             <li><a href="profile.php"><i class="far fa-user"></i>Profile</a></li>
                             <li><a href="mailbox_inbox.html"><i class="far fa-envelope"></i>Inbox</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
                             <li class="dropdown-divider"></li>
                             <li><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
-                            <li><a  href="../core/logout.php"><i class="fa fa-power-off"></i>Logout</a></li>
+                            <li><a href="../core/logout.php"><i class="fa fa-power-off"></i>Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -109,7 +123,7 @@ echo "</script>";
                 <div class="profile--img">
                     <a href="profile.php"> <img src="assets/img/avatars/<?PHP echo $row['photo'] ?>" alt="" class="rounded-circle"> </a>
                 </div>
-                <div class="profile--name"> <a href="profile.php" class="btn-link"><?PHP echo $row['id'] ?></a> </div>
+                <div class="profile--name"> <a href="profile.php" class="btn-link"><?php echo $row['id']; ?></a> </div>
                 <div class="profile--nav">
                     <ul class="nav">
                         <li class="nav-item">
@@ -122,79 +136,65 @@ echo "</script>";
                             <a href="mailbox_inbox.html" class="nav-link" title="Messages"> <i class="fa fa-envelope"></i> </a>
                         </li>
                         <li class="nav-item">
-                            <a  href="../core/logout.php" class="nav-link" title="Logout"> <i class="fa fa-sign-out-alt"></i> </a>
+                            <a href="../core/logout.php" class="nav-link" title="Logout"> <i class="fa fa-sign-out-alt"></i> </a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="sidebar--nav">
-                <ul>
-                    <li>
-                        <ul>
-                            <li>
-                                <a href="index.html"> <i class="fa fa-home"></i> <span>Dashboard</span> </a>
-                            </li>
+            <ul>
+                        <li>
+                            <ul>
+                                <li>
+                                    <a href="index.html"> <i class="fa fa-home"></i> <span>Dashboard</span> </a>
+                                </li>
 
 
-                            
-                            <li>
                                 <li class="">
-                                <a href="#"> <i class="fa fa-shopping-cart"></i> <span>Ecommerce</span> </a>
-                                    
+                                    <a href="#"> <i class="fa fa-shopping-cart"></i> <span>Ecommerce</span> </a>
                                     <ul>
-                                    <li><a href="ecommerce.html">Dashboard</a></li>
-                                    <li class=""><a href="products.php">Products</a></li>
-                                    <li><a href="products-add.php">Add Products</a></li>
-                                    <li><a href="products-edit.php">Edit Products</a></li>
-                                    <li><a href="orders.php">Orders</a></li>
-                                    <li><a href="order-view.php">Order View</a></li>
+                                        <li><a href="ecommerce.html">Dashboard</a></li>
+                                        <li><a href="products.php">Products</a></li>
+                                        <li><a href="products-add.php">Add Products</a></li>
+                                        <li class=""><a href="products-edit.php">Edit Products</a></li>
+                                        <li><a href="orders.php">Orders</a></li>
+                                        <li><a href="order-view.php">Order View</a></li>
+                                    </ul>
+                                </li>
+                                <li class="">
+                                    <a href="#"> <i class="collab"></i> <span>Associates</span> </a>
+                                    <ul>
 
+                                        <li><a href="collab.php">Organizors</a></li>
+                                        <li class=""><a href="collab-add.php">Add Organizor</a></li>
+                                        <li><a href="collab-edit.php">Edit Organizor</a></li>
                                        
 
                                     </ul>
-
                                 </li>
+                                <li class="">
+                                    <a href="#"> <i class="collab2"></i> <span>Events</span> </a>
+                                    <ul>
 
-                            </li>
-                            <li class="">
-                            <a href="#"> <i class="collab"></i> <span>Associates</span> </a>
-                                <ul>
+                                        <li><a href="collab2.php">Events</a></li>
+                                        <li class=""><a href="collab2-add.php">Add Event</a></li>
+                                        <li><a href="collab2-edit.php">Edit Event</a></li> 
+                                        <li class=""><a href="statt.php">Statistics</a></li>
 
-                                <li class=""><a href="collab.php">Organizors</a></li>
-                                        <li><a href="collab-add.php">Add Organizor</a></li>
-                                        <li><a href="collab-edit.php">Edit Organizor</a></li>
-                                    
-                                </ul>
-                            </li>
-                            <li class="active open">
-                            <a href="#"> <i class="collab2"></i> <span>Events</span> </a>
-                                <ul>
+                                    </ul>
+                                </li>
+                                <li class="">
+                                    <a href="#"> <i class="collab"></i> <span>Platforms</span> </a>
+                                    <ul>
 
-                                <li class="active"><a href="collab2.php">Events</a></li>
-                                        <li><a href="collab2-add.php">Add Event</a></li>
-                                        <li><a href="collab2-edit.php">Edit Event</a></li>
-                                        <li><a href="statt.php">Statistics</a></li>
-                                    
-                                </ul>
-                            </li>
-                            <li class="">
-                            <a href="#"> <i class="collab"></i> <span>platforms</span> </a>
-                                <ul>
+                                        <li class=""><a href="products0.php">ADD Platform</a></li>
+                                        <li><a href="products1.php">View Platform</a></li>
+                                        <li><a href="chart.php">Statistic</a></li>
 
-                                <li class="" ><a href="products0.php">ADD Platform</a></li>
-                                    <li ><a href="products1.php">View Platform</a></li>
-                                    <li ><a href="chart.php">Statistic</a></li>
-                                    
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-
-
-
-
-                   
-                    
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
             </div>
             <div class="sidebar--widgets">
                 <div class="widget">
@@ -234,154 +234,98 @@ echo "</script>";
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-6">
-                            <h2 class="page--title h5">Events</h2>
+                            <h2 class="page--title h5">Admin Profile</h2>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="">Events</a></li>
-                                <li class="breadcrumb-item active"><span>Events</span></li>
+                                <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+                                
+                                <li class="breadcrumb-item active"><span>Profile</span></li>
                             </ul>
                         </div>
                         <div class="col-lg-6">
                             <div class="summary--widget">
-                                <div class="summary--item">
-                                    <p class="summary--chart" data-trigger="sparkline" data-type="bar" data-width="5" data-height="38" data-color="#009378">2,9,7,9,11,9,7,5,7,7,9,11</p>
-                                    <p class="summary--title">This Month</p>
-                                    <p class="summary--stats text-green">2,371,527</p>
-                                </div>
-                                <div class="summary--item">
-                                    <p class="summary--chart" data-trigger="sparkline" data-type="bar" data-width="5" data-height="38" data-color="#e16123">2,3,7,7,9,11,9,7,9,11,9,7</p>
-                                    <p class="summary--title">Last Month</p>
-                                    <p class="summary--stats text-orange">2,527,371</p>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
             <section class="main--content">
-                <div class="panel">
-                    <div class="records--header">
-                        <div class="title fa-shopping-bag">
-                            <h3 class="h3">Events <a href="#" class="btn btn-sm btn-outline-info">Manage Events</a></h3>
-                            <p>Our associated gaming events</p>
-                        </div>
-                        <div class="actions">
-                        <form   class="search flex-wrap flex-md-nowrap"> <input type="text" class="form-control"  id="myInput" onkeyup="quickFind2()" placeholder="type a Start Date.." title="search for events by Start Date" name="search1"   required> <button  class="btn btn-rounded"><i class="fa fa-search"></i></button> </form> <a name="add event" href="collab2-add.php" title="Add Event" class="addProduct btn btn-lg btn-rounded btn-success">➕</a></div>
-                    </div>
-                </div>
-                <?PHP
-                include "../core/eventc.php";
-$eventc=new eventc();
-$listeevent=$eventc->sortEvents();
-
-?>
-<div class="panel">
- 
-<table class="table" style="background-color: white;" id="myTable1" >
-                                        <thead>
-                                            <tr>
-                                                
-                                                <th scope="col" style="color:Teal;">ID</th>
-                                                <th scope="col" style="color:Teal;">Org ID</th>
-                                                <th scope="col" style="color:Teal;">Image</th>
-                                                <th scope="col" style="color:Teal;">Name</th>
-                                                <th scope="col" style="color:Teal;">Category</th>
-                                                <th scope="col" style="color:Teal;">Start Date</th>
-                                                <th scope="col" style="color:Teal;">End Date</th>
-                                                <th scope="col" style="color:Teal;">Location</th>
-                                               
-                                                <th scope="col" ></th>
-                                                <th scope="col" style="color:Teal;">Status</th>
-                                                <th scope="col" style="color:Teal;">ACTIONS</th>
-                                                
-                                               <th> <a name="order2"  href="collab2.php" title="default table order"class="btn btn-rounded btn-outline-warning">default</a>
-                                                <a name="join" href="joiner.php"   title="join organizors with their events"class="btn btn-rounded btn-outline-primary">ORGAN|EVent</a>
-                                                </th>
-                                                
+            
+                <div class="row gutter-20">
+                    <div class="col-lg-8">
+                        <div class="panel profile-cover">
+                            <div class="profile-cover__img"> <img src="assets/img/avatars/<?PHP echo $row['photo'] ?>" width="80" height="80" alt="">
+                                <h3 class="h3" style="color:Teal; font-weight: bold; "><?php echo $_SESSION['id']; ?></h3>
+                            </div>
+                            <div class="profile-cover__action" data-bg-img="assets/img/covers/coverr.jpg" data-overlay="0.3"> <form method="POST" action="admin-edit.php?adedit=<?PHP echo $row['id']; ?>"><button class="btn btn-rounded btn-info" title="edit infos"> <i></i> <span>✏️</span> </button> </form> </div>
+                            <div class="profile-cover__info">
+                                <ul class="nav">
+                                    <li><strong></strong><ad style="color:OrangeRed; font-weight: bold;">Admin</ad></li>
                                     
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody >
-
-
-
-                                        <?PHP
-foreach($listeevent as $row){
-    ?>
-    <tr>
-    
-    <td style="color:DarkSlateGrey;"><?PHP echo $row['id_event']; ?> </td>
-    <td style="color:DarkSlateGrey;"><?PHP echo $row['id_org']; ?> </td>
-    <td><img src="../pics/<?PHP echo $row['pic'] ?>" width="100" height="40"> </td>
-     <td style="color:DarkSlateGrey;"><?PHP echo $row['namee']; ?></td>
-     <td style="color:DarkSlateGrey;"><?PHP echo $row['typee']; ?></td>
-    <td style="color:DarkSlateGrey;"><?PHP echo $row['date_start']; ?></td>
-    <td style="color:DarkSlateGrey;"><?PHP echo $row['date_end']; ?></td>
-    <td style="color:DarkSlateGrey;"><?PHP echo $row['location']; ?> </td>
-    <td><?php
-    $today = date("Y-m-d");
-    if ($row['date_start'] >  $today )
-    {
-        echo '<td> <span class="label label-success">ACTIVE</span> </td>';
-    }
-    else if($row['date_start'] <  $today)
-    {
-        echo '<td> <span class="label label-danger">EXPIRED</span> </td>';
-    }
-    else if($row['date_start'] ==  $today)
-    {
-        echo '<td> <span class="label label-primary">TODAY</span> </td>';
-    }
-    
-    
-    
-   ?></td>
-    
-    
-    <td><form method="POST" action="collab2-edit.php?edit2=<?PHP echo $row['id_event']; ?>" >
-	<div class="col mb-3"> <button title="edit event" class="btn btn-rounded btn-outline-info"name="Edit2">✏️</button> </div>
-	<input type="hidden" value="<?PHP echo $row['id_event']; ?>" name="id_event">
-	</form>
-	<form method="POST" action="../core/deleteEv.php">
-	<div class="col mb-3"> <button title="delete event" class="btn btn-rounded btn-outline-danger"name="Delete2">❌</button> </div>
-	<input type="hidden" value="<?PHP echo $row['id_event']; ?>" name="id_event">
-	</form>
-	
-     
-
-     
-
-                                            </tr>
-                                            <?php
-                                            }
-                                            ?>
-                                        </tbody>
-
-                        </table>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Activity Feed</h3>
+                            </div>
+                            <div class="panel-content panel-activity">
+                                <form action="#" class="panel-activity__status"> <textarea name="user_activity" placeholder="Share what you've been up to..." class="form-control"></textarea>
+                                    <div class="actions">
+                                        <div class="btn-group"> <button type="button" class="btn-link" title="Post an Image" data-toggle="tooltip"> <i class="far fa-image"></i> </button> <button type="button" class="btn-link" title="Post an Video" data-toggle="tooltip"> <i class="fas fa-video"></i> </button>                                            <button type="button" class="btn-link" title="Post an Idea" data-toggle="tooltip"> <i class="far fa-lightbulb"></i> </button> <button type="button" class="btn-link" title="Post an Question" data-toggle="tooltip"> <i class="fas fa-question-circle"></i> </button>                                            </div><button type="submit" class="btn btn-sm btn-rounded btn-info">Post</button> </div>
+                                </form>
+                                
+                            </div>
+                        </div>
                     </div>
+                    <div class="col-lg-4">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">About Me</h3>
+                            </div>
+                            
+                            <div class="panel-content panel-about">
+                                <p><?PHP echo $row['bio'] ?></p>
+                                <table>
+                                    <tr>
+                                        <th><i class="fas fa-briefcase"></i>Skills</th>
+                                        <td><?PHP echo $row['ocp'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="fas fa-birthday-cake"></i>Birthday</th>
+                                        <td><?PHP echo $row['bday'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="fas fa-map-marker-alt"></i>Location</th>
+                                        <td><?PHP echo $row['origin'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="fas fa-mobile-alt"></i>Phone</th>
+                                        <td><a href="tel:<?PHP echo $row['dial'] ?>" class="btn-link"><?PHP echo $row['dial'] ?></a></td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="fas fa-at"></i>Email</th>
+                                        <td><a><?PHP echo $row['contact'] ?></a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-social">
+                                <ul class="nav" >
+                                    <li><a href="#" ><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-github"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        
                 </div>
-                <script>
-function quickFind2() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable1");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[5];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-} </script>
             </section>
             <footer class="main--footer main--footer-light">
-                <p>Copyright <a href="#">GAME EMPIRE</a>. All Rights Reserved.</p>
+                <p>Copyright &copy; <a href="#">GAME EMPIRE</a>. All Rights Reserved.</p>
             </footer>
         </main>
     </div>
@@ -403,6 +347,6 @@ function quickFind2() {
     <script src="assets/js/datatables.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
-<!-- Mirrored from themelooks.net/demo/dadmin/html/products.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 11 Apr 2020 19:11:45 GMT -->
+<!-- Mirrored from themelooks.net/demo/dadmin/html/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 11 Apr 2020 19:11:41 GMT -->
 
 </html>
