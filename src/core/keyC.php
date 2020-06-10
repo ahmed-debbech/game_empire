@@ -11,7 +11,7 @@ function afficherKey($key){
     }
     
 function ajouterKey($key){
-    $sql="insert into report (code,username,idGame,date) values (:code,:username,:idGame,:date)";
+    $sql="insert into keyy (key_code,username,id_game,date) values (:key_code,:username,:id_game,:date);";
     $db = config::getconnexion();
     try{
         $req=$db->prepare($sql);
@@ -19,17 +19,23 @@ function ajouterKey($key){
         $username=$key->getUsername();
         $idGame=$key->getIdGame();
         $date=$key->getDate();
-        $req->bindvalue(':code',$code);
+        $req->bindvalue(':key_code',$code);
         $req->bindvalue(':username',$username);
-        $req->bindvalue(':idGame',$idGame);
-        $req->bindvalue(':date',$date;
-
-        $req->execute();
+        echo $username;
+        $req->bindvalue(':id_game',$idGame);
+        echo $idGame;
+        $req->bindvalue(':date',$date);
+        echo $date;
+        if($req->execute()){
+            echo "yoo";
+        }else{
+            echo "no";
+        }
     }
 
     catch(Exception $e){
         echo'Error :'.$e->getMessage();
     }
 }
-
+}
 ?>

@@ -622,7 +622,7 @@
         <!-- END: Order Products -->
 
         <div class="nk-gap-2"></div>
-        <a class="nk-btn nk-btn-rounded nk-btn-color-main-1" href="#">Place Order</a>
+        <a class="nk-btn nk-btn-rounded nk-btn-color-main-1" href="core/generateKey.php">Place Order</a>
     </div>
 </div>
 <div class="nk-gap-2"></div>
