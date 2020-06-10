@@ -27,7 +27,7 @@ function ajouterKey($key){
         $req->bindvalue(':date',$date);
         echo $date;
         if($req->execute()){
-            echo "yoo";
+            header("Location: ../keyadded.html");
         }else{
             echo "no";
         }
