@@ -1,0 +1,41 @@
+.cell {
+    width: 50%;
+    height: 480px;
+    display: inline-block;
+    margin: 0 15px;
+    border: rgb(82, 78, 78) solid;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.flickity-page-dots .dot {
+    background-color: crimson;
+}
+
+.flickity-button {
+    background: transparent;
+}
+
+
+/* big previous & next buttons */
+
+.flickity-prev-next-button {
+    width: 100px;
+    height: 100px;
+}
+
+
+/* icon color */
+
+.flickity-button-icon {
+    fill: white;
+}
+
+
+/* hide disabled button */
+
+.flickity-button:disabled {
+    display: none;
+}
+
+@media only screen and (max-width: 991)
