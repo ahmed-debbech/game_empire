@@ -14,7 +14,7 @@ $key1C=new KeyC();
 $key1C->ajouterKey($key1);
 
 }else{
-	echo "Check Your Datas";
+	echo "Check Your Data";
 }
 //*/
 

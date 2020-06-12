@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once "keyC.php";
 include_once "../entities/key.php";
 $n = 10;
@@ -15,7 +16,7 @@ function getName($n) {
 } 
 $x =  getName($n);
 echo $x;
-$k = new Key($x, "user", 100, "4-4-2020");
+$k = new Key($x, $_SESSION["username"], 100, date("Y-m-d"));
 $key1C=new KeyC();
 $key1C->ajouterKey($k);
 

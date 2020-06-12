@@ -1,6 +1,6 @@
 <?PHP
 //core
-include "../config.php";
+include_once "../config.php";
 class KeyC {
 function afficherKey($key){
 		echo "Code: ".$key->getCode()."<br>";
@@ -11,7 +11,7 @@ function afficherKey($key){
     }
     
 function ajouterKey($key){
-    $sql="insert into keyy (key_code,username,id_game,date) values (:key_code,:username,:id_game,:date);";
+    $sql="insert into keyy (key_code,username,id_game,date,valid) values (:key_code,:username,:id_game,:date,1);";
     $db = config::getconnexion();
     try{
         $req=$db->prepare($sql);
@@ -36,6 +36,15 @@ function ajouterKey($key){
     catch(Exception $e){
         echo'Error :'.$e->getMessage();
     }
+}
+function setInvalid($key){
+    $db = new mysqli("localhost", "root", "", "game_empire");
+
+    $sql = "update keyy set valid = 0 where key_code='".$key."';";
+
+    $t = $db->query($sql);
+    var_dump($t);
+    $db->close();
 }
 }
 ?>

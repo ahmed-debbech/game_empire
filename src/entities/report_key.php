@@ -1,18 +1,25 @@
 <?php
 //entities
-class Report {
+class reportKey {
     private $id;
     private $username;
     private $date;
     private $text;
-    private $topic;
-function __construct($id,$username,$date,$text,$topic){
+    private $key_code;
+function __construct($id,$username,$date,$text,$key_code){
     $this->id=$id;
     $this->username=$username;
     $this->date=$date;
     $this->text=$text;
-    $this->topic=$topic;
+    $this->key_code=$key_code;
 }
+function getKeyCode(){
+    return $this->key_code;
+}
+function setKeyCode($key_code){
+    $this->key_code=$key_code;
+}
+
 function getId(){
     return $this->id;
 }
@@ -25,10 +32,6 @@ function getDate(){
 function getText(){
     return $this->text;
 }
-function getTopic(){
-    return $this->topic;
-}
-
 function setUsername($username){
     $this->username=$username;
 }
@@ -38,10 +41,5 @@ function setDate($date){
 function setText($text){
     $this->text=$text;
 }
-function setTopic($topic){
-    $this->topic=$topic;
 }
-
-}
-
 ?>
