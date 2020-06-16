@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en" class="no-outlines">
 <!-- Mirrored from themelooks.net/demo/dadmin/html/products.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 11 Apr 2020 19:11:44 GMT -->
@@ -81,7 +82,7 @@
         <aside class="sidebar" data-trigger="scrollbar">
             <div class="sidebar--profile">
                 <div class="profile--img">
-                    <a href="profile.html"> <img src="assets/img/avatars/01_80x80.png" alt="" class="rounded-circle"> </a>
+                <a href="#" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/<?php include_once("../core/getimg.php");?>" alt="" class="rounded-circle"> <span><?php echo $_SESSION["id"]; ?></span> <i class="fa fa-angle-down"></i> </a>
                 </div>
                 <div class="profile--name"> <a href="profile.html" class="btn-link">Henry Foster</a> </div>
                 <div class="profile--nav">
@@ -116,6 +117,8 @@
                                     <li><a href="products-edit.html">Edit Products</a></li>
                                     <li><a href="orders.html">Orders</a></li>
                                     <li><a href="order-view.html">Order View</a></li>
+                                    <li><a href="review.php">Edit Reviews</a></li>
+                                    <li><a href="blacklisted.php">Edit blacklisted words</a></li>
                                 </ul>
                             </li>
                         </ul>

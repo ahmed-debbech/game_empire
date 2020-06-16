@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en" class="no-outlines">
 <!-- Mirrored from themelooks.net/demo/dadmin/html/products.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 11 Apr 2020 19:11:44 GMT -->
@@ -109,7 +110,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown nav--user online">
-                        <a href="#" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/01_80x80.png" alt="" class="rounded-circle"> <span>Henry Foster</span> <i class="fa fa-angle-down"></i> </a>
+                        <a href="#" class="nav-link" data-toggle="dropdown"> <img src="assets/img/avatars/<?php include_once("../core/getimg.php");?>" alt="" class="rounded-circle"> <span><?php echo $_SESSION["id"]; ?></span> <i class="fa fa-angle-down"></i> </a>
                         <ul class="dropdown-menu">
                             <li><a href="profile.html"><i class="far fa-user"></i>Profile</a></li>
                             <li><a href="mailbox_inbox.html"><i class="far fa-envelope"></i>Inbox</a></li>
@@ -127,7 +128,7 @@
                 <div class="profile--img">
                     <a href="profile.html"> <img src="assets/img/avatars/01_80x80.png" alt="" class="rounded-circle"> </a>
                 </div>
-                <div class="profile--name"> <a href="profile.html" class="btn-link">Henry Foster</a> </div>
+                <div class="profile--name"> <a href="profile.html" class="btn-link"><?php echo $_SESSION["id"]; ?></a> </div>
                 <div class="profile--nav">
                     <ul class="nav">
                         <li class="nav-item">
@@ -161,6 +162,8 @@
                                     <li><a href="products-edit.php">Edit Products</a></li>
                                     <li><a href="orders.php">Orders</a></li>
                                     <li><a href="order-view.php">Order View</a></li>
+                                    <li><a href="review.php">Edit Reviews</a></li>
+                                    <li><a href="blacklisted.php">Edit blacklisted words</a></li>
                                 </ul>
                             </li>
                             <li class="">

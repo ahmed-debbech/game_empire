@@ -34,7 +34,7 @@
             if ($a==1){
                 echo '<script type="text/javascript">swal("Admin Registration", "New admin has been successfully registered.", "success"); 
                 
-                </script>'; 
+                </script>';
                
             }
             else echo'<script>swal("Admin Registration", "Something went wrong!", "error");</script>';
