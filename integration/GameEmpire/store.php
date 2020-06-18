@@ -160,7 +160,7 @@ if(!isset($_SESSION)){
                 if(isset($_SESSION['username']))  
                 {  
                 ?>  
-                     <li>Welcome, <?php echo $_SESSION['fname']; ?></li>
+                     <li>Welcome, <?php echo $_SESSION['username']; ?></li>
                     <li><a href="#" id="logout"><span class="fa fa-sign-out fa-lg"></span></a>  </li>
                      
                 <?php  
